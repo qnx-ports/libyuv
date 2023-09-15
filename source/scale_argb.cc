@@ -403,6 +403,12 @@ static void ScaleARGBBilinearDown(int src_width,
     }
   }
 #endif
+#if defined(HAS_SCALEARGBFILTERCOLS_RVV)
+  if (TestCpuFlag(kCpuHasRVV)) {
+    ScaleARGBFilterCols = ScaleARGBFilterCols_RVV;
+  }
+#endif
+
   // TODO(fbarchard): Consider not allocating row buffer for kFilterLinear.
   // Allocate a row of ARGB.
   {
@@ -530,6 +536,11 @@ static void ScaleARGBBilinearUp(int src_width,
     if (IS_ALIGNED(dst_width, 8)) {
       ScaleARGBFilterCols = ScaleARGBFilterCols_LSX;
     }
+  }
+#endif
+#if defined(HAS_SCALEARGBFILTERCOLS_RVV)
+  if (filtering && TestCpuFlag(kCpuHasRVV)) {
+    ScaleARGBFilterCols = ScaleARGBFilterCols_RVV;
   }
 #endif
 #if defined(HAS_SCALEARGBCOLS_SSE2)
@@ -795,6 +806,11 @@ static void ScaleYUVToARGBBilinearUp(int src_width,
     if (IS_ALIGNED(dst_width, 8)) {
       ScaleARGBFilterCols = ScaleARGBFilterCols_LSX;
     }
+  }
+#endif
+#if defined(HAS_SCALEARGBFILTERCOLS_RVV)
+  if (filtering && TestCpuFlag(kCpuHasRVV)) {
+    ScaleARGBFilterCols = ScaleARGBFilterCols_RVV;
   }
 #endif
 #if defined(HAS_SCALEARGBCOLS_SSE2)
