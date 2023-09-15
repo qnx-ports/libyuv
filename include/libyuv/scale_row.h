@@ -184,6 +184,7 @@ extern "C" {
 #define HAS_SCALEUVROWDOWN4_RVV
 #define HAS_SCALEUVROWDOWNEVEN_RVV
 #if __riscv_v_intrinsic == 11000
+#define HAS_SCALEARGBFILTERCOLS_RVV
 #define HAS_SCALEARGBROWDOWN2_RVV
 #define HAS_SCALEARGBROWDOWN2BOX_RVV
 #define HAS_SCALEARGBROWDOWN2LINEAR_RVV
@@ -957,6 +958,11 @@ void ScaleARGBCols_Any_MSA(uint8_t* dst_ptr,
                            int dst_width,
                            int x,
                            int dx);
+void ScaleARGBFilterCols_RVV(uint8_t* dst_argb,
+                             const uint8_t* src_argb,
+                             int dst_width,
+                             int x,
+                             int dx);
 
 // ARGB Row functions
 void ScaleARGBRowDown2_SSE2(const uint8_t* src_argb,
