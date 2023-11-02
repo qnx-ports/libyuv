@@ -57,14 +57,17 @@ static int I4xxToI420(const uint8_t* src_y,
   if (src_uv_width <= 0 || src_uv_height == 0) {
     return -1;
   }
-  if (dst_y) {
-    ScalePlane(src_y, src_stride_y, src_y_width, src_y_height, dst_y,
-               dst_stride_y, dst_y_width, dst_y_height, kFilterBilinear);
+  if (dst_y &&
+      ScalePlane(src_y, src_stride_y, src_y_width, src_y_height, dst_y,
+                 dst_stride_y, dst_y_width, dst_y_height, kFilterBilinear)) {
+    return -1;
   }
-  ScalePlane(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
-             dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
-  ScalePlane(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
-             dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
+  if (ScalePlane(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
+                 dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear) ||
+      ScalePlane(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
+                 dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear)) {
+    return -1;
+  }
   return 0;
 }
 
@@ -529,14 +532,19 @@ static int Ix10ToI010(const uint16_t* src_y,
   if (width <= 0 || height == 0) {
     return -1;
   }
-  if (dst_y) {
-    ScalePlane_12(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  dst_y_width, dst_y_height, kFilterBilinear);
+  if (dst_y &&
+      ScalePlane_12(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                    dst_y_width, dst_y_height, kFilterBilinear)) {
+    return -1;
   }
-  ScalePlane_12(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
-                dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
-  ScalePlane_12(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
-                dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
+  if (ScalePlane_12(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
+                    dst_stride_u, dst_uv_width, dst_uv_height,
+                    kFilterBilinear) ||
+      ScalePlane_12(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
+                    dst_stride_v, dst_uv_width, dst_uv_height,
+                    kFilterBilinear)) {
+    return -1;
+  }
   return 0;
 }
 
@@ -1337,9 +1345,10 @@ int NV12ToNV24(const uint8_t* src_y,
     return -1;
   }
 
-  if (dst_y) {
-    ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-               Abs(width), Abs(height), kFilterBilinear);
+  if (dst_y &&
+      ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                 Abs(width), Abs(height), kFilterBilinear)) {
+    return -1;
   }
   UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
           SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
@@ -1362,9 +1371,9 @@ int NV16ToNV24(const uint8_t* src_y,
     return -1;
   }
 
-  if (dst_y) {
-    ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-               Abs(width), Abs(height), kFilterBilinear);
+  if (dst_y && ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+               Abs(width), Abs(height), kFilterBilinear)) {
+    return -1;
   }
   UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
           dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);
@@ -1450,9 +1459,10 @@ int P010ToP410(const uint16_t* src_y,
     return -1;
   }
 
-  if (dst_y) {
-    ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  Abs(width), Abs(height), kFilterBilinear);
+  if (dst_y &&
+      ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                    Abs(width), Abs(height), kFilterBilinear)) {
+    return -1;
   }
   UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
              SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
@@ -1475,9 +1485,10 @@ int P210ToP410(const uint16_t* src_y,
     return -1;
   }
 
-  if (dst_y) {
-    ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  Abs(width), Abs(height), kFilterBilinear);
+  if (dst_y &&
+      ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                    Abs(width), Abs(height), kFilterBilinear)) {
+    return -1;
   }
   UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
              dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);

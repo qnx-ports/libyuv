@@ -728,23 +728,31 @@ int I422Rotate(const uint8_t* src_y,
     case kRotate90:
       RotatePlane90(src_u, src_stride_u, dst_y, dst_stride_y, halfwidth,
                     height);
-      ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_u, dst_stride_u,
-                 halfheight, width, kFilterBilinear);
+      if (ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_u,
+                     dst_stride_u, halfheight, width, kFilterBilinear)) {
+        return -1;
+      }
       RotatePlane90(src_v, src_stride_v, dst_y, dst_stride_y, halfwidth,
                     height);
-      ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_v, dst_stride_v,
-                 halfheight, width, kFilterLinear);
+      if (ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_v,
+                     dst_stride_v, halfheight, width, kFilterLinear)) {
+        return -1;
+      }
       RotatePlane90(src_y, src_stride_y, dst_y, dst_stride_y, width, height);
       return 0;
     case kRotate270:
       RotatePlane270(src_u, src_stride_u, dst_y, dst_stride_y, halfwidth,
                      height);
-      ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_u, dst_stride_u,
-                 halfheight, width, kFilterBilinear);
+      if (ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_u,
+                     dst_stride_u, halfheight, width, kFilterBilinear)) {
+        return -1;
+      }
       RotatePlane270(src_v, src_stride_v, dst_y, dst_stride_y, halfwidth,
                      height);
-      ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_v, dst_stride_v,
-                 halfheight, width, kFilterLinear);
+      if (ScalePlane(dst_y, dst_stride_y, height, halfwidth, dst_v,
+                     dst_stride_v, halfheight, width, kFilterLinear)) {
+        return -1;
+      }
       RotatePlane270(src_y, src_stride_y, dst_y, dst_stride_y, width, height);
       return 0;
     case kRotate180:
@@ -1093,23 +1101,31 @@ int I210Rotate(const uint16_t* src_y,
     case kRotate90:
       RotatePlane90_16(src_u, src_stride_u, dst_y, dst_stride_y, halfwidth,
                        height);
-      ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_u, dst_stride_u,
-                    halfheight, width, kFilterBilinear);
+      if (ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_u,
+                        dst_stride_u, halfheight, width, kFilterBilinear)) {
+        return -1;
+      }
       RotatePlane90_16(src_v, src_stride_v, dst_y, dst_stride_y, halfwidth,
                        height);
-      ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_v, dst_stride_v,
-                    halfheight, width, kFilterLinear);
+      if (ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_v,
+                        dst_stride_v, halfheight, width, kFilterLinear)) {
+        return -1;
+      }
       RotatePlane90_16(src_y, src_stride_y, dst_y, dst_stride_y, width, height);
       return 0;
     case kRotate270:
       RotatePlane270_16(src_u, src_stride_u, dst_y, dst_stride_y, halfwidth,
                         height);
-      ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_u, dst_stride_u,
-                    halfheight, width, kFilterBilinear);
+      if (ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_u,
+                        dst_stride_u, halfheight, width, kFilterBilinear)) {
+        return -1;
+      }
       RotatePlane270_16(src_v, src_stride_v, dst_y, dst_stride_y, halfwidth,
                         height);
-      ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_v, dst_stride_v,
-                    halfheight, width, kFilterLinear);
+      if (ScalePlane_16(dst_y, dst_stride_y, height, halfwidth, dst_v,
+                        dst_stride_v, halfheight, width, kFilterLinear)) {
+        return -1;
+      }
       RotatePlane270_16(src_y, src_stride_y, dst_y, dst_stride_y, width,
                         height);
       return 0;
