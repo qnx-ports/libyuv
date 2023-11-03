@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5222c198_335dc7bc",
+        "filename": "include/libyuv/scale.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T21:15:04Z",
+      "side": 1,
+      "message": "Thanks for the explanation. The current implementation of ScalePlane uses align_buffer_64, so it needs to return int.\n\nI need to look into why libavif is using ScalePlane rather than I420Scale, I444Scale, etc. I think it may be because AVIF has monochrome (Y plane only) images, but there is no I400Scale. So perhaps we should add I400Scale?",
+      "parentUuid": "7b43fb52_1bec106a",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5541cf1c_f2fc1a3e",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Acknowledged.  I think \u0027r\u0027 was used, but ret is fine.",
       "parentUuid": "5541cf1c_f2fc1a3e",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f62c875_e5c53ecc",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T21:15:04Z",
+      "side": 1,
+      "message": "Done. Switched to `r`.",
+      "parentUuid": "e425585b_cc1ba033",
       "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c461e46_9d8dc809",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T21:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2007f571_26fd6f9c",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4853536f_5f7f8999",
@@ -135,6 +189,24 @@
       "writtenOn": "2023-11-03T18:23:40Z",
       "side": 1,
       "message": "I420Scale can\u0027t actual fail, aside from a bad argument?  It could be an assert?\nIf you\u0027re going to have a public error message, I\u0027d suggest printing the return code.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab4cb6a_5591ed18",
+        "filename": "util/yuvconvert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T21:15:04Z",
+      "side": 1,
+      "message": "I420Scale calls ScalePlane, so it can also fail becaue of memory allocation failure.\n\nI have reverted this change because we\u0027re not checking the return value of the TileARGBScale call (line 322) either.",
+      "parentUuid": "4853536f_5f7f8999",
       "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
