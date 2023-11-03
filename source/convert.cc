@@ -54,18 +54,25 @@ static int I4xxToI420(const uint8_t* src_y,
   const int dst_y_height = Abs(src_y_height);
   const int dst_uv_width = SUBSAMPLE(dst_y_width, 1, 1);
   const int dst_uv_height = SUBSAMPLE(dst_y_height, 1, 1);
+  int ret;
   if (src_uv_width <= 0 || src_uv_height == 0) {
     return -1;
   }
   if (dst_y) {
-    ScalePlane(src_y, src_stride_y, src_y_width, src_y_height, dst_y,
-               dst_stride_y, dst_y_width, dst_y_height, kFilterBilinear);
+    ret = ScalePlane(src_y, src_stride_y, src_y_width, src_y_height, dst_y,
+                     dst_stride_y, dst_y_width, dst_y_height, kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  ScalePlane(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
-             dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
-  ScalePlane(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
-             dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
-  return 0;
+  ret = ScalePlane(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
+                   dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
+  if (ret != 0) {
+    return ret;
+  }
+  ret = ScalePlane(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
+                   dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
+  return ret;
 }
 
 // Copy I420 with optional flipping.
@@ -526,18 +533,27 @@ static int Ix10ToI010(const uint16_t* src_y,
   const int src_uv_height = SUBSAMPLE(height, subsample_y, subsample_y);
   const int dst_uv_width = SUBSAMPLE(dst_y_width, 1, 1);
   const int dst_uv_height = SUBSAMPLE(dst_y_height, 1, 1);
+  int ret;
   if (width <= 0 || height == 0) {
     return -1;
   }
   if (dst_y) {
-    ScalePlane_12(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  dst_y_width, dst_y_height, kFilterBilinear);
+    ret = ScalePlane_12(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                        dst_y_width, dst_y_height, kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  ScalePlane_12(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
-                dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
-  ScalePlane_12(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
-                dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
-  return 0;
+  ret =
+      ScalePlane_12(src_u, src_stride_u, src_uv_width, src_uv_height, dst_u,
+                    dst_stride_u, dst_uv_width, dst_uv_height, kFilterBilinear);
+  if (ret != 0) {
+    return ret;
+  }
+  ret =
+      ScalePlane_12(src_v, src_stride_v, src_uv_width, src_uv_height, dst_v,
+                    dst_stride_v, dst_uv_width, dst_uv_height, kFilterBilinear);
+  return ret;
 }
 
 LIBYUV_API
@@ -1333,18 +1349,22 @@ int NV12ToNV24(const uint8_t* src_y,
                int dst_stride_uv,
                int width,
                int height) {
+  int ret;
   if (width <= 0 || height == 0) {
     return -1;
   }
 
   if (dst_y) {
-    ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-               Abs(width), Abs(height), kFilterBilinear);
+    ret = ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                     Abs(width), Abs(height), kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
-          SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
-          Abs(height), kFilterBilinear);
-  return 0;
+  ret = UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
+                SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
+                Abs(height), kFilterBilinear);
+  return ret;
 }
 
 LIBYUV_API
@@ -1358,17 +1378,21 @@ int NV16ToNV24(const uint8_t* src_y,
                int dst_stride_uv,
                int width,
                int height) {
+  int ret;
   if (width <= 0 || height == 0) {
     return -1;
   }
 
   if (dst_y) {
-    ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-               Abs(width), Abs(height), kFilterBilinear);
+    ret = ScalePlane(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                     Abs(width), Abs(height), kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
-          dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);
-  return 0;
+  ret = UVScale(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
+                dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);
+  return ret;
 }
 
 // Any P[420]1[02] to I[420]1[02] format with mirroring.
@@ -1446,18 +1470,22 @@ int P010ToP410(const uint16_t* src_y,
                int dst_stride_uv,
                int width,
                int height) {
+  int ret;
   if (width <= 0 || height == 0) {
     return -1;
   }
 
   if (dst_y) {
-    ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  Abs(width), Abs(height), kFilterBilinear);
+    ret = ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                        Abs(width), Abs(height), kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
-             SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
-             Abs(height), kFilterBilinear);
-  return 0;
+  ret = UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1),
+                   SUBSAMPLE(height, 1, 1), dst_uv, dst_stride_uv, Abs(width),
+                   Abs(height), kFilterBilinear);
+  return ret;
 }
 
 LIBYUV_API
@@ -1471,17 +1499,22 @@ int P210ToP410(const uint16_t* src_y,
                int dst_stride_uv,
                int width,
                int height) {
+  int ret;
   if (width <= 0 || height == 0) {
     return -1;
   }
 
   if (dst_y) {
-    ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
-                  Abs(width), Abs(height), kFilterBilinear);
+    ret = ScalePlane_16(src_y, src_stride_y, width, height, dst_y, dst_stride_y,
+                        Abs(width), Abs(height), kFilterBilinear);
+    if (ret != 0) {
+      return ret;
+    }
   }
-  UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
-             dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);
-  return 0;
+  ret =
+      UVScale_16(src_uv, src_stride_uv, SUBSAMPLE(width, 1, 1), height, dst_uv,
+                 dst_stride_uv, Abs(width), Abs(height), kFilterBilinear);
+  return ret;
 }
 
 // Convert YUY2 to I420.
