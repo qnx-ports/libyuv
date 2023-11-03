@@ -16,6 +16,23 @@
       "message": "Frank: Thanks for the review! PTAL.",
       "revId": "1540edec173a8a332e96d17c06a0eb06b4efb4fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e2b955_14903bad",
+        "filename": "source/scale.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T21:17:16Z",
+      "side": 1,
+      "message": "if you use multiple lines, I\u0027d rather {} around it.",
+      "revId": "1540edec173a8a332e96d17c06a0eb06b4efb4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
