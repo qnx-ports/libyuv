@@ -33,6 +33,24 @@
       "message": "if you use multiple lines, I\u0027d rather {} around it.",
       "revId": "1540edec173a8a332e96d17c06a0eb06b4efb4fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ef9830_bddc415a",
+        "filename": "source/scale.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T21:24:17Z",
+      "side": 1,
+      "message": "Done. That was because I ran \"git cl format\". I manually changed these back to one line.",
+      "parentUuid": "39e2b955_14903bad",
+      "revId": "1540edec173a8a332e96d17c06a0eb06b4efb4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
