@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044083f2_73b7ec35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T17:42:41Z",
+      "side": 1,
+      "message": "Note that I didn\u0027t deal with the RotatePlane functions source/rotate.cc in this CL.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5541cf1c_f2fc1a3e",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T17:42:41Z",
+      "side": 1,
+      "message": "If you have a commonly used variable name for the return value of a function, please let me know.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5f67df_cc665911",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-03T17:42:41Z",
+      "side": 1,
+      "message": "If you prefer the `if (ret) {` form of these checks, please let me know.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
