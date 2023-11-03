@@ -296,14 +296,28 @@ int main(int argc, const char* argv[]) {
         int half_src_height = (src_height + 1) / 2;
         int half_dst_width = (dst_width + 1) / 2;
         int half_dst_height = (dst_height + 1) / 2;
-        I420Scale(
-            ch_org, src_width, ch_org + src_width * src_height, half_src_width,
-            ch_org + src_width * src_height + half_src_width * half_src_height,
-            half_src_width, image_width, image_height, ch_rec, dst_width,
-            ch_rec + dst_width * dst_height, half_dst_width,
-            ch_rec + dst_width * dst_height + half_dst_width * half_dst_height,
-            half_dst_width, dst_width, dst_height,
-            static_cast<libyuv::FilterMode>(filter));
+        if (I420Scale(ch_org, src_width, ch_org + src_width * src_height,
+                      half_src_width,
+                      ch_org + src_width * src_height +
+                          half_src_width * half_src_height,
+                      half_src_width, image_width, image_height, ch_rec,
+                      dst_width, ch_rec + dst_width * dst_height,
+                      half_dst_width,
+                      ch_rec + dst_width * dst_height +
+                          half_dst_width * half_dst_height,
+                      half_dst_width, dst_width, dst_height,
+                      static_cast<libyuv::FilterMode>(filter)) != 0) {
+          fprintf(stderr, "I420Scale() failed\n");
+          fclose(file_org);
+          for (int i = 0; i < num_rec; ++i) {
+            fclose(file_rec[i]);
+          }
+          delete[] ch_org;
+          delete[] ch_dst;
+          delete[] ch_rec;
+          delete[] file_rec;
+          exit(1);
+        }
       } else {
         TileARGBScale(ch_org, Abs(image_width) * 4, image_width, image_height,
                       ch_dst, dst_width * 4, dst_width, dst_height,
