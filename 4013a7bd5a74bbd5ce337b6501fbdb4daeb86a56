@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b43fb52_1bec106a",
+        "filename": "include/libyuv/scale.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T18:23:40Z",
+      "side": 1,
+      "message": "Scale Plane has always been considered internal and thus void.  And the memory allocation is likely to go away, and it will ways succeed, because parameter checking is only done for public functions.\nBut I\u0027ve been thinking ScalePlane should be considered public and have its own tests.\nFor now its okay to have a return but we should continue to consider it internal and work toward it can never fail.  Asserts can catch any internal errors.\nIf it uses memory, that needs to be removed.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5541cf1c_f2fc1a3e",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e425585b_cc1ba033",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T18:23:40Z",
+      "side": 1,
+      "message": "Acknowledged.  I think \u0027r\u0027 was used, but ret is fine.",
+      "parentUuid": "5541cf1c_f2fc1a3e",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5f67df_cc665911",
@@ -48,6 +83,58 @@
       "writtenOn": "2023-11-03T17:42:41Z",
       "side": 1,
       "message": "If you prefer the `if (ret) {` form of these checks, please let me know.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d5286c_c7d01b6e",
+        "filename": "source/convert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T18:23:40Z",
+      "side": 1,
+      "message": "Acknowledged.  This is fine.  Its an int for C89 in the past, which didnt have bool, but also it was common to use return codes with negative meaning a parameter is invalid or positive for a real error return code, such as a malloc or write error.\nBefore there were bools, comparisons such as a \u003d\u003d b returned true or false as an int and if took an int, so if (ret) was similiar.  Now it would be somewhat wrong, since if expects a bool, so I think I like ret !\u003d 0 to clarify the type is more than just 2 values.",
+      "parentUuid": "9b5f67df_cc665911",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2007f571_26fd6f9c",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T18:23:40Z",
+      "side": 1,
+      "message": "add a todo to remove this row buffer and implement a ScaleARGBRowDown4 but implemented via a 2 pass wrapper that uses a very small array on the stack with a horizontal loop.\nAlternatively we could do the horizontal loops in the planar functions, but doing a 2 step row function allows some of the implementations to be optimized.",
+      "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4853536f_5f7f8999",
+        "filename": "util/yuvconvert.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-03T18:23:40Z",
+      "side": 1,
+      "message": "I420Scale can\u0027t actual fail, aside from a bad argument?  It could be an assert?\nIf you\u0027re going to have a public error message, I\u0027d suggest printing the return code.",
       "revId": "4013a7bd5a74bbd5ce337b6501fbdb4daeb86a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
