@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa136780_78a6e1cf",
+        "filename": "source/rotate.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "This function cannot return 1 on memory allocation failures (because its return type is void). So we should add an assertion here.",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2246fb2c_c8500f95",
+        "filename": "source/rotate.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "This function cannot return 1 on memory allocation failures (because its return type is void). So we should add an assertion here.",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34a77f3_b59b300b",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "Delete this assertion.",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940c80a1_dd5e0744",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "Nit: change to `!row16`",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f3b441_667a1f1d",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "Delete this assertion.",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad66ad48_27cdf0b7",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "Nit: change to `!row32`",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb7b0d0_0374291e",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "Nit: This comment is not clear.\n\nThe comment seems to say we allocate \"2 rows of ARGB and 1 row of ARGB\" for source conversion, and that makes me wonder why the comment doesn\u0027t just say \"Allocate 3 rows of ARGB for source conversion.\"",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b4ed68a_a230a90a",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T22:12:24Z",
+      "side": 1,
+      "message": "IMPORTANT: Delete this line. This code is apparently never compiled because this line is also incorrect in the original code (the variable name should be `argb_row`).",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
