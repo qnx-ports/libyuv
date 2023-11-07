@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c69c620_9550f89f",
+        "filename": "source/convert.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T19:12:17Z",
+      "side": 1,
+      "message": "Nit: Change `plane_u \u003d\u003d NULL` to `!plane_u`\n\nThe `!ptr` form of null pointer check is more prevalent in this file.",
+      "revId": "e21b00e94e93f986873d847e4a63c86a00f6c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0103a746_9ea044de",
+        "filename": "source/convert.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T19:12:17Z",
+      "side": 1,
+      "message": "In https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5005031/3..5/source/scale.cc#b963 , you said \"if you use multiple lines, I\u0027d rather {} around it.\"\n\nShould we do that in this CL?",
+      "revId": "e21b00e94e93f986873d847e4a63c86a00f6c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36326ab_dbc5ae8e",
+        "filename": "source/rotate.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T19:12:17Z",
+      "side": 1,
+      "message": "Nit/optional: Consider using the more common form of null pointer check:\n\n```\n  assert(row);\n  if (!row)\n```\n\nThere are several other instances in this CL.",
+      "revId": "e21b00e94e93f986873d847e4a63c86a00f6c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b031e0_c0845aa5",
+        "filename": "source/scale.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-07T19:12:17Z",
+      "side": 1,
+      "message": "Don\u0027t add this assertion. This function returns 1 on memory allocation failures now.\n\nChange `row16 \u003d\u003d NULL` to `!row16`\n\nNote: There are several other instances in this CL.",
+      "range": {
+        "startLine": 963,
+        "startChar": 0,
+        "endLine": 964,
+        "endChar": 22
+      },
+      "revId": "e21b00e94e93f986873d847e4a63c86a00f6c609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
