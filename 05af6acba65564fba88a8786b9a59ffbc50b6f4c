@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "913e662e_99aca595",
+        "filename": "source/rotate.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-25T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa136780_78a6e1cf",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2246fb2c_c8500f95",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c23021_a9c20dd6",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-25T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34a77f3_b59b300b",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "940c80a1_dd5e0744",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-11-07T22:12:24Z",
       "side": 1,
       "message": "Nit: change to `!row16`",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5ca5ab_2341e2cb",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-25T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940c80a1_dd5e0744",
       "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4941abd5_ed810132",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-25T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45f3b441_667a1f1d",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad66ad48_27cdf0b7",
@@ -99,6 +171,24 @@
       "writtenOn": "2023-11-07T22:12:24Z",
       "side": 1,
       "message": "Nit: change to `!row32`",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84114c43_dc7e7313",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-11-25T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad66ad48_27cdf0b7",
       "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
