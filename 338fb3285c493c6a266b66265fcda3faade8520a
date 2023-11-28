@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a321e8_d8793ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-11-28T00:02:04Z",
+      "side": 1,
+      "message": "Frank: Please see my two comments in source/scale_argb.cc. At least the second comment should be addressed.",
+      "revId": "338fb3285c493c6a266b66265fcda3faade8520a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
