@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76494034_91758c16",
+        "filename": "DEPSV",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-12-03T14:40:12Z",
+      "side": 1,
+      "message": "This file was added in patchset 5. Did you mean to add this file?\n\nIf so, it should be added in a separate CL because it\u0027s unrelated to this CL.",
+      "revId": "dfc35a08a671f31399201ebd34e3a10dfea79434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98993c32_c6ebac6a",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-12-03T14:40:12Z",
+      "side": 1,
+      "message": "The new comment is clear. Thanks!",
+      "revId": "dfc35a08a671f31399201ebd34e3a10dfea79434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
