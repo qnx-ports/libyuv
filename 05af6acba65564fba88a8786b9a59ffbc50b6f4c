@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff19a9e_a16fd00a",
+        "filename": "source/rotate.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-03T09:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2246fb2c_c8500f95",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b34a77f3_b59b300b",
@@ -228,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d37791_18e5cf2b",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-03T09:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeb7b0d0_0374291e",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b4ed68a_a230a90a",
@@ -241,6 +277,24 @@
       "writtenOn": "2023-11-07T22:12:24Z",
       "side": 1,
       "message": "IMPORTANT: Delete this line. This code is apparently never compiled because this line is also incorrect in the original code (the variable name should be `argb_row`).",
+      "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e342f549_59a4bb2c",
+        "filename": "source/scale_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-03T09:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4ed68a_a230a90a",
       "revId": "05af6acba65564fba88a8786b9a59ffbc50b6f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
