@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ba9cb5_ce7b5607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157264
+      },
+      "writtenOn": "2023-12-07T22:18:18Z",
+      "side": 1,
+      "message": "typo in description - marco -\u003e macro",
+      "revId": "8d7ac2a4087685dfa0537a9a41b7dd7921b6fe15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
