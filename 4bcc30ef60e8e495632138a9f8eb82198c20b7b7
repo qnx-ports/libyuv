@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c1d9db_7b1f42d1",
+        "filename": "unit_test/convert_argb_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2023-12-09T17:23:14Z",
+      "side": 1,
+      "message": "Nit: Did you mean to add this blank line?",
+      "revId": "4bcc30ef60e8e495632138a9f8eb82198c20b7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
