@@ -1,5 +1,5 @@
 /*
- *  Copyright 2011 The LibYuv Project Authors. All rights reserved.
+ *  Copyright 2023 The LibYuv Project Authors. All rights reserved.
  *
  *  Use of this source code is governed by a BSD-style license
  *  that can be found in the LICENSE file in the root of the source
@@ -29,6 +29,13 @@
 
 #ifdef ENABLE_ROW_TESTS
 #include "libyuv/row.h" /* For ARGBToAR30Row_AVX2 */
+#endif
+
+#if defined(__riscv) && !defined(__clang__)
+#define DISABLE_SLOW_TESTS
+#undef ENABLE_FULL_TESTS
+#undef ENABLE_ROW_TESTS
+#define LEAN_TESTS
 #endif
 
 // Some functions fail on big endian. Enable these tests on all cpus except
@@ -368,218 +375,6 @@ TESTPLANARTOB(I422, 2, 1, ARGBFilter, 4, 4, 1)
 TESTPLANARTOB(I420, 2, 2, RGB24Filter, 3, 3, 1)
 TESTPLANARTOB(I444, 1, 1, ABGR, 4, 4, 1)
 TESTPLANARTOB(I444, 1, 1, ARGB, 4, 4, 1)
-#endif
-
-#define TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
-                        YALIGN, W1280, N, NEG, OFF, ATTEN)                     \
-  TEST_F(LibYUVConvertTest, FMT_PLANAR##To##FMT_B##N) {                        \
-    const int kWidth = W1280;                                                  \
-    const int kHeight = ALIGNINT(benchmark_height_, YALIGN);                   \
-    const int kStrideB = ALIGNINT(kWidth * BPP_B, ALIGN);                      \
-    const int kStrideUV = SUBSAMPLE(kWidth, SUBSAMP_X);                        \
-    const int kSizeUV = kStrideUV * SUBSAMPLE(kHeight, SUBSAMP_Y);             \
-    align_buffer_page_end(src_y, kWidth* kHeight + OFF);                       \
-    align_buffer_page_end(src_u, kSizeUV + OFF);                               \
-    align_buffer_page_end(src_v, kSizeUV + OFF);                               \
-    align_buffer_page_end(src_a, kWidth* kHeight + OFF);                       \
-    align_buffer_page_end(dst_argb_c, kStrideB* kHeight + OFF);                \
-    align_buffer_page_end(dst_argb_opt, kStrideB* kHeight + OFF);              \
-    for (int i = 0; i < kWidth * kHeight; ++i) {                               \
-      src_y[i + OFF] = (fastrand() & 0xff);                                    \
-      src_a[i + OFF] = (fastrand() & 0xff);                                    \
-    }                                                                          \
-    for (int i = 0; i < kSizeUV; ++i) {                                        \
-      src_u[i + OFF] = (fastrand() & 0xff);                                    \
-      src_v[i + OFF] = (fastrand() & 0xff);                                    \
-    }                                                                          \
-    memset(dst_argb_c + OFF, 1, kStrideB * kHeight);                           \
-    memset(dst_argb_opt + OFF, 101, kStrideB * kHeight);                       \
-    MaskCpuFlags(disable_cpu_flags_);                                          \
-    FMT_PLANAR##To##FMT_B(src_y + OFF, kWidth, src_u + OFF, kStrideUV,         \
-                          src_v + OFF, kStrideUV, src_a + OFF, kWidth,         \
-                          dst_argb_c + OFF, kStrideB, kWidth, NEG kHeight,     \
-                          ATTEN);                                              \
-    MaskCpuFlags(benchmark_cpu_info_);                                         \
-    for (int i = 0; i < benchmark_iterations_; ++i) {                          \
-      FMT_PLANAR##To##FMT_B(src_y + OFF, kWidth, src_u + OFF, kStrideUV,       \
-                            src_v + OFF, kStrideUV, src_a + OFF, kWidth,       \
-                            dst_argb_opt + OFF, kStrideB, kWidth, NEG kHeight, \
-                            ATTEN);                                            \
-    }                                                                          \
-    for (int i = 0; i < kWidth * BPP_B * kHeight; ++i) {                       \
-      EXPECT_EQ(dst_argb_c[i + OFF], dst_argb_opt[i + OFF]);                   \
-    }                                                                          \
-    free_aligned_buffer_page_end(src_y);                                       \
-    free_aligned_buffer_page_end(src_u);                                       \
-    free_aligned_buffer_page_end(src_v);                                       \
-    free_aligned_buffer_page_end(src_a);                                       \
-    free_aligned_buffer_page_end(dst_argb_c);                                  \
-    free_aligned_buffer_page_end(dst_argb_opt);                                \
-  }
-
-#if defined(ENABLE_FULL_TESTS)
-#define TESTQPLANARTOB(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
-                       YALIGN)                                                \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_ + 1, _Any, +, 0, 0)                \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_, _Unaligned, +, 2, 0)              \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_, _Invert, -, 0, 0)                 \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_, _Opt, +, 0, 0)                    \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_, _Premult, +, 0, 1)
-#else
-#define TESTQPLANARTOB(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
-                       YALIGN)                                                \
-  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
-                  YALIGN, benchmark_width_, _Opt, +, 0, 0)
-#endif
-
-#define J420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define J420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define F420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define F420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define H420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define H420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define U420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define U420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define V420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-#define V420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-#define J422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define J422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define F422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define F422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define H422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define H422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define U422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define U422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define V422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-#define V422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-#define J444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define J444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
-                        l, m)
-#define F444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define F444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
-                        l, m)
-#define H444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define H444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
-                        l, m)
-#define U444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define U444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
-  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
-                        l, m)
-#define V444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-#define V444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
-  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
-                        l, m)
-
-#define I420AlphaToARGBFilter(a, b, c, d, e, f, g, h, i, j, k, l, m) \
-  I420AlphaToARGBMatrixFilter(a, b, c, d, e, f, g, h, i, j,          \
-                              &kYuvI601Constants, k, l, m, kFilterBilinear)
-#define I422AlphaToARGBFilter(a, b, c, d, e, f, g, h, i, j, k, l, m) \
-  I422AlphaToARGBMatrixFilter(a, b, c, d, e, f, g, h, i, j,          \
-                              &kYuvI601Constants, k, l, m, kFilterBilinear)
-
-#if defined(ENABLE_FULL_TESTS)
-TESTQPLANARTOB(I420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(J420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(J420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(H420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(H420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(F420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(F420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(U420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(U420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(V420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(V420Alpha, 2, 2, ABGR, 4, 4, 1)
-TESTQPLANARTOB(I422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(J422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(J422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(H422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(H422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(F422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(F422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(U422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(U422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(V422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(V422Alpha, 2, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(I444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(J444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(J444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(H444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(H444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(F444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(F444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(U444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(U444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(V444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(V444Alpha, 1, 1, ABGR, 4, 4, 1)
-TESTQPLANARTOB(I420Alpha, 2, 2, ARGBFilter, 4, 4, 1)
-TESTQPLANARTOB(I422Alpha, 2, 1, ARGBFilter, 4, 4, 1)
-#else
-TESTQPLANARTOB(I420Alpha, 2, 2, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I422Alpha, 2, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I444Alpha, 1, 1, ARGB, 4, 4, 1)
-TESTQPLANARTOB(I420Alpha, 2, 2, ARGBFilter, 4, 4, 1)
-TESTQPLANARTOB(I422Alpha, 2, 1, ARGBFilter, 4, 4, 1)
 #endif
 
 #define TESTBPTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, FMT_C, BPP_B,      \
@@ -1124,6 +919,220 @@ TESTEND(ARGBToABGR, uint8_t, 4, 4, 1)
 TESTEND(BGRAToARGB, uint8_t, 4, 4, 1)
 TESTEND(ABGRToARGB, uint8_t, 4, 4, 1)
 TESTEND(AB64ToAR64, uint16_t, 4, 4, 1)
+
+#if !defined(LEAN_TESTS)
+
+#define TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
+                        YALIGN, W1280, N, NEG, OFF, ATTEN)                     \
+  TEST_F(LibYUVConvertTest, FMT_PLANAR##To##FMT_B##N) {                        \
+    const int kWidth = W1280;                                                  \
+    const int kHeight = ALIGNINT(benchmark_height_, YALIGN);                   \
+    const int kStrideB = ALIGNINT(kWidth * BPP_B, ALIGN);                      \
+    const int kStrideUV = SUBSAMPLE(kWidth, SUBSAMP_X);                        \
+    const int kSizeUV = kStrideUV * SUBSAMPLE(kHeight, SUBSAMP_Y);             \
+    align_buffer_page_end(src_y, kWidth* kHeight + OFF);                       \
+    align_buffer_page_end(src_u, kSizeUV + OFF);                               \
+    align_buffer_page_end(src_v, kSizeUV + OFF);                               \
+    align_buffer_page_end(src_a, kWidth* kHeight + OFF);                       \
+    align_buffer_page_end(dst_argb_c, kStrideB* kHeight + OFF);                \
+    align_buffer_page_end(dst_argb_opt, kStrideB* kHeight + OFF);              \
+    for (int i = 0; i < kWidth * kHeight; ++i) {                               \
+      src_y[i + OFF] = (fastrand() & 0xff);                                    \
+      src_a[i + OFF] = (fastrand() & 0xff);                                    \
+    }                                                                          \
+    for (int i = 0; i < kSizeUV; ++i) {                                        \
+      src_u[i + OFF] = (fastrand() & 0xff);                                    \
+      src_v[i + OFF] = (fastrand() & 0xff);                                    \
+    }                                                                          \
+    memset(dst_argb_c + OFF, 1, kStrideB * kHeight);                           \
+    memset(dst_argb_opt + OFF, 101, kStrideB * kHeight);                       \
+    MaskCpuFlags(disable_cpu_flags_);                                          \
+    FMT_PLANAR##To##FMT_B(src_y + OFF, kWidth, src_u + OFF, kStrideUV,         \
+                          src_v + OFF, kStrideUV, src_a + OFF, kWidth,         \
+                          dst_argb_c + OFF, kStrideB, kWidth, NEG kHeight,     \
+                          ATTEN);                                              \
+    MaskCpuFlags(benchmark_cpu_info_);                                         \
+    for (int i = 0; i < benchmark_iterations_; ++i) {                          \
+      FMT_PLANAR##To##FMT_B(src_y + OFF, kWidth, src_u + OFF, kStrideUV,       \
+                            src_v + OFF, kStrideUV, src_a + OFF, kWidth,       \
+                            dst_argb_opt + OFF, kStrideB, kWidth, NEG kHeight, \
+                            ATTEN);                                            \
+    }                                                                          \
+    for (int i = 0; i < kWidth * BPP_B * kHeight; ++i) {                       \
+      EXPECT_EQ(dst_argb_c[i + OFF], dst_argb_opt[i + OFF]);                   \
+    }                                                                          \
+    free_aligned_buffer_page_end(src_y);                                       \
+    free_aligned_buffer_page_end(src_u);                                       \
+    free_aligned_buffer_page_end(src_v);                                       \
+    free_aligned_buffer_page_end(src_a);                                       \
+    free_aligned_buffer_page_end(dst_argb_c);                                  \
+    free_aligned_buffer_page_end(dst_argb_opt);                                \
+  }
+
+#if defined(ENABLE_FULL_TESTS)
+#define TESTQPLANARTOB(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
+                       YALIGN)                                                \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_ + 1, _Any, +, 0, 0)                \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_, _Unaligned, +, 2, 0)              \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_, _Invert, -, 0, 0)                 \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_, _Opt, +, 0, 0)                    \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_, _Premult, +, 0, 1)
+#else
+#define TESTQPLANARTOB(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN, \
+                       YALIGN)                                                \
+  TESTQPLANARTOBI(FMT_PLANAR, SUBSAMP_X, SUBSAMP_Y, FMT_B, BPP_B, ALIGN,      \
+                  YALIGN, benchmark_width_, _Opt, +, 0, 0)
+#endif
+
+#define J420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define J420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define F420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define F420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define H420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define H420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define U420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define U420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define V420AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I420AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+#define V420AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I420AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+#define J422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define J422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define F422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define F422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define H422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define H422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define U422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define U422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define V422AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I422AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+#define V422AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I422AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+#define J444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define J444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvJPEGConstants, k, \
+                        l, m)
+#define F444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define F444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvF709Constants, k, \
+                        l, m)
+#define H444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define H444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvH709Constants, k, \
+                        l, m)
+#define U444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define U444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)               \
+  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuv2020Constants, k, \
+                        l, m)
+#define V444AlphaToARGB(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I444AlphaToARGBMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+#define V444AlphaToABGR(a, b, c, d, e, f, g, h, i, j, k, l, m)                \
+  I444AlphaToABGRMatrix(a, b, c, d, e, f, g, h, i, j, &kYuvV2020Constants, k, \
+                        l, m)
+
+#define I420AlphaToARGBFilter(a, b, c, d, e, f, g, h, i, j, k, l, m) \
+  I420AlphaToARGBMatrixFilter(a, b, c, d, e, f, g, h, i, j,          \
+                              &kYuvI601Constants, k, l, m, kFilterBilinear)
+#define I422AlphaToARGBFilter(a, b, c, d, e, f, g, h, i, j, k, l, m) \
+  I422AlphaToARGBMatrixFilter(a, b, c, d, e, f, g, h, i, j,          \
+                              &kYuvI601Constants, k, l, m, kFilterBilinear)
+
+#if defined(ENABLE_FULL_TESTS)
+TESTQPLANARTOB(I420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(J420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(J420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(H420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(H420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(F420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(F420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(U420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(U420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(V420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(V420Alpha, 2, 2, ABGR, 4, 4, 1)
+TESTQPLANARTOB(I422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(J422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(J422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(H422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(H422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(F422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(F422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(U422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(U422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(V422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(V422Alpha, 2, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(I444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(J444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(J444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(H444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(H444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(F444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(F444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(U444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(U444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(V444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(V444Alpha, 1, 1, ABGR, 4, 4, 1)
+TESTQPLANARTOB(I420Alpha, 2, 2, ARGBFilter, 4, 4, 1)
+TESTQPLANARTOB(I422Alpha, 2, 1, ARGBFilter, 4, 4, 1)
+#else
+TESTQPLANARTOB(I420Alpha, 2, 2, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I422Alpha, 2, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I444Alpha, 1, 1, ARGB, 4, 4, 1)
+TESTQPLANARTOB(I420Alpha, 2, 2, ARGBFilter, 4, 4, 1)
+TESTQPLANARTOB(I422Alpha, 2, 1, ARGBFilter, 4, 4, 1)
+#endif
 
 TEST_F(LibYUVConvertTest, TestYToARGB) {
   uint8_t y[32];
@@ -2639,5 +2648,6 @@ TEST_F(LibYUVConvertTest, Test565) {
   uint32_t checksum = HashDjb2(&pixels565[0][0], sizeof(pixels565), 5381);
   EXPECT_EQ(610919429u, checksum);
 }
+#endif  // !defined(LEAN_TESTS)
 
 }  // namespace libyuv
