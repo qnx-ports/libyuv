@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19747820_da2d8f1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-09T16:21:54Z",
+      "side": 1,
+      "message": "Split scale plane into its own source for unittest.\nIn future there will be more emphasis on scale plane, since I420 etc just call into scale plane.",
+      "revId": "d7dd543aff38cdac2eb4e1a1d01f6ac261fa20f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
