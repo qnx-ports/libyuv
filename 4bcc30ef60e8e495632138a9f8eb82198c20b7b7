@@ -16,6 +16,24 @@
       "message": "Nit: Did you mean to add this blank line?",
       "revId": "4bcc30ef60e8e495632138a9f8eb82198c20b7b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fec9c04_373a4142",
+        "filename": "unit_test/convert_argb_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-09T17:27:59Z",
+      "side": 1,
+      "message": "Done.  I tried moving lean down a bit.  That didnt work.. ran out of memory\n\n\n[ 89%] Building CXX object CMakeFiles/libyuv_unittest.dir/unit_test/convert_argb_test.cc.o\nc++: fatal error: Killed signal terminated program cc1plus\ncompilation terminated.\ngmake[2]: *** [CMakeFiles/libyuv_unittest.dir/build.make:118: CMakeFiles/libyuv_unittest.dir/unit_test/convert_argb_test.cc.o] Error 1\ngmake[1]: *** [CMakeFiles/Makefile2:195: CMakeFiles/libyuv_unittest.dir/all] Error 2\ngmake: *** [Makefile:156: all] Error 2\n\nreal    91m48.470s\n\nBut in this update I\u0027ve implemented \n#if defined(ENABLE_FULL_TESTS)\nfor all convert_argb tests with the #else only testing Opt\nOn RVV there are no \u0027Any\u0027 functions and remainders/alignment dont require a different code path, so Opt is full coverage.\nOpt still respects width and height, so running the tests with interesting sizes, such as 1, can catch bugs.",
+      "parentUuid": "15c1d9db_7b1f42d1",
+      "revId": "4bcc30ef60e8e495632138a9f8eb82198c20b7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
