@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05202c3_868b0550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2023-12-11T18:26:07Z",
+      "side": 1,
+      "message": "cmake -B out/Release/ -DUNIT_TEST\u003dON -DCMAKE_BUILD_TYPE\u003dRelease .\ncmake --build out/Release/ -t cpuid\nout/Release/cpuid \nCpu Vendor: GenuineIntel\nCpu Family 6 (0x6), Model 85 (0x55)\nCpu Flags 0xfff1\nHas X86 0x10\nHas SSE2 0x20\nHas SSSE3 0x40\nHas SSE4.1 0x80\nHas SSE4.2 0x100\nHas AVX 0x200\nHas AVX2 0x400\nHas ERMS 0x800\nHas FMA3 0x1000\nHas F16C 0x2000\nHas AVX512BW 0x4000\nHas AVX512VL 0x8000\nHas AVX512VNNI 0x0\nHas AVX512VBMI 0x0\nHas AVX512VBMI2 0x0\nHas AVX512VBITALG 0x0\nHas AVX512VPOPCNTDQ 0x0\nHAS AVXVNNI 0x0\nHas AVXVNNIINT8 0x0",
+      "revId": "d61473c43807d0b4c8eb1ff80113e9b90e4145f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
