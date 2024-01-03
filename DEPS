@@ -10,6 +10,13 @@ vars = {
   # ninja CIPD package version.
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
+  # Fetch configuration files required for the 'use_remoteexec' gn arg
+  'download_remoteexec_cfg': False,
+  # RBE instance to use for running remote builds
+  'rbe_instance': Str('projects/rbe-chrome-untrusted/instances/default_instance'),
+  # RBE project to download rewrapper config files for. Only needed if
+  # different from the project used in 'rbe_instance'
+  'rewrapper_cfg_project': Str(''),
   # reclient CIPD package version
   'reclient_version': 're_client_version:0.125.0.f3883c2-gomaip',
 
@@ -2415,6 +2422,36 @@ hooks = [
       '--out',
       'src/testing/location_tags.json',
     ],
+  },
+  # Configure remote exec cfg files
+  {
+    'name': 'download_and_configure_reclient_cfgs',
+    'pattern': '.',
+    'condition': 'download_remoteexec_cfg',
+    'action': ['python3',
+               'src/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
+               '--rbe_instance',
+               Var('rbe_instance'),
+               '--reproxy_cfg_template',
+               'reproxy.cfg.template',
+               '--rewrapper_cfg_project',
+               Var('rewrapper_cfg_project'),
+               ],
+  },
+  {
+    'name': 'configure_reclient_cfgs',
+    'pattern': '.',
+    'condition': 'not download_remoteexec_cfg',
+    'action': ['python3',
+               'src/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
+               '--rbe_instance',
+               Var('rbe_instance'),
+               '--reproxy_cfg_template',
+               'reproxy.cfg.template',
+               '--rewrapper_cfg_project',
+               Var('rewrapper_cfg_project'),
+               '--skip_remoteexec_cfg_fetch',
+               ],
   },
 ]
 
