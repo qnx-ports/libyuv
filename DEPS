@@ -10,6 +10,13 @@ vars = {
   # ninja CIPD package version.
   # https://chrome-infra-packages.appspot.com/p/infra/3pp/tools/ninja
   'ninja_version': 'version:2@1.11.1.chromium.6',
+  # Fetch configuration files required for the 'use_remoteexec' gn arg
+  'download_remoteexec_cfg': False,
+  # RBE instance to use for running remote builds
+  'rbe_instance': Str('projects/rbe-chrome-untrusted/instances/default_instance'),
+  # RBE project to download rewrapper config files for. Only needed if
+  # different from the project used in 'rbe_instance'
+  'rewrapper_cfg_project': Str(''),
   # reclient CIPD package version
   'reclient_version': 're_client_version:0.110.0.43ec6b1-gomaip',
 
@@ -33,7 +40,7 @@ deps = {
   'src/build':
     Var('chromium_git') + '/chromium/src/build' + '@' + '5885d3c24833ad72845a52a1b913a2b8bc651b56',
   'src/buildtools':
-    Var('chromium_git') + '/chromium/src/buildtools' + '@' + '79ab87fa54614258c4c95891e873223371194525',
+    Var('chromium_git') + '/chromium/src/buildtools' + '@' + '5e016b7d32822a0cbc3c65162aa9fc2bd021f275',
   'src/testing':
     Var('chromium_git') + '/chromium/src/testing' + '@' + '51e9a02297057cc0e917763a51e16680b7d16fb6',
   'src/third_party':
@@ -2570,6 +2577,36 @@ hooks = [
       '--out',
       'src/testing/location_tags.json',
     ],
+  },
+  # Configure remote exec cfg files
+  {
+    'name': 'download_and_configure_reclient_cfgs',
+    'pattern': '.',
+    'condition': 'download_remoteexec_cfg',
+    'action': ['python3',
+               'src/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
+               '--rbe_instance',
+               Var('rbe_instance'),
+               '--reproxy_cfg_template',
+               'reproxy.cfg.template',
+               '--rewrapper_cfg_project',
+               Var('rewrapper_cfg_project'),
+               ],
+  },
+  {
+    'name': 'configure_reclient_cfgs',
+    'pattern': '.',
+    'condition': 'not download_remoteexec_cfg',
+    'action': ['python3',
+               'src/buildtools/reclient_cfgs/configure_reclient_cfgs.py',
+               '--rbe_instance',
+               Var('rbe_instance'),
+               '--reproxy_cfg_template',
+               'reproxy.cfg.template',
+               '--rewrapper_cfg_project',
+               Var('rewrapper_cfg_project'),
+               '--skip_remoteexec_cfg_fetch',
+               ],
   },
 ]
 
