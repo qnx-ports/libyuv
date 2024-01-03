@@ -16,6 +16,24 @@
       "message": "This seems ok, but these failures need to be figured out.  I\u0027m guessing an unrelated bad checkin (without having looked too closely).",
       "revId": "e89a2b02e1b95b9d66895c78c347596d79c6cf42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59686ab0_e09c2ace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544499
+      },
+      "writtenOn": "2024-01-03T17:01:31Z",
+      "side": 1,
+      "message": "I will abandon this as I made a new change on top of a proper chromium roll",
+      "parentUuid": "37268f96_9ab6af1a",
+      "revId": "e89a2b02e1b95b9d66895c78c347596d79c6cf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
