@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd8c38d_09b0453b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544499
+      },
+      "writtenOn": "2024-01-03T16:57:21Z",
+      "side": 1,
+      "message": "I need to roll buildtools to pick up the latest download scripts for reclient cfgs. It seems the chromium-\u003elibyuv autoroller has been broken for a while so I am sending a manual roll instead https://ci.chromium.org/ui/p/libyuv/builders/cron/DEPS%20Autoroller",
+      "revId": "c569f9b8e52ef0b1ddd5ef90aac478160a4dadb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
