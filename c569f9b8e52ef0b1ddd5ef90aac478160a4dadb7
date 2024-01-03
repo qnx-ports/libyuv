@@ -16,6 +16,24 @@
       "message": "I need to roll buildtools to pick up the latest download scripts for reclient cfgs. It seems the chromium-\u003elibyuv autoroller has been broken for a while so I am sending a manual roll instead https://ci.chromium.org/ui/p/libyuv/builders/cron/DEPS%20Autoroller",
       "revId": "c569f9b8e52ef0b1ddd5ef90aac478160a4dadb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56218607_cf10157e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1174609
+      },
+      "writtenOn": "2024-01-03T18:03:33Z",
+      "side": 1,
+      "message": "The builder is unfortunately stuck due to https://bugs.chromium.org/p/libyuv/issues/detail?id\u003d963\u0026q\u003d\u0026can\u003d4 - if we can fix that instead that would be ideal.\n\nYou\u0027ll want Frank or Mirko here to review, I\u0027m not an OWNER of this repo.",
+      "parentUuid": "bdd8c38d_09b0453b",
+      "revId": "c569f9b8e52ef0b1ddd5ef90aac478160a4dadb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
