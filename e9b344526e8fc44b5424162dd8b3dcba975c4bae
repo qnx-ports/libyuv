@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7609401b_a23b36b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-01-10T00:08:07Z",
+      "side": 1,
+      "message": "A step toward avx10 support.  libyuv may benefit from instructions from avx512:\nkmask to read/write channels of ARGB\nkmask to implement \u0027any\u0027 support?\nvnni for dot products\nfp16 for fp16 channel conversions\ncvt instead of unpack/pack\nperm2t\n32 ymm registers may help functions like rotate or yuvconstants\nembedded broadcast to use memory scalar constants with math directly.",
+      "revId": "e9b344526e8fc44b5424162dd8b3dcba975c4bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
