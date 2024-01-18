@@ -813,6 +813,16 @@ int YUY2ToARGB(const uint8_t* src_yuy2,
                int width,
                int height);
 
+// Convert YUY2 to ARGB.
+LIBYUV_API
+int YUY2ToARGBMatrix(const uint8_t* src_yuy2,
+                     int src_stride_yuy2,
+                     uint8_t* dst_argb,
+                     int dst_stride_argb,
+                     const struct YuvConstants* yuvconstants,
+                     int width,
+                     int height);
+
 // Convert UYVY to ARGB.
 LIBYUV_API
 int UYVYToARGB(const uint8_t* src_uyvy,
@@ -821,6 +831,16 @@ int UYVYToARGB(const uint8_t* src_uyvy,
                int dst_stride_argb,
                int width,
                int height);
+
+// Convert UYVY to ARGB.
+LIBYUV_API
+int UYVYToARGBMatrix(const uint8_t* src_uyvy,
+                     int src_stride_uyvy,
+                     uint8_t* dst_argb,
+                     int dst_stride_argb,
+                     const struct YuvConstants* yuvconstants,
+                     int width,
+                     int height);
 
 // Convert I010 to AR30.
 LIBYUV_API

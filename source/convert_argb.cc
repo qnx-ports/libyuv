@@ -4463,6 +4463,19 @@ int YUY2ToARGB(const uint8_t* src_yuy2,
                int dst_stride_argb,
                int width,
                int height) {
+  return YUY2ToARGBMatrix(src_yuy2, src_stride_yuy2, dst_argb, dst_stride_argb,
+                          &kYvuI601Constants, width, height);
+}
+
+// Convert YUY2 to ARGB.
+LIBYUV_API
+int YUY2ToARGBMatrix(const uint8_t* src_yuy2,
+                     int src_stride_yuy2,
+                     uint8_t* dst_argb,
+                     int dst_stride_argb,
+                     const struct YuvConstants* yuvconstants,
+                     int width,
+                     int height) {
   int y;
   void (*YUY2ToARGBRow)(const uint8_t* src_yuy2, uint8_t* dst_argb,
                         const struct YuvConstants* yuvconstants, int width) =
@@ -4523,7 +4536,7 @@ int YUY2ToARGB(const uint8_t* src_yuy2,
   }
 #endif
   for (y = 0; y < height; ++y) {
-    YUY2ToARGBRow(src_yuy2, dst_argb, &kYuvI601Constants, width);
+    YUY2ToARGBRow(src_yuy2, dst_argb, yuvconstants, width);
     src_yuy2 += src_stride_yuy2;
     dst_argb += dst_stride_argb;
   }
@@ -4538,6 +4551,19 @@ int UYVYToARGB(const uint8_t* src_uyvy,
                int dst_stride_argb,
                int width,
                int height) {
+  return YUY2ToARGBMatrix(src_uyvy, src_stride_uyvy, dst_argb, dst_stride_argb,
+                          &kYvuI601Constants, width, height);
+}
+
+// Convert UYVY to ARGB.
+LIBYUV_API
+int UYVYToARGBMatrix(const uint8_t* src_uyvy,
+                     int src_stride_uyvy,
+                     uint8_t* dst_argb,
+                     int dst_stride_argb,
+                     const struct YuvConstants* yuvconstants,
+                     int width,
+                     int height) {
   int y;
   void (*UYVYToARGBRow)(const uint8_t* src_uyvy, uint8_t* dst_argb,
                         const struct YuvConstants* yuvconstants, int width) =
@@ -4598,12 +4624,13 @@ int UYVYToARGB(const uint8_t* src_uyvy,
   }
 #endif
   for (y = 0; y < height; ++y) {
-    UYVYToARGBRow(src_uyvy, dst_argb, &kYuvI601Constants, width);
+    UYVYToARGBRow(src_uyvy, dst_argb, yuvconstants, width);
     src_uyvy += src_stride_uyvy;
     dst_argb += dst_stride_argb;
   }
   return 0;
 }
+
 static void WeavePixels(const uint8_t* src_u,
                         const uint8_t* src_v,
                         int src_pixel_stride_uv,
