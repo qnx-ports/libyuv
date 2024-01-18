@@ -12,10 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef __linux__
 #include <ctype.h>
 #include <sys/utsname.h>
-#endif
 
 #include "libyuv/cpu_id.h"
 
@@ -23,8 +21,7 @@
 using namespace libyuv;
 #endif
 
-#ifdef __linux__
-static void KernelVersion(int *version) {
+void KernelVersion(int *version) {
   struct utsname buffer;
   int i = 0;
 
@@ -38,7 +35,6 @@ static void KernelVersion(int *version) {
     }
   }
 }
-#endif
 
 int main(int argc, const char* argv[]) {
   int cpu_flags = TestCpuFlag(-1);
@@ -47,16 +43,13 @@ int main(int argc, const char* argv[]) {
   int has_x86 = TestCpuFlag(kCpuHasX86);
   int has_mips = TestCpuFlag(kCpuHasMIPS);
   int has_loongarch = TestCpuFlag(kCpuHasLOONGARCH);
+  int kernelversion[2];
   (void)argc;
   (void)argv;
 
-#ifdef __linux__
-  {
-    int kernelversion[2];
-    KernelVersion(kernelversion);
-    printf("Kernel Version %d.%d\n", kernelversion[0], kernelversion[1]);
-  }
-#endif
+  KernelVersion(kernelversion);
+  printf("Kernel Version %d.%d\n", kernelversion[0], kernelversion[1]);
+
 #if defined(__i386__) || defined(__x86_64__) || \
     defined(_M_IX86) || defined(_M_X64)
   if (has_x86) {
