@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac5b044_4824a2b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-01-19T20:44:21Z",
+      "side": 1,
+      "message": "Run at 4k resolution on Sapphire Rapids\n\u0027--gunit_filter\u003d*ToARGB_Opt\u0027 --libyuv_width\u003d3840 --libyuv_height\u003d2160 --libyuv_repeat\u003d1000 --libyuv_flags\u003d-1 --libyuv_cpu_info\u003d-1\nthen filter and sort\ngrep -v To.*To  out.txt | sortms\n\nAR64ToARGB_Opt (3881 ms)\nAB64ToARGB_Opt (3810 ms)\nJ410AlphaToARGB_Opt (3499 ms)\nV410AlphaToARGB_Opt (3474 ms)\nF410AlphaToARGB_Opt (3409 ms)\nI410AlphaToARGB_Opt (3354 ms)\nH410AlphaToARGB_Opt (3353 ms)\nU410AlphaToARGB_Opt (3340 ms)\nH410ToARGB_Opt (2806 ms)\nI420ToARGB_Opt (2698 ms)\nJ420ToARGB_Opt (2695 ms)\nF420ToARGB_Opt (2695 ms)\nU420ToARGB_Opt (2688 ms)\nH420ToARGB_Opt (2687 ms)\nV420ToARGB_Opt (2685 ms)\nU210AlphaToARGB_Opt (2671 ms)\nF210AlphaToARGB_Opt (2667 ms)\nJ210AlphaToARGB_Opt (2664 ms)\nI410ToARGB_Opt (2652 ms)\nI210AlphaToARGB_Opt (2643 ms)\nV210AlphaToARGB_Opt (2623 ms)\nU410ToARGB_Opt (2621 ms)\nH210AlphaToARGB_Opt (2621 ms)\nAB30ToARGB_Opt (2514 ms)\nAR30ToARGB_Opt (2510 ms)\nABGRToARGB_Opt (2427 ms)\nV010AlphaToARGB_Opt (2366 ms)\nI010AlphaToARGB_Opt (2365 ms)\nH010AlphaToARGB_Opt (2362 ms)\nF010AlphaToARGB_Opt (2358 ms)\nU010AlphaToARGB_Opt (2357 ms)\nJ010AlphaToARGB_Opt (2357 ms)\nBGRAToARGB_Opt (2350 ms)\nRGBAToARGB_Opt (2339 ms)\nU444AlphaToARGB_Opt (2199 ms)\nH444AlphaToARGB_Opt (2198 ms)\nV444AlphaToARGB_Opt (2195 ms)\nI444AlphaToARGB_Opt (2194 ms)\nJ444AlphaToARGB_Opt (2190 ms)\nF444AlphaToARGB_Opt (2189 ms)\nRGB24ToARGB_Opt (2150 ms)\nP210ToARGB_Opt (2144 ms)\nRAWToARGB_Opt (2135 ms)\nP216ToARGB_Opt (2125 ms)\nP212ToARGB_Opt (2123 ms)\nARGBToARGB_Opt (2123 ms)\nH210ToARGB_Opt (2113 ms)\nI210ToARGB_Opt (2091 ms)\nU210ToARGB_Opt (2090 ms)\nV444ToARGB_Opt (1972 ms)\nI422AlphaToARGB_Opt (1950 ms)\nH444ToARGB_Opt (1945 ms)\nF422AlphaToARGB_Opt (1936 ms)\nJ422AlphaToARGB_Opt (1931 ms)\nV422AlphaToARGB_Opt (1928 ms)\nU422AlphaToARGB_Opt (1927 ms)\nH422AlphaToARGB_Opt (1925 ms)\nI444ToARGB_Opt (1923 ms)\nU444ToARGB_Opt (1922 ms)\nJ444ToARGB_Opt (1917 ms)\nI010ToARGB_Opt (1904 ms)\nU010ToARGB_Opt (1883 ms)\nP010ToARGB_Opt (1880 ms)\nP012ToARGB_Opt (1876 ms)\nP016ToARGB_Opt (1873 ms)\nI012ToARGB_Opt (1870 ms)\nH010ToARGB_Opt (1867 ms)\nI420AlphaToARGB_Opt (1798 ms)\nF420AlphaToARGB_Opt (1798 ms)\nARGB4444ToARGB_Opt (1798 ms)\nV420AlphaToARGB_Opt (1790 ms)\nJ420AlphaToARGB_Opt (1789 ms)\nU420AlphaToARGB_Opt (1788 ms)\nH420AlphaToARGB_Opt (1788 ms)\nV422ToARGB_Opt (1748 ms)\nU422ToARGB_Opt (1744 ms)\nI422ToARGB_Opt (1744 ms)\nH422ToARGB_Opt (1744 ms)\nJ422ToARGB_Opt (1743 ms)\nRGB565ToARGB_Opt (1728 ms)\nYUY2ToARGB_Opt (1682 ms)   \u003c--- this function\nUYVYToARGB_Opt (1681 ms)\nARGB1555ToARGB_Opt (1663 ms)\nI400ToARGB_Opt (1532 ms)\nJ400ToARGB_Opt (1526 ms)\nNV12ToARGB_Opt (1523 ms)\nNV21ToARGB_Opt (1518 ms)\nJNV12ToARGB_Opt (1518 ms)\nJNV21ToARGB_Opt (1517 ms)\n\nPerformance is mostly a function of source size.  YUY2 is 16 bits per pixel and a single plane\nNV12 is faster, which is somewhat unexpected",
+      "revId": "7f34b8225691043df178721d1735905e8725ddd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
