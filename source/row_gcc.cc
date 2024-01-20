@@ -136,6 +136,7 @@ static const uvec8 kShuffleMaskARGBToRAW = {
 static const uvec8 kShuffleMaskARGBToRGB24_0 = {
     0u, 1u, 2u, 4u, 5u, 6u, 8u, 9u, 128u, 128u, 128u, 128u, 10u, 12u, 13u, 14u};
 
+// TODO(fbarchard): Reduce shufflers to 16 bytes and broadcast
 // YUY2 shuf 16 Y to 32 Y.
 static const lvec8 kShuffleYUY2Y = {0,  0,  2,  2,  4,  4,  6,  6,  8,  8, 10,
                                     10, 12, 12, 14, 14, 0,  0,  2,  2,  4, 4,
@@ -2470,16 +2471,16 @@ void RGBAToUVRow_SSSE3(const uint8_t* src_rgba,
 // Read 4 YUY2 with 8 Y and update 4 UV to 8 UV.
 #define READYUY2                                                  \
   "movdqu     (%[yuy2_buf]),%%xmm4                            \n" \
-  "pshufb     %[kShuffleYUY2Y], %%xmm4                        \n" \
   "movdqu     (%[yuy2_buf]),%%xmm3                            \n" \
+  "pshufb     %[kShuffleYUY2Y], %%xmm4                        \n" \
   "pshufb     %[kShuffleYUY2UV], %%xmm3                       \n" \
   "lea        0x10(%[yuy2_buf]),%[yuy2_buf]                   \n"
 
 // Read 4 UYVY with 8 Y and update 4 UV to 8 UV.
 #define READUYVY                                                  \
   "movdqu     (%[uyvy_buf]),%%xmm4                            \n" \
-  "pshufb     %[kShuffleUYVYY], %%xmm4                        \n" \
   "movdqu     (%[uyvy_buf]),%%xmm3                            \n" \
+  "pshufb     %[kShuffleUYVYY], %%xmm4                        \n" \
   "pshufb     %[kShuffleUYVYUV], %%xmm3                       \n" \
   "lea        0x10(%[uyvy_buf]),%[uyvy_buf]                   \n"
 
@@ -3599,16 +3600,15 @@ void OMITFP I422ToRGBARow_SSSE3(const uint8_t* y_buf,
 
 // Read 8 YUY2 with 16 Y and upsample 8 UV to 16 UV.
 #define READYUY2_AVX2                                                 \
-  "vmovdqu    (%[yuy2_buf]),%%ymm4                                \n" \
-  "vpshufb    %[kShuffleYUY2Y], %%ymm4, %%ymm4                    \n" \
-  "vmovdqu    (%[yuy2_buf]),%%ymm3                                \n" \
-  "vpshufb    %[kShuffleYUY2UV], %%ymm3, %%ymm3                   \n" \
+  "vmovdqu    (%[yuy2_buf]),%%ymm1                                \n" \
+  "vpshufb    %%ymm6, %%ymm1, %%ymm4                              \n" \
+  "vpshufb    %%ymm7, %%ymm1, %%ymm3                              \n" \
   "lea        0x20(%[yuy2_buf]),%[yuy2_buf]                       \n"
 
 // Read 8 UYVY with 16 Y and upsample 8 UV to 16 UV.
 #define READUYVY_AVX2                                                 \
-  "vmovdqu    (%[uyvy_buf]),%%ymm4                                \n" \
-  "vpshufb    %[kShuffleUYVYY], %%ymm4, %%ymm4                    \n" \
+  "vmovdqu    (%[uyvy_buf]),%%ymm1                                \n" \
+  "vpshufb    %[kShuffleUYVYY], %%ymm1, %%ymm4                    \n" \
   "vmovdqu    (%[uyvy_buf]),%%ymm3                                \n" \
   "vpshufb    %[kShuffleUYVYUV], %%ymm3, %%ymm3                   \n" \
   "lea        0x20(%[uyvy_buf]),%[uyvy_buf]                       \n"
@@ -4416,6 +4416,8 @@ void OMITFP YUY2ToARGBRow_AVX2(const uint8_t* yuy2_buf,
   asm volatile (
     YUVTORGB_SETUP_AVX2(yuvconstants)
       "vpcmpeqb    %%ymm5,%%ymm5,%%ymm5          \n"
+      "vmovdqa     %[kShuffleYUY2Y],%%ymm6       \n"
+      "vmovdqa     %[kShuffleYUY2UV],%%ymm7      \n"
 
     LABELALIGN
       "1:                                        \n"
