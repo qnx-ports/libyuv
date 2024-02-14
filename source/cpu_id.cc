@@ -71,7 +71,7 @@ void CpuId(int info_eax, int info_ecx, int* cpu_info) {
 // GCC version uses inline x86 assembly.
 #else  // defined(_MSC_VER)
   int info_ebx, info_edx;
-  asm volatile(
+  asm(
 #if defined(__i386__) && defined(__PIC__)
       // Preserve ebx for fpic 32 bit.
       "mov         %%ebx, %%edi                  \n"
@@ -273,7 +273,7 @@ LIBYUV_API SAFEBUFFERS int LoongarchCpuCaps(void) {
   int flag = 0;
   uint32_t cfg2 = 0;
 
-  __asm__ volatile("cpucfg %0, %1 \n\t" : "+&r"(cfg2) : "r"(LOONGARCH_CFG2));
+  asm("cpucfg %0, %1 \n\t" : "+&r"(cfg2) : "r"(LOONGARCH_CFG2));
 
   if (cfg2 & LOONGARCH_CFG2_LSX)
     flag |= kCpuHasLSX;
@@ -323,6 +323,7 @@ static SAFEBUFFERS int GetCpuFlags(void) {
       cpu_info |= (cpu_info7[2] & 0x00000800) ? kCpuHasAVX512VNNI : 0;
       cpu_info |= (cpu_info7[2] & 0x00001000) ? kCpuHasAVX512VBITALG : 0;
       cpu_info |= (cpu_einfo7[3] & 0x00080000) ? kCpuHasAVX10 : 0;
+      cpu_info |= (cpu_info7[3] & 0x02000000) ? kCpuHasAMXINT8 : 0;
     }
   }
 #endif

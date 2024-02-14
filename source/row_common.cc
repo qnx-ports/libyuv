@@ -1561,28 +1561,30 @@ void J400ToARGBRow_C(const uint8_t* src_y, uint8_t* dst_argb, int width) {
 
 // Macros to create SIMD specific yuv to rgb conversion constants.
 
-// clang-format off
-
 #if defined(__aarch64__) || defined(__arm__) || defined(__riscv)
 // Bias values include subtract 128 from U and V, bias from Y and rounding.
 // For B and R bias is negative. For G bias is positive.
-#define YUVCONSTANTSBODY(YG, YB, UB, UG, VG, VR)                             \
-  {{UB, VR, UG, VG, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},                     \
-   {YG, (UB * 128 - YB), (UG * 128 + VG * 128 + YB), (VR * 128 - YB), YB, 0, \
-    0, 0}}
+#define YUVCONSTANTSBODY(YG, YB, UB, UG, VG, VR)                               \
+  {                                                                            \
+    {UB, VR, UG, VG, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {                    \
+      YG, (UB * 128 - YB), (UG * 128 + VG * 128 + YB), (VR * 128 - YB), YB, 0, \
+          0, 0                                                                 \
+    }                                                                          \
+  }
 #else
-#define YUVCONSTANTSBODY(YG, YB, UB, UG, VG, VR)                     \
-  {{UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0,          \
-    UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0},         \
-   {UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG,  \
-    UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG}, \
-   {0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR,          \
-    0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR},         \
-   {YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG}, \
-   {YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB}}
+#define YUVCONSTANTSBODY(YG, YB, UB, UG, VG, VR)                            \
+  {                                                                         \
+    {UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0,                \
+     UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0, UB, 0},               \
+        {UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG,    \
+         UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG, UG, VG},   \
+        {0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR,            \
+         0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR, 0, VR},           \
+        {YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG, YG}, { \
+      YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB, YB        \
+    }                                                                       \
+  }
 #endif
-
-// clang-format on
 
 #define MAKEYUVCONSTANTS(name, YG, YB, UB, UG, VG, VR)            \
   const struct YuvConstants SIMD_ALIGNED(kYuv##name##Constants) = \

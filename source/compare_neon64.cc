@@ -26,8 +26,7 @@ uint32_t HammingDistance_NEON(const uint8_t* src_a,
                               const uint8_t* src_b,
                               int count) {
   uint32_t diff;
-  asm volatile(
-      "movi        v4.8h, #0                     \n"
+      asm("movi        v4.8h, #0                     \n"
 
       "1:                                        \n"
       "ld1         {v0.16b, v1.16b}, [%0], #32   \n"
@@ -55,8 +54,7 @@ uint32_t SumSquareError_NEON(const uint8_t* src_a,
                              const uint8_t* src_b,
                              int count) {
   uint32_t sse;
-  asm volatile(
-      "eor         v16.16b, v16.16b, v16.16b     \n"
+      asm("eor         v16.16b, v16.16b, v16.16b     \n"
       "eor         v18.16b, v18.16b, v18.16b     \n"
       "eor         v17.16b, v17.16b, v17.16b     \n"
       "eor         v19.16b, v19.16b, v19.16b     \n"

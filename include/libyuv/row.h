@@ -981,15 +981,15 @@ struct YuvConstants {
   ".byte 0x64, 0x67, 0x90\n" \
   ".byte 0x0F, 0x0B\n"
 
-#define IACA_SSC_MARK(MARK_ID)                        \
-  __asm__ __volatile__("\n\t  movl $" #MARK_ID        \
-                       ", %%ebx"                      \
-                       "\n\t  .byte 0x64, 0x67, 0x90" \
-                       :                              \
-                       :                              \
-                       : "memory");
+#define IACA_SSC_MARK(MARK_ID)       \
+  asm("\n\t  movl $" #MARK_ID        \
+      ", %%ebx"                      \
+      "\n\t  .byte 0x64, 0x67, 0x90" \
+      :                              \
+      :                              \
+      : "memory");
 
-#define IACA_UD_BYTES __asm__ __volatile__("\n\t .byte 0x0F, 0x0B");
+#define IACA_UD_BYTES asm("\n\t .byte 0x0F, 0x0B");
 
 #else /* Visual C */
 #define IACA_UD_BYTES \
