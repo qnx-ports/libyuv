@@ -19,6 +19,12 @@
 #include <immintrin.h>  // For _xgetbv()
 #endif
 
+// For AMX OS support detect
+#if (defined(__i386__) || defined(__x86_64__)) && defined(__linux__)
+#include <sys/syscall.h>
+#include <unistd.h>
+#endif
+
 // For ArmCpuCaps() but unittested on all platforms
 #include <stdio.h>  // For fopen()
 #include <string.h>
@@ -130,6 +136,20 @@ static int GetXCR0() {
 // Return optimization to previous setting.
 #if defined(_M_IX86) && defined(_MSC_VER) && (_MSC_VER < 1900)
 #pragma optimize("g", on)
+#endif
+
+#if (defined(__i386__) || defined(__x86_64__)) && defined(__linux__)
+#define ARCH_REQ_XCOMP_PERM 0x1023
+#define XFEATURE_XTILEDATA 18
+/* Set_tiledata_use() - Invoke syscall to set ARCH_SET_STATE_USE */
+static bool set_tiledata_use(void) {
+  if (syscall(SYS_arch_prctl, ARCH_REQ_XCOMP_PERM, XFEATURE_XTILEDATA)) {
+    // printf("\n Fail to do XFEATURE_XTILEDATA \n\n");
+    return false;
+  }
+  // printf("\n TILE DATA USE SET - OK \n\n");
+  return true;
+}
 #endif
 
 // Based on libvpx arm_cpudetect.c
@@ -323,6 +343,8 @@ static SAFEBUFFERS int GetCpuFlags(void) {
       cpu_info |= (cpu_info7[2] & 0x00000800) ? kCpuHasAVX512VNNI : 0;
       cpu_info |= (cpu_info7[2] & 0x00001000) ? kCpuHasAVX512VBITALG : 0;
       cpu_info |= (cpu_einfo7[3] & 0x00080000) ? kCpuHasAVX10 : 0;
+    }
+    if (set_tiledata_use()) {
       cpu_info |= (cpu_info7[3] & 0x02000000) ? kCpuHasAMXINT8 : 0;
     }
   }
