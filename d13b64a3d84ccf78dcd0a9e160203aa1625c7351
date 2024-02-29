@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a5cc9b_b5cc1167",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-02-29T21:38:35Z",
+      "side": 1,
+      "message": "thanks for the fix.\nI wouldnt have noticed this, as I watch issues.\nhttps://bugs.chromium.org/p/libyuv/issues/list\nIts good to file a bug and refer to it in a change",
+      "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8b2af0_7c2d8945",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-02-29T21:38:35Z",
+      "side": 1,
+      "message": "prefer \"memory\" and \"cc\" be first in the clobber list.",
+      "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
