@@ -42,8 +42,7 @@ static uint32_t SumSquareError_NEON(const uint8_t* src_a,
                                     const uint8_t* src_b,
                                     int count) {
   volatile uint32_t sse;
-  asm volatile(
-      "vmov.u8    q7, #0                         \n"
+  asm("vmov.u8    q7, #0                         \n"
       "vmov.u8    q9, #0                         \n"
       "vmov.u8    q8, #0                         \n"
       "vmov.u8    q10, #0                        \n"
@@ -77,8 +76,7 @@ static uint32_t SumSquareError_NEON(const uint8_t* src_a,
                                     const uint8_t* src_b,
                                     int count) {
   volatile uint32_t sse;
-  asm volatile(
-      "eor        v16.16b, v16.16b, v16.16b      \n"
+  asm("eor        v16.16b, v16.16b, v16.16b      \n"
       "eor        v18.16b, v18.16b, v18.16b      \n"
       "eor        v17.16b, v17.16b, v17.16b      \n"
       "eor        v19.16b, v19.16b, v19.16b      \n"
@@ -150,7 +148,7 @@ static uint32_t SumSquareError_SSE2(const uint8_t* src_a,
                                     const uint8_t* src_b,
                                     int count) {
   uint32_t sse;
-  asm volatile(  // NOLINT
+  asm(  // NOLINT
       "pxor      %%xmm0,%%xmm0                   \n"
       "pxor      %%xmm5,%%xmm5                   \n"
       "sub       %0,%1                           \n"
@@ -197,8 +195,7 @@ static uint32_t SumSquareError_SSE2(const uint8_t* src_a,
 #if defined(HAS_SUMSQUAREERROR_SSE2)
 #if (defined(__pic__) || defined(__APPLE__)) && defined(__i386__)
 static __inline void __cpuid(int cpu_info[4], int info_type) {
-  asm volatile(  // NOLINT
-      "mov %%ebx, %%edi                          \n"
+  asm("mov %%ebx, %%edi                          \n"
       "cpuid                                     \n"
       "xchg %%edi, %%ebx                         \n"
       : "=a"(cpu_info[0]), "=D"(cpu_info[1]), "=c"(cpu_info[2]),
@@ -208,8 +205,7 @@ static __inline void __cpuid(int cpu_info[4], int info_type) {
 // For gcc/clang but not clangcl.
 #elif !defined(_MSC_VER) && (defined(__i386__) || defined(__x86_64__))
 static __inline void __cpuid(int cpu_info[4], int info_type) {
-  asm volatile(  // NOLINT
-      "cpuid                                     \n"
+  asm("cpuid                                     \n"
       : "=a"(cpu_info[0]), "=b"(cpu_info[1]), "=c"(cpu_info[2]),
         "=d"(cpu_info[3])
       : "a"(info_type));
