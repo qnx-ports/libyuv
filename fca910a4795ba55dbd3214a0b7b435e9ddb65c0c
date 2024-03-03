@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64ac573_0fa00257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-03T18:17:54Z",
+      "side": 1,
+      "message": "When removing \u0027volatile\u0027 from asm, the unit tests failed on scale for neon, due to not declaring \"memory\" as a clobber.  Fixed in this change\n\nRemoving \u0027volatile\u0027 causes some test failures\n[\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] 3316 tests from 8 test suites ran. (11400 ms total)\n[  PASSED  ] 3284 tests.\n[  FAILED  ] 32 tests, listed below:\n[  FAILED  ] LibYUVConvertTest.I444ToI420_Unaligned\n[  FAILED  ] LibYUVConvertTest.I444ToI420_Invert\n[  FAILED  ] LibYUVConvertTest.I444ToI420_Opt\n[  FAILED  ] LibYUVPlanarTest.I420Blend_Opt\n[  FAILED  ] LibYUVPlanarTest.I420Blend_Unaligned\n[  FAILED  ] LibYUVPlanarTest.DISABLED_I420Blend_Any\n[  FAILED  ] LibYUVPlanarTest.I420Blend_Invert\n[  FAILED  ] LibYUVScaleTest.TestScaleRowDown2Box_16\n[  FAILED  ] LibYUVScaleTest.I420ScaleDownBy2_None\n[  FAILED  ] LibYUVScaleTest.I444ScaleDownBy2_None\n[  FAILED  ] LibYUVScaleTest.NV12ScaleDownBy2_None\n[  FAILED  ] LibYUVScaleTest.I420ScaleDownBy2_Linear\n[  FAILED  ] LibYUVScaleTest.I444ScaleDownBy2_Linear\n[  FAILED  ] LibYUVScaleTest.NV12ScaleDownBy2_Linear\n[  FAILED  ] LibYUVScaleTest.I420ScaleDownBy2_Bilinear\n[  FAILED  ] LibYUVScaleTest.I444ScaleDownBy2_Bilinear\n[  FAILED  ] LibYUVScaleTest.NV12ScaleDownBy2_Bilinear\n[  FAILED  ] LibYUVScaleTest.I420ScaleDownBy2_Box\n[  FAILED  ] LibYUVScaleTest.I444ScaleDownBy2_Box\n[  FAILED  ] LibYUVScaleTest.NV12ScaleDownBy2_Box\n[  FAILED  ] LibYUVScaleTest.I420ScaleFrom256x144_None\n[  FAILED  ] LibYUVScaleTest.I444ScaleFrom256x144_None\n[  FAILED  ] LibYUVScaleTest.NV12ScaleFrom256x144_None\n[  FAILED  ] LibYUVScaleTest.I420ScaleFrom256x144_Linear\n[  FAILED  ] LibYUVScaleTest.I444ScaleFrom256x144_Linear\n[  FAILED  ] LibYUVScaleTest.NV12ScaleFrom256x144_Linear\n[  FAILED  ] LibYUVScaleTest.I420ScaleFrom256x144_Bilinear\n[  FAILED  ] LibYUVScaleTest.I444ScaleFrom256x144_Bilinear\n[  FAILED  ] LibYUVScaleTest.NV12ScaleFrom256x144_Bilinear\n[  FAILED  ] LibYUVScaleTest.I420ScaleFrom256x144_Box\n[  FAILED  ] LibYUVScaleTest.I444ScaleFrom256x144_Box\n[  FAILED  ] LibYUVScaleTest.NV12ScaleFrom256x144_Box\n\n32 FAILED TESTS",
+      "revId": "fca910a4795ba55dbd3214a0b7b435e9ddb65c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
