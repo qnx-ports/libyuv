@@ -33,6 +33,24 @@
       "message": "prefer \"memory\" and \"cc\" be first in the clobber list.",
       "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023dbe24_7dff43c5",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-03T21:29:59Z",
+      "side": 1,
+      "message": "It is also done the wrong in row_neon.cc as well.\n\nI\u0027m doing a change for all inline to remove the \u0027volatile\u0027 keyword, and it will be important to declare input/output/clobber correctly.\nIts already important with link time pgolite, where the volatile is ignored and instructions can be removed/reordered.  It is not enough to comply with the ABI.",
+      "parentUuid": "2c8b2af0_7c2d8945",
+      "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
