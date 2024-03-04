@@ -69,6 +69,24 @@
       "parentUuid": "023dbe24_7dff43c5",
       "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47466317_fac3ed5c",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-04T10:08:35Z",
+      "side": 1,
+      "message": "prefer assembly for performance and fewer bugs.\ne.g. ld1 dup has a bug in clang 16 for arm32\nif intrinsics are necessary for another platform/compiler, an additional file could be added, similar to row_win.cc for visual studio.\n\nre for loops\nI\u0027m seeing issues with do while loops in clang 17 causing register spill with intrinsics.\ntypical for loops use an extra register or compare.  In the inline assembly there is no compare except the loop subs.  Remainders are handled by \u0027row_any\u0027 functions.\n\nre \"m\"\nregisters are used for loop counts and pointers which require registers on arm.\n\nAs libyuv doesnt have different versions for each cpu, cortex a53 benchmarks are mainly used to determine best performance.\nBut a blended performance across all cortex and exynos cpus are considered.\nThe 32 bit neon performance should normally match 64 bit.",
+      "parentUuid": "0b4c7159_f6090f0e",
+      "revId": "d13b64a3d84ccf78dcd0a9e160203aa1625c7351",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
