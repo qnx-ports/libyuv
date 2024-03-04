@@ -34,6 +34,24 @@
       "parentUuid": "88f88ee2_72f8a628",
       "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9211e347_ccee0c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-04T10:48:38Z",
+      "side": 1,
+      "message": "clang 3.4 (xcode 5.1) does not support MOV.\nI\u0027m not sure what the minimum clang supported is today, but Android NDK 21 uses GCC 4.9\nI put some info in the bug.\nI\u0027m not strongly against requiring MOV, but it should be done in row_neon.cc as well and it would be good to add a version check in row.h, disabling all NEON with clang 3.4 or earlier.",
+      "parentUuid": "0e492f5c_fb14716b",
+      "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
