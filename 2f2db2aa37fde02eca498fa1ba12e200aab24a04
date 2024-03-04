@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f88ee2_72f8a628",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-04T09:55:10Z",
+      "side": 1,
+      "message": "MOV is a pseudo-op for ORR and not supported on older gcc/clang compilers.\nA compiler version check should be added to disable these functions on affected compilers.\nIf the change is done, it should be in row_neon and scale_neon as well.",
+      "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
