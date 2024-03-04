@@ -16,6 +16,24 @@
       "message": "MOV is a pseudo-op for ORR and not supported on older gcc/clang compilers.\nA compiler version check should be added to disable these functions on affected compilers.\nIf the change is done, it should be in row_neon and scale_neon as well.",
       "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e492f5c_fb14716b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-04T10:22:25Z",
+      "side": 1,
+      "message": "Do you know which compiler versions this affects? Godbolt only goes back as far as Clang 9 and GCC 5.4 but both of them seem to be okay with the code?\n\nRealistically I\u0027d have concerns about people using such old compilers for production code anyway, perhaps we could update the minimum compiler requirements if we did encounter such situations?",
+      "parentUuid": "88f88ee2_72f8a628",
+      "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
