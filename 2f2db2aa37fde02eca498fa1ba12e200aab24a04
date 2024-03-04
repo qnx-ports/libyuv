@@ -52,6 +52,24 @@
       "parentUuid": "0e492f5c_fb14716b",
       "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33f1c45_19ae3d7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-04T13:07:17Z",
+      "side": 1,
+      "message": "I think we already have a check like this here: https://chromium.googlesource.com/libyuv/libyuv/+/main/include/libyuv/row.h#41\n\nDid you mean something different?",
+      "parentUuid": "9211e347_ccee0c3a",
+      "revId": "2f2db2aa37fde02eca498fa1ba12e200aab24a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
