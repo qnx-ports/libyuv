@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d169cc0_f4727c31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-13T18:20:27Z",
+      "side": 1,
+      "message": "Nice performance win!  So the advantage isnt the microops, its that the register is cleansed, allowing rename, for the next iteration of the loop.",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66c0ed2_ea49c1e2",
