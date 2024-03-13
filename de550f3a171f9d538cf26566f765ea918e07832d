@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff043fc_0e984f61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-13T19:13:08Z",
+      "side": 1,
+      "message": "Ran a quick benchmark of I420ToARGB at 1280x720:\nuarch       ld1 lane     ldr\ncortex-a35   4262 ms  4244 ms\ncortex-a510  4581 ms  4427 ms\ncortex-a55   2341 ms  2345 ms\ncortex-a710   846 ms   802 ms\ncortex-a72   1193 ms  1181 ms\ncortex-a75r2 1069 ms  1059 ms\ncortex-a75    896 ms   888 ms\ncortex-a78    893 ms   872 ms\ncortex-x1     544 ms   511 ms\ncortex-x2     508 ms   474 ms\ndenver.txt   2442 ms  2366 ms\nexynos-m1    1253 ms  1257 ms\nexynos-m2    1428 ms  1513 ms\nexynos-m4     775 ms   725 ms",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66c0ed2_ea49c1e2",
