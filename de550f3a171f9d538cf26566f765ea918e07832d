@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e674bf_21b65570",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-13T18:08:41Z",
+      "side": 1,
+      "message": "Looks good.  I\u0027ve also seem ld1r can be faster than lane.  Is there a better way to load 4 bytes in 32 bit?\n// Read 8 Y, 4 U and 4 V from 422\n#define READYUV422                               \\\n  \"vld1.8     {d0}, [%[src_y]]!              \\n\" \\\n  \"vld1.32    {d2[0]}, [%[src_u]]!           \\n\" \\\n  \"vld1.32    {d2[1]}, [%[src_v]]!           \\n\" \\\n  \"vmov.u8    d1, d0                         \\n\" \\\n  \"vmovl.u8   q1, d2                         \\n\" \\\n  \"vzip.u8    d0, d1                         \\n\" \\\n  \"vsli.u16   q1, q1, #8                     \\n\"",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66c0ed2_ea49c1e2",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-13T18:08:41Z",
+      "side": 1,
+      "message": "move up 1 line?   should be ok reordering might allow the u and v to load at the same time.",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
