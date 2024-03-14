@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cea08ae_69ae192e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T19:50:53Z",
+      "side": 1,
+      "message": "NV12ToARGB   shrn        uzp2 \ncortex-a35   4165 ms    4150 ms\ncortex-a510  4239 ms    3873 ms\ncortex-a55   2215 ms    2165 ms\ncortex-a710   760 ms     711 ms\ncortex-a72   1140 ms    1162 ms\ncortex-txt:  1074 ms    1175 ms\ncortex-a75    873 ms    1002 ms\ncortex-a78    826 ms     759 ms\ncortex-x1     491 ms     458 ms\ncortex-x2     474 ms     438 ms\ndenver       2412 ms    2101 ms\nexynos-m1    1277 ms    1097 ms\nexynos-m2    1452 ms    1290 ms\nexynos-m4     703 ms     571 ms",
+      "revId": "269608096fa3e9e4c66e463e980db01567449bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "332c14e4_9aa0119c",
@@ -14,6 +31,24 @@
       "writtenOn": "2024-03-14T18:42:04Z",
       "side": 1,
       "message": "very nice.  I dont need to benchmark this one to see it a huge win.\nI need to benchmark it to see how big a win it is! :-)   Nice catch\n\nAlso note I used \u0027q\u0027.  The Y contribution is more than 1, but we are using 2.14 fixed point coefficients, so the \u0027q\u0027 could have been removed.\nThe final result is signed but the Y channel wont overflow\n\nThe intel version of this uses\npmulhuw    %%xmm11,%%xmm4 \ncompared to arm using 2 mul and a uzp2\numull2     v3.4s, v0.8h, v24.8h \numull      v0.4s, v0.4h, v24.4h\nuzp2       v0.8h, v0.8h, v3.8h \nThe intel method is faster and similar to q15 multiples on arm that return the upper 16 bits.\nThe instruction I\u0027ve used in XNNPack is signed, applies a doubling, and rounds. \n VQRDMULH.S16 \nIs there something like pmulhuw that multiplies unsigned 16 bit and returns the upper 16 bits without rounding?\nMaybe subtract 0x8000 (xor) from the Y so it is signed, reduce the coefficient for Y contribution in half (v24.8h) to compensate for doubling, and after the VQRDMULH.S16 add 0x8000 (except its 0x2000 due to 2.14), but put that into the bias that gets applied later if possible?",
+      "revId": "269608096fa3e9e4c66e463e980db01567449bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c554cb0_8b652ec1",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T19:50:53Z",
+      "side": 1,
+      "message": "uzp2 is a fast instruction.  Its one of the few instructions that takes 2 source registers to construct a full destination\ncortex-a35.txt- - throughput: 2.000 CPI (1.538 ns @ 1.300 GHz)\ncortex-a510r1.txt- - throughput: 0.498 CPI (0.341 ns @ 1.461 GHz)\ncortex-a510.txt- - throughput: 0.500 CPI (0.289 ns @ 1.731 GHz)\ncortex-a53.txt- - throughput: 1.001 CPI (0.526 ns @ 1.903 GHz)\ncortex-a55r1.txt- - throughput: 1.001 CPI (0.499 ns @ 2.007 GHz)\ncortex-a55.txt- - throughput: 1.002 CPI (0.567 ns @ 1.769 GHz)\ncortex-a57.txt- - throughput: 0.667 CPI (0.340 ns @ 1.963 GHz)\ncortex-a710.txt- - throughput: 0.499 CPI (0.198 ns @ 2.518 GHz)\ncortex-a715.txt- - throughput: 0.498 CPI (0.227 ns @ 2.192 GHz)\ncortex-a72.txt- - throughput: 0.660 CPI (0.263 ns @ 2.513 GHz)\ncortex-a73.txt- - throughput: 0.777 CPI (0.329 ns @ 2.363 GHz)\ncortex-a75r2.txt- - throughput: 0.651 CPI (0.280 ns @ 2.327 GHz)\ncortex-a75.txt- - throughput: 0.666 CPI (0.237 ns @ 2.807 GHz)\ncortex-a76.txt- - throughput: 0.492 CPI (0.186 ns @ 2.649 GHz)\ncortex-a78.txt- - throughput: 0.486 CPI (0.206 ns @ 2.359 GHz)\ncortex-x1.txt- - throughput: 0.239 CPI (0.084 ns @ 2.854 GHz)\ncortex-x2.txt- - throughput: 0.250 CPI (0.089 ns @ 2.808 GHz)\ncortex-x3.txt- - throughput: 0.250 CPI (0.107 ns @ 2.346 GHz)\ndenver.txt- - throughput: 1.010 CPI (0.971 ns @ 1.040 GHz)\nexynos-m1.txt- - throughput: 1.000 CPI (0.533 ns @ 1.875 GHz)\nexynos-m2.txt- - throughput: 1.000 CPI (0.431 ns @ 2.321 GHz)\nexynos-m4.txt- - throughput: 0.500 CPI (0.223 ns @ 2.240 GHz)\nexynos-m5.txt- - throughput: 0.500 CPI (0.183 ns @ 2.736 GHz)\nkryo.txt- - throughput: 0.579 CPI (0.269 ns @ 2.153 GHz)",
+      "parentUuid": "332c14e4_9aa0119c",
       "revId": "269608096fa3e9e4c66e463e980db01567449bfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
