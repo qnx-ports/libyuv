@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332c14e4_9aa0119c",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T18:42:04Z",
+      "side": 1,
+      "message": "very nice.  I dont need to benchmark this one to see it a huge win.\nI need to benchmark it to see how big a win it is! :-)   Nice catch\n\nAlso note I used \u0027q\u0027.  The Y contribution is more than 1, but we are using 2.14 fixed point coefficients, so the \u0027q\u0027 could have been removed.\nThe final result is signed but the Y channel wont overflow\n\nThe intel version of this uses\npmulhuw    %%xmm11,%%xmm4 \ncompared to arm using 2 mul and a uzp2\numull2     v3.4s, v0.8h, v24.8h \numull      v0.4s, v0.4h, v24.4h\nuzp2       v0.8h, v0.8h, v3.8h \nThe intel method is faster and similar to q15 multiples on arm that return the upper 16 bits.\nThe instruction I\u0027ve used in XNNPack is signed, applies a doubling, and rounds. \n VQRDMULH.S16 \nIs there something like pmulhuw that multiplies unsigned 16 bit and returns the upper 16 bits without rounding?\nMaybe subtract 0x8000 (xor) from the Y so it is signed, reduce the coefficient for Y contribution in half (v24.8h) to compensate for doubling, and after the VQRDMULH.S16 add 0x8000 (except its 0x2000 due to 2.14), but put that into the bias that gets applied later if possible?",
+      "revId": "269608096fa3e9e4c66e463e980db01567449bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
