@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ded93a4_0cf307af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T17:30:44Z",
+      "side": 1,
+      "message": "Unless the instructions dont work, its good to keep the row_neon.cc the same\nIn this case, however, trn doesnt have a direct counterpart and is extremely slow on Apple A6, so I\u0027ve avoided that instruction.  It has 2 output registers.",
+      "revId": "3b25cf8af629d93bd7a99a0e09ee191a360e5f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12dc1d0_03b5b948",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T17:30:44Z",
+      "side": 1,
+      "message": "trn1 for Y looks like a clear win.\ntbl is a little slow but hard to avoid.  it could be replaced with uzp+trn\n\ntrn1\ncortex-a35.txt- - throughput: 1.999 CPI (1.538 ns @ 1.300 GHz)\ncortex-a510r1.txt- - throughput: 0.499 CPI (0.342 ns @ 1.461 GHz)\ncortex-a510.txt- - throughput: 0.499 CPI (0.288 ns @ 1.731 GHz)\ncortex-a53.txt- - throughput: 1.001 CPI (0.526 ns @ 1.903 GHz)\ncortex-a55r1.txt- - throughput: 1.002 CPI (0.499 ns @ 2.007 GHz)\ncortex-a55.txt- - throughput: 1.001 CPI (0.566 ns @ 1.769 GHz)\ncortex-a57.txt- - throughput: 0.667 CPI (0.340 ns @ 1.963 GHz)\ncortex-a710.txt- - throughput: 0.499 CPI (0.198 ns @ 2.518 GHz)\ncortex-a715.txt- - throughput: 0.499 CPI (0.228 ns @ 2.192 GHz)\ncortex-a72.txt- - throughput: 0.660 CPI (0.263 ns @ 2.513 GHz)\ncortex-a73.txt- - throughput: 0.778 CPI (0.329 ns @ 2.363 GHz)\ncortex-a75r2.txt- - throughput: 0.656 CPI (0.280 ns @ 2.345 GHz)\ncortex-a75.txt- - throughput: 0.665 CPI (0.237 ns @ 2.809 GHz)\ncortex-a76.txt- - throughput: 0.486 CPI (0.187 ns @ 2.606 GHz)\ncortex-a78.txt- - throughput: 0.488 CPI (0.206 ns @ 2.373 GHz)\ncortex-x1.txt- - throughput: 0.230 CPI (0.080 ns @ 2.861 GHz)\ncortex-x2.txt- - throughput: 0.250 CPI (0.092 ns @ 2.711 GHz)\ncortex-x3.txt- - throughput: 0.250 CPI (0.107 ns @ 2.346 GHz)\ndenver.txt- - throughput: 1.005 CPI (0.969 ns @ 1.037 GHz)\nexynos-m1.txt- - throughput: 0.999 CPI (0.533 ns @ 1.875 GHz)\nexynos-m2.txt- - throughput: 0.998 CPI (0.430 ns @ 2.319 GHz)\nexynos-m4.txt- - throughput: 0.500 CPI (0.223 ns @ 2.240 GHz)\nexynos-m5.txt- - throughput: 0.500 CPI (0.190 ns @ 2.631 GHz)\nkryo.txt- - throughput: 0.584 CPI (0.271 ns @ 2.153 GHz)\n\ntbl timing\ncortex-a35.txt- - throughput: 2.000 CPI (1.538 ns @ 1.300 GHz)\ncortex-a510r1.txt- - throughput: 0.499 CPI (0.341 ns @ 1.461 GHz)\ncortex-a510.txt- - throughput: 0.500 CPI (0.289 ns @ 1.731 GHz)\ncortex-a53.txt- - throughput: 1.001 CPI (0.526 ns @ 1.903 GHz)\ncortex-a55r1.txt- - throughput: 1.002 CPI (0.499 ns @ 2.007 GHz)\ncortex-a55.txt- - throughput: 1.001 CPI (0.566 ns @ 1.769 GHz)\ncortex-a57.txt- - throughput: 1.502 CPI (0.765 ns @ 1.963 GHz)\ncortex-a710.txt- - throughput: 0.499 CPI (0.198 ns @ 2.518 GHz)\ncortex-a715.txt- - throughput: 0.500 CPI (0.228 ns @ 2.192 GHz)\ncortex-a72.txt- - throughput: 1.498 CPI (0.596 ns @ 2.513 GHz)\ncortex-a73.txt- - throughput: 1.501 CPI (0.635 ns @ 2.363 GHz)\ncortex-a75r2.txt- - throughput: 1.488 CPI (0.642 ns @ 2.319 GHz)\ncortex-a75.txt- - throughput: 1.503 CPI (0.535 ns @ 2.809 GHz)\ncortex-a76.txt- - throughput: 0.485 CPI (0.186 ns @ 2.604 GHz)\ncortex-a78.txt- - throughput: 0.488 CPI (0.207 ns @ 2.350 GHz)\ncortex-x1.txt- - throughput: 0.486 CPI (0.168 ns @ 2.901 GHz)\ncortex-x2.txt- - throughput: 0.250 CPI (0.092 ns @ 2.711 GHz)\ncortex-x3.txt- - throughput: 0.250 CPI (0.107 ns @ 2.346 GHz)\ndenver.txt- - throughput: 1.543 CPI (1.486 ns @ 1.038 GHz)\nexynos-m1.txt- - throughput: 2.003 CPI (0.769 ns @ 2.605 GHz)\nexynos-m2.txt- - throughput: 2.003 CPI (0.863 ns @ 2.321 GHz)\nexynos-m4.txt- - throughput: 0.499 CPI (0.223 ns @ 2.240 GHz)\nexynos-m5.txt- - throughput: 0.499 CPI (0.183 ns @ 2.736 GHz)\nkryo.txt- - throughput: 1.001 CPI (0.465 ns @ 2.153 GHz)",
+      "revId": "3b25cf8af629d93bd7a99a0e09ee191a360e5f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
