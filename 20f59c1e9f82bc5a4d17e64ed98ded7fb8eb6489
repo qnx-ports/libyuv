@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f0e89d_666b95a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T20:01:35Z",
+      "side": 1,
+      "message": "Random thought: This Y contribution could be specialized for the full range colorspaces.  It would probably require 2 row functions.  The regular one that does the multiple (by 1.164) and one that does not.  This is the math (from row_common.cc)\n// BT.709 limited range YUV to RGB reference\n//  R \u003d (Y - 16) * 1.164             + V * 1.793\n//  G \u003d (Y - 16) * 1.164 - U * 0.213 - V * 0.533\n//  B \u003d (Y - 16) * 1.164 + U * 2.112\n//  KR \u003d 0.2126, KB \u003d 0.0722\nThis is the math for full range\n// BT.709 full range YUV to RGB reference\n//  R \u003d Y               + V * 1.5748\n//  G \u003d Y - U * 0.18732 - V * 0.46812\n//  B \u003d Y + U * 1.8556\n//  KR \u003d 0.2126, KB \u003d 0.0722\nIn theory we dont need to multiply by 1.\nThe YG is not exactly 1.0 though, it compensates for values having a max 255:\n// Y contribution to R,G,B.  Scale and bias.  (same as jpeg)\n#define YG 16320 /* round(1 * 64 * 256 * 256 / 257) */\n#define YB 32    /* 64 / 2 */\nIf a full range row function were written, we could likely want to have the calling code check for full range yuvconstants and select the specialized row function.\nThe simple implementation would need to shift right by 2 instead to convert to 2.14.  If the results are subtly different, but acceptable, the other platforms would need a similar specialization for \u0027LIBYUV_EXACT\u0027 or just the C version for unittests to exactly match neon and C.",
+      "revId": "20f59c1e9f82bc5a4d17e64ed98ded7fb8eb6489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
