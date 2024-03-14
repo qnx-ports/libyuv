@@ -103,6 +103,24 @@
       "parentUuid": "c66c0ed2_ea49c1e2",
       "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8d005a_3cecb830",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T08:48:02Z",
+      "side": 1,
+      "message": "I tried this to fix exynos m2\n// Read 8 Y, 4 U and 4 V from 422\n#define READYUV422                               \\\n  \"ldr        d0, [%[src_y]], #8             \\n\" \\\n  \"ldr        s1, [%[src_u]], #4             \\n\" \\\n  \"ldr        s2, [%[src_v]], #4             \\n\" \\\n  \"zip1       v1.4s, v1.4s, v2.4s            \\n\" \\\n  \"prfm       pldl1keep, [%[src_y], 448]     \\n\" \\\n  \"zip1       v0.16b, v0.16b, v0.16b         \\n\" \\\n  \"prfm       pldl1keep, [%[src_u], 128]     \\n\" \\\n  \"zip1       v1.16b, v1.16b, v1.16b         \\n\" \\\n  \"prfm       pldl1keep, [%[src_v], 128]     \\n\"\n\nand it did get exynos back to the old speed, and x1/x2 the same, but other cpus got slower due to 2 zip instructions",
+      "parentUuid": "9aebb45b_4d867c0e",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
