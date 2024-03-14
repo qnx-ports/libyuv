@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "592cd824_b979d22c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T18:07:59Z",
+      "side": 1,
+      "message": "Performance looks good on all CPU.  \ncpu             ld2      trn1\ncortex-a35    4105 ms   4016 ms\ncortex-a510   4029 ms   4019 ms\ncortex-a55    2315 ms   2272 ms\ncortex-a710    841 ms    752 ms\ncortex-a72    1287 ms   1196 ms\ncortex-a75r2  1279 ms   1135 ms\ncortex-a75    1077 ms    953 ms\ncortex-a78     889 ms    814 ms\ncortex-x1      551 ms    488 ms\ncortex-x2      516 ms    466 ms\ndenver        2505 ms   2169 ms\nexynos-m1     1287 ms   1229 ms\nexynos-m2     1471 ms   1411 ms\nexynos-m4      696 ms    695 ms\n\nIt might be good to look at the YUVTORGB before going too far with loads.\nInstead of using a register with U\u0027s and V\u0027s in top and bottom, it might be better to have interleaved UV like the Intel implementation.\n\nAlso note the Y bias includes +32 that is for rounding the output before converting 16 bit back to 8 bit.  But this is wrong when doing 10 bit output formats.\nSo I\u0027m thinking of removing the +32 and using a rounding shift.\nor Do a different bias constant for each output format.  +32 for 8 bit.  +8 for 10 bit.",
+      "revId": "3b25cf8af629d93bd7a99a0e09ee191a360e5f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f51aba3_a9ed03b0",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-14T18:07:59Z",
+      "side": 1,
+      "message": "kYUY2InterleavedTable?",
+      "revId": "3b25cf8af629d93bd7a99a0e09ee191a360e5f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e12dc1d0_03b5b948",
