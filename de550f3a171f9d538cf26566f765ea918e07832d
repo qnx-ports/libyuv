@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef2d8d9_78ef3a2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-14T07:34:21Z",
+      "side": 1,
+      "message": "Indeed. There is a non-zero benefit from avoiding use of the vector pipelines in the lane-indexed LD1 instructions on some micro-architectures, but it is nowhere near as impactful as enabling more out-of-order execution by avoiding the dependency chain!",
+      "parentUuid": "5d169cc0_f4727c31",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66c0ed2_ea49c1e2",
@@ -65,6 +83,24 @@
       "writtenOn": "2024-03-13T18:08:41Z",
       "side": 1,
       "message": "move up 1 line?   should be ok reordering might allow the u and v to load at the same time.",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aebb45b_4d867c0e",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-14T07:34:21Z",
+      "side": 1,
+      "message": "Seems like a small perf win on Cortex-A510 at least, will put up a separate change to do the reorder in a bit.",
+      "parentUuid": "c66c0ed2_ea49c1e2",
       "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
