@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4fc9be_e2dbf8d9",
+        "filename": "source/compare_neon64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-15T11:12:15Z",
+      "side": 1,
+      "message": "i think we need a memory clobber here even if we only read memory, else the compiler could reorder stores to the two source arrays after the asm?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 44
+      },
+      "revId": "7eafd3d2e425c94312909defec2cf266d8c7fb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a26b94_3bde934d",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2220,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-15T11:12:15Z",
+      "side": 1,
+      "message": "the formatting looks broken here...",
+      "range": {
+        "startLine": 2220,
+        "startChar": 8,
+        "endLine": 2220,
+        "endChar": 15
+      },
+      "revId": "7eafd3d2e425c94312909defec2cf266d8c7fb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93b557e_4dd5a8ae",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-15T11:12:15Z",
+      "side": 1,
+      "message": "duplicate memory + cc clobber in quite a few functions in this file?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 59
+      },
+      "revId": "7eafd3d2e425c94312909defec2cf266d8c7fb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
