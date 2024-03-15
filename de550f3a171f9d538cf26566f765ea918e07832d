@@ -121,6 +121,24 @@
       "parentUuid": "9aebb45b_4d867c0e",
       "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2f6f7a_d51347e6",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-15T10:50:39Z",
+      "side": 1,
+      "message": "Raised https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5374285 for the reordering.",
+      "parentUuid": "dd8d005a_3cecb830",
+      "revId": "de550f3a171f9d538cf26566f765ea918e07832d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
