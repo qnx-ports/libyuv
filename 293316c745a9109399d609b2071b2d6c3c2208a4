@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2dc7027_12e8d759",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T16:52:36Z",
+      "side": 1,
+      "message": "could we do ldr for the first one and ld1 lanes for the other 3 to allow faster A510?",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa56b81_c1f6149d",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T16:52:36Z",
+      "side": 1,
+      "message": "st4 is about 42 cycles on A510.  Consider 2 versions of this code - one that uses st4 and one that avoids it by combining the values or using multiple stores.\nDoes stp work on s0, s1 values?",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
