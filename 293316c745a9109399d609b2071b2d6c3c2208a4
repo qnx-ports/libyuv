@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b79c6ef_c7bdb177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T17:23:17Z",
+      "side": 1,
+      "message": "Performance is slower on A55?\n\n          Was ld1/str  Now ldr/st4  32 bit\ncortex-a35   11752 ms   13950 ms   14804 ms\ncortex-a510   4650 ms    4239 ms   \ncortex-a55    7707 ms    8495 ms    8889 ms\ncortex-a710   1958 ms    1920 ms    1951 ms\ncortex-a72    5666 ms    5599 ms    5797 ms\ncortex-a75r2  2996 ms    2937 ms    3058 ms\ncortex-a75    3489 ms    3386 ms    3434 ms\ncortex-a78    2950 ms    2729 ms    2993 ms\ncortex-a7                          28135 ms\ncortex-x1     2202 ms    2032 ms   \ncortex-x2     1614 ms    1505 ms   \ndenver        7506 ms    7460 ms    7597 ms\nexynos-m1     4253 ms    4097 ms    4347 ms\nexynos-m2     4298 ms    4095 ms    4386 ms\nexynos-m4     2136 ms    2105 ms    2117 ms\n\nThe scale_neon version is the same method\nlanes with a post increment.\nSince we can\u0027t do ldr s0 there are a few options.\n1. use arm and load into r0, r1, r2, r3 and use stp\nit doesnt need to be unrolled to 4... 2 would be okay if that works better.\n2. use ld1 that dups the register to cleanse it.\n3. pointer diff and indexed addressing.\nThe post increments off the same pointer are hurting A55 performance.\n4. use lanes but clear the q0 register to allow register renaming.  This may help the performance regression on exynos\n\n// Reads 4 pixels at a time.\n// Alignment requirement: src_argb 4 byte aligned.\nvoid ScaleARGBRowDownEven_NEON(const uint8_t* src_argb,\n                               ptrdiff_t src_stride,\n                               int src_stepx,\n                               uint8_t* dst_argb,\n                               int dst_width) {\n  (void)src_stride;\n  asm volatile(\n      \"mov         r12, %3, lsl #2               \\n\"\n      \"1:                                        \\n\"\n      \"vld1.32     {d0[0]}, [%0], r12            \\n\"\n      \"vld1.32     {d0[1]}, [%0], r12            \\n\"\n      \"vld1.32     {d1[0]}, [%0], r12            \\n\"\n      \"vld1.32     {d1[1]}, [%0], r12            \\n\"\n      \"subs        %2, %2, #4                    \\n\"  // 4 pixels per loop.\n      \"vst1.8      {q0}, [%1]!                   \\n\"\n      \"bgt         1b                            \\n\"\n      : \"+r\"(src_argb),  // %0\n        \"+r\"(dst_argb),  // %1\n        \"+r\"(dst_width)  // %2\n      : \"r\"(src_stepx)   // %3\n      : \"memory\", \"cc\", \"r12\", \"q0\");\n}",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2dc7027_12e8d759",
@@ -14,6 +31,23 @@
       "writtenOn": "2024-03-19T16:52:36Z",
       "side": 1,
       "message": "could we do ldr for the first one and ld1 lanes for the other 3 to allow faster A510?",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19dc7064_4838b0df",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T17:23:17Z",
+      "side": 1,
+      "message": "instead of adding a register, would it be faster to use pointer differences and 1 post increment?",
       "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
