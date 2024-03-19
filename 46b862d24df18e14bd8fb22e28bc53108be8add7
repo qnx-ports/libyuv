@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71fa882c_3119cbc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T19:21:44Z",
+      "side": 1,
+      "message": "Can this be done for row_neon.cc ?\nI need to run a benchmark, as the AGI for 2 loads will slow it down and I\u0027m not clear on why it would go faster, except on A510 where ST2 is slow.\nFor ST2 there should have been an ZIP+ST1 version of the code, as done in row_neon64.cc row functions.",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb8bdef_c832e5f2",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T19:21:44Z",
+      "side": 1,
+      "message": "this is an AGI on A55.  Consider some alternatives\n1. offset for 2nd load and ADD instruction to src register after the loads\n2. 2 registers.  src and src1.  increment each 64.  solves agi.\n3. only do 4 pixels per loop.  a single ld2 and str",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d6093f_caf8c6e6",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-19T19:21:44Z",
+      "side": 1,
+      "message": "can this be stp?",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
