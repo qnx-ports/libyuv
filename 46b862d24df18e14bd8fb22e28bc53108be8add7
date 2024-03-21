@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df72eda2_a6887f74",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-21T13:34:27Z",
+      "side": 1,
+      "message": "Option 2 seems good. Only doing 4 pixels per loop would be bad on little cores.",
+      "parentUuid": "edb8bdef_c832e5f2",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d6093f_caf8c6e6",
@@ -48,6 +66,24 @@
       "writtenOn": "2024-03-19T19:21:44Z",
       "side": 1,
       "message": "can this be stp?",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e6dd1f_67cbcd20",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-21T13:34:27Z",
+      "side": 1,
+      "message": "No difference.",
+      "parentUuid": "02d6093f_caf8c6e6",
       "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
