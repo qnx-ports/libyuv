@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "697dd2c7_0c41fc7f",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-21T13:31:46Z",
+      "side": 1,
+      "message": "STP seems better.",
+      "parentUuid": "a2dc7027_12e8d759",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19dc7064_4838b0df",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12d742f_01ef5b24",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-21T13:31:46Z",
+      "side": 1,
+      "message": "Can\u0027t post-increment by register with LDR.",
+      "parentUuid": "19dc7064_4838b0df",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aa56b81_c1f6149d",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-03-19T16:52:36Z",
       "side": 1,
       "message": "st4 is about 42 cycles on A510.  Consider 2 versions of this code - one that uses st4 and one that avoids it by combining the values or using multiple stores.\nDoes stp work on s0, s1 values?",
+      "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1022a2_71787ae0",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-21T13:31:46Z",
+      "side": 1,
+      "message": "STP was much better on Cortex-A510, was marginally worse on Cortex-A76 and the same on Cortex-A55, so just using that for everything.",
+      "parentUuid": "6aa56b81_c1f6149d",
       "revId": "293316c745a9109399d609b2071b2d6c3c2208a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
