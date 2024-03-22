@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a705bb2a_069bf605",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-22T10:52:54Z",
+      "side": 1,
+      "message": "nit: technically this is _ARM not Neon and wont need the Neon cpu detect.",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2643fe63_fbb2f255",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-03-22T10:52:54Z",
+      "side": 1,
+      "message": "Did you try just 2 pixels per loop?",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
