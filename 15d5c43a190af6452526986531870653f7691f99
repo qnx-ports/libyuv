@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "451a802b_61e95a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-22T11:13:01Z",
+      "side": 1,
+      "message": "Hi Frank, similar optimizations do look possible for the 32-bit Neon code in scale_neon.cc; but Arm\u0027s contribution to libyuv is focussed on, and is limited to, optimization for 64-bit platforms for the time being.",
+      "parentUuid": "aeb83977_7e2a93ef",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a705bb2a_069bf605",
