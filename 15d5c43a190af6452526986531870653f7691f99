@@ -68,6 +68,24 @@
       "message": "Did you try just 2 pixels per loop?",
       "revId": "15d5c43a190af6452526986531870653f7691f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "922d1714_fb41a848",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 3355700
+      },
+      "writtenOn": "2024-03-22T12:01:29Z",
+      "side": 1,
+      "message": "Reduction in runtime with 2 pixels per loop:\n\nCortex-A55: +10.7%\nCortex-A510: -61.5%\nCortex-A76: -50.6%\n\nExisting patch seems better.",
+      "parentUuid": "2643fe63_fbb2f255",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
