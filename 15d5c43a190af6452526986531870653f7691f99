@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c0efba3_5801deb8",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-03-26T09:53:33Z",
+      "side": 1,
+      "message": "Neon is mandatory on AArch64 so this seems fine as-is just to be consistent with the rest of the existing naming? at least until we start adding more architecture extensions beyond neon?",
+      "parentUuid": "a705bb2a_069bf605",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2643fe63_fbb2f255",
         "filename": "source/scale_neon64.cc",
         "patchSetId": 2
