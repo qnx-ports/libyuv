@@ -16,6 +16,23 @@
       "message": "we\u0027ll need to add the file to all build systems, but anything missed can be followed up later.\n\nwe will also want scale_sve, rotate_sve, compare_sve.  Maybe do the same place holder builds all at once?",
       "revId": "694675edda0cc655e33ee59f2aceb31ee1071bae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acdcb171_890e442f",
+        "filename": "BUILD.gn",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T18:34:11Z",
+      "side": 1,
+      "message": "note my most recent tests show optimizing for size speeds up libyuv overall because all the bottlenecks are assembly.  rule of thumb is -Os is reasonable for size/speed.  O2 is like the old O3... it inlines and unrolls, usually in simple code that does not benefit performance, and hurts size.  O3 does virtually nothing these days.  -Oz can have major drawbacks, as it avoids vectors.  It is the default on android.  But my last test shows libyuv has enough asembly that  -Oz is the fastest, as well as smallest.  In the past -Oz was substantially slower than -O2.\n\nMy inclination is remove this optimize_max, as users are concerned with size",
+      "revId": "694675edda0cc655e33ee59f2aceb31ee1071bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
