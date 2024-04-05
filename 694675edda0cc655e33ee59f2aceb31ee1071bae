@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719c4bfe_884cd4a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T18:03:54Z",
+      "side": 1,
+      "message": "we\u0027ll need to add the file to all build systems, but anything missed can be followed up later.\n\nwe will also want scale_sve, rotate_sve, compare_sve.  Maybe do the same place holder builds all at once?",
+      "revId": "694675edda0cc655e33ee59f2aceb31ee1071bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
