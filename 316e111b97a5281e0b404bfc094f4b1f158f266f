@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9375aa0_a5174901",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:32:31Z",
+      "side": 1,
+      "message": "interesting approach... i think that should work well.  we can redo the other cpus to use the same bits as x86 in the future.",
+      "revId": "316e111b97a5281e0b404bfc094f4b1f158f266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f245aa3_af59999d",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:32:31Z",
+      "side": 1,
+      "message": "fyi libyuv doesnt have floats, so sve may not be useful",
+      "revId": "316e111b97a5281e0b404bfc094f4b1f158f266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
