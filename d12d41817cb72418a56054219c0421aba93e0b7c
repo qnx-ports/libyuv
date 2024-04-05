@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dd5e6360_68a46ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T18:01:43Z",
+      "side": 1,
+      "message": "Although I am looking fairly closely at the instructions, reviews for sve will be pretty easy because they only run on a few cpus, so there is unlikely to be a regression... the code just needs to be faster than neon.\n\nI think we can mix and match neon and sve, so initially we should assume sve has 128 bit vectors and the functions that benefit use interesting new instructions.  Which you did here: umulh and interleaving narrow.\n\nThis function I444ToARGB, may be the single most important function in libyuv.\nI420 and NV12 may get used more but when filtering is on, they upsample to I444 first.  And the code is otherwise the same.\nSo if we can think of other improvements, it would be good to do more on I444ToARGB.  i8mm, dotproduct or ssve?",
+      "revId": "d12d41817cb72418a56054219c0421aba93e0b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "30e6d843_15f40566",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
