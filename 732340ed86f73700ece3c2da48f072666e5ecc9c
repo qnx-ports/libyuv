@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b5327b_37cb1b70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:27:49Z",
+      "side": 1,
+      "message": "overall looks good.  I have minor optimization suggestions.\nI\u0027m not 100% sure on the name.  You added _ and mixed case.  We\u0027ve been doing uppercase and no _ but it\u0027ll do.",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec49ddc_102a5631",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3053,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:27:49Z",
+      "side": 1,
+      "message": "tbl4 could combine all 4.  instead of addhn could initialize accumulators to v17 bias?  would need it moved to upper 8 bits of low 16 bit value",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34890474_8cda68be",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:27:49Z",
+      "side": 1,
+      "message": "addhn2 to move to upper part of v0?",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
