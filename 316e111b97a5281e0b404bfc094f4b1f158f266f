@@ -33,6 +33,24 @@
       "message": "fyi libyuv doesnt have floats, so sve may not be useful",
       "revId": "316e111b97a5281e0b404bfc094f4b1f158f266f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72cb689_251a7445",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-05T17:48:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6f245aa3_af59999d",
+      "revId": "316e111b97a5281e0b404bfc094f4b1f158f266f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
