@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99ae30dc_9a476f8a",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3053,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-08T09:13:36Z",
+      "side": 1,
+      "message": "~15% faster on Cortex-A55 and ~same perf on Cortex-A76, but ~49% slower on Cortex-A510 and ~25% slower on Cortex-X2. So I\u0027m inclined to leave it for now at least until we have an SVE2 version that allows us to ignore the Cortex-A510 result?",
+      "parentUuid": "eec49ddc_102a5631",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34890474_8cda68be",
         "filename": "source/row_neon64.cc",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2024-04-05T17:27:49Z",
       "side": 1,
       "message": "addhn2 to move to upper part of v0?",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a08e81d_94f5bc63",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-08T09:13:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be an obvious perf win on any cores due to the additional new dependency chain between the two addhn{,2} instructions, ~7% slower on Cortex-X2 than the current approach?",
+      "parentUuid": "34890474_8cda68be",
       "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
