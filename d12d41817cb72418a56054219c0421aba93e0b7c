@@ -71,6 +71,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e336124b_035362d6",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-08T09:24:00Z",
+      "side": 1,
+      "message": "The whilelt-based tail could in theory be used as a single loop rather than having a body using ptrue as the predicate for a main loop instead, but this has quite a high penalty on cores like Cortex-A510 (~12% perf hit for this kernel, a lot more when the kernel is a tighter loop).",
+      "parentUuid": "6cc609df_6a9310a0",
+      "revId": "d12d41817cb72418a56054219c0421aba93e0b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "985f1a75_3ee194c5",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -82,6 +100,24 @@
       "writtenOn": "2024-04-05T17:47:33Z",
       "side": 1,
       "message": "I have some misgivings about handling remainders in the low levels, as it doubles the size and increases complexity of assembly, and hurts performance in the common case.  libyuv processes camera frames that are virtually guaranteed to be a multiple of 16 pixels wide.  So this code adds branches and cache misses.\nBut avx512/avx10 have masking, which is similar, and riscv does the remainder with the main loop, so this seems to be the way things are going.",
+      "revId": "d12d41817cb72418a56054219c0421aba93e0b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732f42ee_e3fd29cc",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-08T09:24:00Z",
+      "side": 1,
+      "message": "That\u0027s reasonable. It looks okay in this case because most of the logic is hidden away in the macros but for other cases this might be more painful.\n\nEven if we knew that the frames were a multiple of 16 bytes we probably would not be able to easily avoid the predicate setup here unless we restricted these kernels to only work on SVE VL\u003d128-bits, but this might not be the case in future micro-architectures or for Streaming-SVE kernels.\n\nThe predicate calculation here is obviously not free but it should be very cheap (≤ a couple of cycles) compared to the whole loop execution if we are only doing it once. I imagine code size is probably comparable to if we needed an additional \"any\" kernel to handle the remainder?",
+      "parentUuid": "985f1a75_3ee194c5",
       "revId": "d12d41817cb72418a56054219c0421aba93e0b7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
