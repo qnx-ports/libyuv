@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf2106e_60bdb429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2024-04-09T20:23:51Z",
+      "side": 1,
+      "message": "Thanks, this fixed the build for aarch64 for me!",
+      "revId": "a6135cfe0fc8a3102273b83f129c8175fb5e4d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287f47ef_68c9887a",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2024-04-09T20:23:51Z",
+      "side": 1,
+      "message": "I guess this line should have been ${ly_lib_name}, not ${ly_lib_static}, even if they expand to the same.",
+      "revId": "a6135cfe0fc8a3102273b83f129c8175fb5e4d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
