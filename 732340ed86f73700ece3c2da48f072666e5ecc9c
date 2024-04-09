@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d1cff1_89cc3add",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3053,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-09T03:08:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "99ae30dc_9a476f8a",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34890474_8cda68be",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Doesn\u0027t seem to be an obvious perf win on any cores due to the additional new dependency chain between the two addhn{,2} instructions, ~7% slower on Cortex-X2 than the current approach?",
       "parentUuid": "34890474_8cda68be",
+      "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d92656_ac72b37e",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-09T03:08:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6a08e81d_94f5bc63",
       "revId": "732340ed86f73700ece3c2da48f072666e5ecc9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
