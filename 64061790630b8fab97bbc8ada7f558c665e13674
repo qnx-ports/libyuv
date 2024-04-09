@@ -16,6 +16,24 @@
       "message": "Is GN the only supported build system within libyuv at the moment? Because the later changes, such as https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5424737, fail when built with CMake, because the necessary flags to build the dotprod/i8mm extensions aren\u0027t passed.",
       "revId": "64061790630b8fab97bbc8ada7f558c665e13674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1891fcc_b0cf37ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-09T13:05:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether it is officially supported or not, but I\u0027d be interested in keeping it working as much as possible since it makes it easier for me to build and test my own changes locally.\n\nI\u0027ve put up https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5439554 as a first attempt to get the correct flags passed through to the files that need them.\n\nThanks!",
+      "parentUuid": "f1da43c5_25955309",
+      "revId": "64061790630b8fab97bbc8ada7f558c665e13674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
