@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f4f951_052e315b",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:04:55Z",
+      "side": 1,
+      "message": "could we do ldp and then uaddp",
+      "revId": "d605f08670adeee83530b6d81a7e47e52ca88f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fbb9f4_d23a63b2",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:04:55Z",
+      "side": 1,
+      "message": "is there an rshrn2 that could put the result in the upper v0.16b  so we can do str q0?",
+      "revId": "d605f08670adeee83530b6d81a7e47e52ca88f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ea39b3_79c1e5bc",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:04:55Z",
+      "side": 1,
+      "message": "prefer keep the 1 line per input and comment about the argument number.",
+      "revId": "d605f08670adeee83530b6d81a7e47e52ca88f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

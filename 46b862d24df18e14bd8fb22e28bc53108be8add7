@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47def9e6_d34893ed",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:04:55Z",
+      "side": 0,
+      "message": "modern cpus have 4 vector units... wouldnt it be faster to do 8 pixels at a time?",
+      "revId": "46b862d24df18e14bd8fb22e28bc53108be8add7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
