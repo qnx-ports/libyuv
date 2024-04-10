@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d697c9e_8399bc3c",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T12:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e916819c_5c9bb42e",
+      "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c014655_6fde3da8",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-04-10T12:11:21Z",
       "side": 1,
       "message": "This is a little redundant - passing `-mfpu\u003dneon` also implicitly defines `__ARM_NEON__` which should be enough for getting these codepaths included.",
+      "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eaad161_05fd4c87",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T12:18:43Z",
+      "side": 1,
+      "message": "We only pass -mfpu\u003dneon for the actual kernels themselves, so critically we don\u0027t pass this option for files like convert.cc that actually do the kernel lookup. Without the -D... we would build all the kernels but never actually use them anywhere since row.h when included from e.g. convert.cc would not define the HAS_..._NEON defines.\n\nThe alternative would be to pass -mfpu\u003dneon everywhere, but this seems like a bad idea if the intention is to treat Neon as an optional feature on 32-bit platforms since the compiler may choose to use it in normal C code without warning in that case?\n\nWhat do you think?",
+      "parentUuid": "7c014655_6fde3da8",
       "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
