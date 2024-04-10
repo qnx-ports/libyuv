@@ -16,6 +16,24 @@
       "message": "This makes the code enabled for 32 bit arm as well (we\u0027re in a block guarded by `defined(__aarch64__) || defined(__ARM_NEON__) || defined(LIBYUV_NEON))`.\n\nIt seems to build successfully if I move all these `#define HAS_..._DOTPROD` into a separate `#if defined(__aarch64__)` at the bottom of this `#if` block.",
       "revId": "f2e78e130434834e3815e4bdd2900d940ded9af3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb29979_5aa3c4d4",
+        "filename": "include/libyuv/row.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T12:03:32Z",
+      "side": 1,
+      "message": "Thanks for reporting! Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5439562",
+      "parentUuid": "76ea6b61_e8f6c4c8",
+      "revId": "f2e78e130434834e3815e4bdd2900d940ded9af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
