@@ -33,6 +33,24 @@
       "message": "I guess this line should have been ${ly_lib_name}, not ${ly_lib_static}, even if they expand to the same.",
       "revId": "a6135cfe0fc8a3102273b83f129c8175fb5e4d88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01cd253_b513502b",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T12:04:28Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5439562",
+      "parentUuid": "287f47ef_68c9887a",
+      "revId": "a6135cfe0fc8a3102273b83f129c8175fb5e4d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
