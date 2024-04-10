@@ -51,6 +51,24 @@
       "parentUuid": "357a650a_9e70f374",
       "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e5281e_73a2bc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2024-04-10T09:13:28Z",
+      "side": 1,
+      "message": "Generally, hardfloat doesn\u0027t imply NEON support - one can have VFPv3-D16 without NEON (like NVidia Tegra 2); most Linux distributions that target armhf consider NEON optional. (Most Linux distributions targeting \"arm-linux-gnueabihf\" target armv7 or newer, while e.g. Raspbian target armv6 or newer, as the original Raspberry Pi 1 only had an armv6 core, but it did have VFPv2.)\n\nBut that\u0027s beside the point here anyway; all the new dotprod functions were added only in the *_neon64.cc files, so the old ones still build just like they used to.",
+      "parentUuid": "c2ac0e57_d61f0bd4",
+      "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
