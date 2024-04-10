@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3419edf1_219ff3bb",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:07:08Z",
+      "side": 1,
+      "message": "The number of pixel processed will typically require the source code to check if the width is a multiple of this, and call the _Any_NEON function instead.\nBut to make the change, the scale_neon.cc would also need to change.",
+      "revId": "fcf18208c3d264b9872d96e1738312e2f797eacf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
