@@ -69,6 +69,24 @@
       "parentUuid": "c2ac0e57_d61f0bd4",
       "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cfbe31_55495f33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T09:14:52Z",
+      "side": 1,
+      "message": "Yep I just realised my original comment was wrong after looking at your other comment. Will try and put up a patch to fix the arm32 stuff in a bit",
+      "parentUuid": "b9e5281e_73a2bc2b",
+      "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
