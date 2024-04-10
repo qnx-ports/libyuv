@@ -33,6 +33,24 @@
       "message": "Do row_neon.cc etc need any options?",
       "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ac0e57_d61f0bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-10T09:07:26Z",
+      "side": 1,
+      "message": "I think they\u0027re fine if compiled with a arm-linux-gnueabihf target compiler since the hard-float \"hf\" in the target name implies Neon support, so there should be no need to explicitly specify -mfpu\u003dneon. I tried it locally and it worked fine.",
+      "parentUuid": "357a650a_9e70f374",
+      "revId": "584e5f6a4ea1ac219c6ff7f33b57618da81cb4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
