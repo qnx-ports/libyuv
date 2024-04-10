@@ -1382,6 +1382,14 @@ int I010ToARGBMatrix(const uint16_t* src_y,
     }
   }
 #endif
+#if defined(HAS_I210TOARGBROW_NEON)
+  if (TestCpuFlag(kCpuHasNEON)) {
+    I210ToARGBRow = I210ToARGBRow_Any_NEON;
+    if (IS_ALIGNED(width, 8)) {
+      I210ToARGBRow = I210ToARGBRow_NEON;
+    }
+  }
+#endif
 #if defined(HAS_I210TOARGBROW_AVX2)
   if (TestCpuFlag(kCpuHasAVX2)) {
     I210ToARGBRow = I210ToARGBRow_Any_AVX2;
@@ -1602,6 +1610,14 @@ int I210ToARGBMatrix(const uint16_t* src_y,
     }
   }
 #endif
+#if defined(HAS_I210TOARGBROW_NEON)
+  if (TestCpuFlag(kCpuHasNEON)) {
+    I210ToARGBRow = I210ToARGBRow_Any_NEON;
+    if (IS_ALIGNED(width, 8)) {
+      I210ToARGBRow = I210ToARGBRow_NEON;
+    }
+  }
+#endif
 #if defined(HAS_I210TOARGBROW_AVX2)
   if (TestCpuFlag(kCpuHasAVX2)) {
     I210ToARGBRow = I210ToARGBRow_Any_AVX2;
@@ -1760,6 +1776,14 @@ int I410ToARGBMatrix(const uint16_t* src_y,
     I410ToARGBRow = I410ToARGBRow_Any_SSSE3;
     if (IS_ALIGNED(width, 8)) {
       I410ToARGBRow = I410ToARGBRow_SSSE3;
+    }
+  }
+#endif
+#if defined(HAS_I410TOARGBROW_NEON)
+  if (TestCpuFlag(kCpuHasNEON)) {
+    I410ToARGBRow = I410ToARGBRow_Any_NEON;
+    if (IS_ALIGNED(width, 8)) {
+      I410ToARGBRow = I410ToARGBRow_NEON;
     }
   }
 #endif
@@ -6847,6 +6871,14 @@ static int I010ToARGBMatrixBilinear(const uint16_t* src_y,
     }
   }
 #endif
+#if defined(HAS_I410TOARGBROW_NEON)
+  if (TestCpuFlag(kCpuHasNEON)) {
+    I410ToARGBRow = I410ToARGBRow_Any_NEON;
+    if (IS_ALIGNED(width, 8)) {
+      I410ToARGBRow = I410ToARGBRow_NEON;
+    }
+  }
+#endif
 #if defined(HAS_I410TOARGBROW_AVX2)
   if (TestCpuFlag(kCpuHasAVX2)) {
     I410ToARGBRow = I410ToARGBRow_Any_AVX2;
@@ -6949,6 +6981,14 @@ static int I210ToARGBMatrixLinear(const uint16_t* src_y,
     I410ToARGBRow = I410ToARGBRow_Any_SSSE3;
     if (IS_ALIGNED(width, 8)) {
       I410ToARGBRow = I410ToARGBRow_SSSE3;
+    }
+  }
+#endif
+#if defined(HAS_I410TOARGBROW_NEON)
+  if (TestCpuFlag(kCpuHasNEON)) {
+    I410ToARGBRow = I410ToARGBRow_Any_NEON;
+    if (IS_ALIGNED(width, 8)) {
+      I410ToARGBRow = I410ToARGBRow_NEON;
     }
   }
 #endif
