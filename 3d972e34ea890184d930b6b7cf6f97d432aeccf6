@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e916819c_5c9bb42e",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2024-04-10T12:11:21Z",
+      "side": 1,
+      "message": "Typo, this isn\u0027t AArch64",
+      "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c014655_6fde3da8",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002325
+      },
+      "writtenOn": "2024-04-10T12:11:21Z",
+      "side": 1,
+      "message": "This is a little redundant - passing `-mfpu\u003dneon` also implicitly defines `__ARM_NEON__` which should be enough for getting these codepaths included.",
+      "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
