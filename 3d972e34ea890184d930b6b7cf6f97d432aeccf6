@@ -87,6 +87,24 @@
       "parentUuid": "5eaad161_05fd4c87",
       "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be4f8c1_521bda35",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:02:28Z",
+      "side": 1,
+      "message": "LG.  Note that we assume the compiler supports all aarch32 neon, but there can be compilers that only support armv7 but not armv7 aarch32.",
+      "parentUuid": "3c9fc4e2_7ff35ea4",
+      "revId": "3d972e34ea890184d930b6b7cf6f97d432aeccf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
