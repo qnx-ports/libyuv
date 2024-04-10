@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a1972e_be0d82b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:03:32Z",
+      "side": 1,
+      "message": "This may be problematic, since aarch32 is important too. We\u0027ll need to make another CL to back port.",
+      "parentUuid": "451a802b_61e95a6a",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a705bb2a_069bf605",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Neon is mandatory on AArch64 so this seems fine as-is just to be consistent with the rest of the existing naming? at least until we start adding more architecture extensions beyond neon?",
       "parentUuid": "a705bb2a_069bf605",
+      "revId": "15d5c43a190af6452526986531870653f7691f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e77d329_422216fe",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-10T20:03:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1c0efba3_5801deb8",
       "revId": "15d5c43a190af6452526986531870653f7691f99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
