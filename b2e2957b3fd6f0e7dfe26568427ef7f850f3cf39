@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9c2157_f8dea861",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-15T21:18:45Z",
+      "side": 1,
+      "message": "ldp can be faster on cortex a73 and cortex x1/x2/x3.",
+      "revId": "b2e2957b3fd6f0e7dfe26568427ef7f850f3cf39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92115d0c_8070e983",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3834,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-15T21:18:45Z",
+      "side": 1,
+      "message": "when there are 2 or more pointers, instead of post increments, would it make sense to use indexed addressing?  I think post increments end up being a microop",
+      "revId": "b2e2957b3fd6f0e7dfe26568427ef7f850f3cf39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9deb0ce_d5762435",
