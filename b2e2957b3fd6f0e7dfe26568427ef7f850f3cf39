@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116f13ed_1e9c2779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-15T18:33:02Z",
+      "side": 1,
+      "message": "This can be done for aarch32.",
+      "revId": "b2e2957b3fd6f0e7dfe26568427ef7f850f3cf39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9deb0ce_d5762435",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3840,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-15T18:33:02Z",
+      "side": 1,
+      "message": "Suggest using 2 16b registers with ldp or 4 with ld1\nIn the past I used 8b for because\n1. 64 bit was just as fast as 128 bit.  But thats not true on cortex x1\nBest will often be 2 or 4 full 128 bit vectors on high end.\n2. I didn\u0027t know how to implement ld4 16b for aarch32.  There is a way.  Instead of a single ld4 to full 128 bit registers, do 2 ld4 with 64 bit registers with even numbers for the first load and odd numbers for the second.\nIncreasing the amount processed per loop (currently 8 pixels) requires the calls change the alignment check and the any_function mask for the new size.\nIts also okay for the 64 bit code to processor more than 32 bit, if theres a reason... it\u0027ll just make the any do more work than necessary on 32 bit.",
+      "revId": "b2e2957b3fd6f0e7dfe26568427ef7f850f3cf39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
