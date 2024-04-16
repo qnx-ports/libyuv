@@ -16,6 +16,24 @@
       "message": "these can not overflow, so consider uzp2",
       "revId": "694e427a4ab1a6ac20ee44f132510079eb37d8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a756ce05_f8479203",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3791,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-16T12:22:46Z",
+      "side": 1,
+      "message": "I think uzp2 doesn\u0027t work here since we need rounding? We could pre-populate v0-v3.8h with 128 for the rounding and use umlal to allow us to use uzp2 instead, but this is slower on Cortex-A53 and Cortex-A55?",
+      "parentUuid": "72b2d55a_9564b1f4",
+      "revId": "694e427a4ab1a6ac20ee44f132510079eb37d8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
