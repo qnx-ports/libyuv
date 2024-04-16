@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79c3301a_b6e7462e",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3834,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-16T12:24:46Z",
+      "side": 1,
+      "message": "on some cores yes, but the integer units are underutilised in this kernel since we\u0027re doing only vector work so it ends up making no difference i think",
+      "parentUuid": "92115d0c_8070e983",
+      "revId": "b2e2957b3fd6f0e7dfe26568427ef7f850f3cf39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9deb0ce_d5762435",
         "filename": "source/row_neon64.cc",
         "patchSetId": 1
