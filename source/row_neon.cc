@@ -3321,10 +3321,10 @@ void ARGBMultiplyRow_NEON(const uint8_t* src_argb,
       "vmull.u8    q1, d2, d3                    \n"  // multiply G
       "vmull.u8    q2, d4, d5                    \n"  // multiply R
       "vmull.u8    q3, d6, d7                    \n"  // multiply A
-      "vrshrn.u16  d0, q0, #8                    \n"  // 16 bit to 8 bit B
-      "vrshrn.u16  d1, q1, #8                    \n"  // 16 bit to 8 bit G
-      "vrshrn.u16  d2, q2, #8                    \n"  // 16 bit to 8 bit R
-      "vrshrn.u16  d3, q3, #8                    \n"  // 16 bit to 8 bit A
+      "vshrn.u16   d0, q0, #8                    \n"  // 16 bit to 8 bit B
+      "vshrn.u16   d1, q1, #8                    \n"  // 16 bit to 8 bit G
+      "vshrn.u16   d2, q2, #8                    \n"  // 16 bit to 8 bit R
+      "vshrn.u16   d3, q3, #8                    \n"  // 16 bit to 8 bit A
       "vst4.8      {d0, d1, d2, d3}, [%2]!       \n"  // store 8 ARGB pixels.
       "bgt         1b                            \n"
       : "+r"(src_argb),   // %0
