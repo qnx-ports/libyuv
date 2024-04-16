@@ -16,6 +16,24 @@
       "message": "consider ldp with 2  16 byte vectors.",
       "revId": "824cd6df8a099235cd14be4ea15c487992fb18db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5ed3b8_db2e6163",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3813,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-16T12:23:51Z",
+      "side": 1,
+      "message": "done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5457433",
+      "parentUuid": "c4e197fe_42ab99a5",
+      "revId": "824cd6df8a099235cd14be4ea15c487992fb18db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
