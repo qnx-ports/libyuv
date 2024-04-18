@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6af28e5_a3b7e780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T19:20:14Z",
+      "side": 1,
+      "message": "Makes me a little nervous, but ok.  We can always roll back if it breaks something (e.g. an obscure OS or sandbox)\n\nIt would be good to support other os... windows, macos.\n\nI may still want to refactor this code to use pytorch/cpuinfo which provides \u0027uarch\u0027.  But /proc/cpuinfo parsing also can get to the MIDR to get uarch.\n\nThe goal for uarch would be different row functions for cpus that bottlenecks, like ST4 on A510.  Provide 2 row functions and use the appropriate one.\n\nIn mpeg, they expose things like this with fake features like st4_is_slow\n\nIn XNNPack the uarch is used for threading and kernels that use different scheduling, or different load instructions, depending on the microarch.  But I dont plan to implement the full threading in libyuv.\nA light weight version would detect the uarch of the current thread, allowing different row functions for little cores vs big cores.  But the call to detect the current thread is fairly slow... about 1ms.\nSo probably wont do uarch detect... the row functions will be generally optimized to be good on average.\nNew instruction sets limit the number of cpus they run on, allowing code to be more specifically optimized.",
+      "revId": "2aedcd5304468840850aeb4316b5fd9aa6ae9c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
