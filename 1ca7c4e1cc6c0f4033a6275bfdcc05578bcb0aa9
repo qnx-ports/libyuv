@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fdc4da5_0a638fbc",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T18:52:16Z",
+      "side": 1,
+      "message": "naming wise I tend to use \u0027YUV\u0027 to generically refer to 3 plane formats.\nThe I420 etc means\nI\u003dbt.601 video range.\n420 \u003d subsampling.  444, 422 and 400 are supported.\nWith 10 bit it is I010\nI\u003dbt.601\n0 \u003d 420.  2 \u003d 422.  4 \u003d 444\n10 \u003d 10 bits, 12 \u003d 12 bits.  9 or 16 are possible but usually not supported.\nusing low 10 bits for 3 plane formats, but high 10 bits for biplanar\n\nNVToRGB is okay I guess.  There can be other forms of NV12.  P010 is the 10 bit version of NV12.",
+      "revId": "1ca7c4e1cc6c0f4033a6275bfdcc05578bcb0aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
