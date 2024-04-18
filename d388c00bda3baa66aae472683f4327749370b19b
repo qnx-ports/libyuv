@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029476fe_3dcf992e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T18:59:04Z",
+      "side": 1,
+      "message": "You can remove a cmp from the inner loop and use the subs width.\nCan be done as followup",
+      "revId": "d388c00bda3baa66aae472683f4327749370b19b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6f1fbc_f870dabd",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T18:59:04Z",
+      "side": 1,
+      "message": "consider removing cmp.  use subs on width\nThen sub or whilelt before the loop",
+      "revId": "d388c00bda3baa66aae472683f4327749370b19b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
