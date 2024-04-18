@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d72afa_1bcabf4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T19:40:43Z",
+      "side": 1,
+      "message": "George, needs a rebase merge... can you fix this up?\nSuggest looking to remove the cmp from the loop.\n\nMy normal method of looping for this sort of thing is\n\n// see if there is enough for the main loop.. if not, skip to remainder\nsub counter, amount\nblt 2f\n\nl:\n  subs sub counter, amount\n  jge 1b\n\n2:\nadds counter, amount\nor ands counter, amount-1\nbz 9f\n\nhandle remainder\n9: ret\n\nIn libyuv, remainders almost never happen... a typical camera frame is 1280x720\nmachine learning also tends to make nice round sizes like 512x512\n\nSo having remainder handling in the main sve functions will slightly hurt performance.\n\nAnother approach would be 2 functions.  The regular one, and an \u0027any\u0027 version.  But implement the \u0027any\u0027 with similar sve code, but using whilelt.\nThe non-any can be a single loop, guaranteed to be a multiple of vector length.\nIn the calling code, we\u0027d need to select the function to use based on being a multiple of vector length.  Slightly more complicated\n\nMostly the goal is to keep the sve simple and reasonably efficient for the common case, and not worry about performance for the remainder handling, which is normally done with row_any.cc",
+      "revId": "d388c00bda3baa66aae472683f4327749370b19b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f6f1fbc_f870dabd",
