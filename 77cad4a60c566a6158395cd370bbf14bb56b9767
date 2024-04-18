@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070eec9e_c72f6462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-18T18:18:24Z",
+      "side": 1,
+      "message": "These formats are no longer common, but thanks.  They were used more in each laptops and phones when displays were 16 bit rgb.\nThe new one that matters is AB30 / AR30 which is 2:10:10:10\nYou could look at row_gcc.cc for how they get integrated, but ideally a macro to convert 2.14 A,R,G,B would allow new YUV to RGB functions to be written.  e.g.\n\ngrep AR30Row_AVX2 *\nrow_gcc.cc:void ARGBToAR30Row_AVX2(const uint8_t* src, uint8_t* dst, int width) {\nrow_gcc.cc:void ABGRToAR30Row_AVX2(const uint8_t* src, uint8_t* dst, int width) {\nrow_gcc.cc:void OMITFP I422ToAR30Row_AVX2(const uint8_t* y_buf,\nrow_gcc.cc:void OMITFP I210ToAR30Row_AVX2(const uint16_t* y_buf,\nrow_gcc.cc:void OMITFP I212ToAR30Row_AVX2(const uint16_t* y_buf,\nrow_gcc.cc:void OMITFP I410ToAR30Row_AVX2(const uint16_t* y_buf,\nrow_gcc.cc:void OMITFP P210ToAR30Row_AVX2(const uint16_t* y_buf,\nrow_gcc.cc:void OMITFP P410ToAR30Row_AVX2(const uint16_t* y_buf,\nMostly implemented with existing macros and a store:\nSTOREAR30_AVX2",
+      "revId": "77cad4a60c566a6158395cd370bbf14bb56b9767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
