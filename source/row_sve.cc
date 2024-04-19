@@ -95,13 +95,14 @@ void I444ToARGBRow_SVE2(const uint8_t* src_y,
       // Run bulk of computation with an all-true predicate to avoid predicate
       // generation overhead.
       "ptrue    p1.h                                    \n"
+      "sub      %w[width], %w[width], %w[vl]            \n"
       "1:                                               \n" READYUV444_SVE
           I4XXTORGB_SVE RGBTORGBA8_SVE
-      "sub      %w[width], %w[width], %w[vl]            \n"
+      "subs     %w[width], %w[width], %w[vl]            \n"
       "st2h     {z16.h, z17.h}, p1, [%[dst_argb]]       \n"
       "add      %[dst_argb], %[dst_argb], %[vl], lsl #2 \n"
-      "cmp      %w[width], %w[vl]                       \n"
       "b.gt     1b                                      \n"
+      "add      %w[width], %w[width], %w[vl]            \n"
 
       // Calculate a predicate for the final iteration to deal with the tail.
       "2:                                               \n"
