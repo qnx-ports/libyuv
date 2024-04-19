@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcaf835b_8df20b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-19T12:38:45Z",
+      "side": 1,
+      "message": "Agree with the goal of keeping the common resolution cases fast. I\u0027ve been benchmarking my code assuming a width of 720 but can switch to 1280 for future benchmarking.\n\nJust out of interest I tried avoiding the WHILELT entirely and having an \"any\" kernel but I couldn\u0027t observe any performance delta. It would make sense to try and avoid the predicated tail more aggressively if WHILELT and similar instructions were really expensive, but even on little cores they\u0027re pretty much fine as long as you\u0027re not running them in a tight loop like we have in some libyuv kernels.",
+      "parentUuid": "c6d72afa_1bcabf4b",
+      "revId": "d388c00bda3baa66aae472683f4327749370b19b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f6f1fbc_f870dabd",
