@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17f76b1_6747f2d2",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-19T06:40:56Z",
+      "side": 1,
+      "message": "remove cmp and use subs on width for loop counter",
+      "revId": "43ddec91909b20078e4f3839960103bb4beb54e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
