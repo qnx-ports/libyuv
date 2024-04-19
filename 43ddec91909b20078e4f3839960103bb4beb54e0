@@ -16,6 +16,24 @@
       "message": "remove cmp and use subs on width for loop counter",
       "revId": "43ddec91909b20078e4f3839960103bb4beb54e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f54c88fb_cc85e2ab",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-19T12:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17f76b1_6747f2d2",
+      "revId": "43ddec91909b20078e4f3839960103bb4beb54e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
