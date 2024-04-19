@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e336e509_f54eaa0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-19T00:09:31Z",
+      "side": 1,
+      "message": "Pretty long subject line. This could be broken up.",
+      "revId": "198ffbc47c731b0be3fe354f49e908ffd40416eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c62f595_62d32b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-19T00:09:31Z",
+      "side": 1,
+      "message": "I can\u0027t vote here for some reason.",
+      "revId": "198ffbc47c731b0be3fe354f49e908ffd40416eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
