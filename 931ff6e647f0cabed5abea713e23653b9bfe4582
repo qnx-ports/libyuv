@@ -16,6 +16,23 @@
       "message": "Bumped version and reduced description",
       "revId": "931ff6e647f0cabed5abea713e23653b9bfe4582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b202af_034f21b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-19T16:01:08Z",
+      "side": 1,
+      "message": "Looks like some preexisting failures for sys/auxv.h on non-linux platforms.",
+      "revId": "931ff6e647f0cabed5abea713e23653b9bfe4582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
