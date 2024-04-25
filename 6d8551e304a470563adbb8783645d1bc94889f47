@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3686c3c_e2bdfd6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T20:54:20Z",
+      "side": 1,
+      "message": "as far as I know udot is safe in linux 64 bit mode, but older linux kernels throw an exception in 32 bit, so we have to be careful to avoid udot.",
+      "revId": "6d8551e304a470563adbb8783645d1bc94889f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed6ab0d_33cee14d",
+        "filename": "source/compare_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T20:54:20Z",
+      "side": 1,
+      "message": "nit: technically the accumulators are .4s",
+      "revId": "6d8551e304a470563adbb8783645d1bc94889f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8e0ded_0a163612",
+        "filename": "source/compare_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T20:54:20Z",
+      "side": 1,
+      "message": "this version would likely benefit from unrolling by 2\nuse ldp for loads\nand 2 udot with different accumulators, allowing 2 vector units to dispatch at once",
+      "revId": "6d8551e304a470563adbb8783645d1bc94889f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
