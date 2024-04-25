@@ -16,6 +16,23 @@
       "message": "I\u0027ve tested this on Linux and Apple Silicon, I don\u0027t have access to a Windows device to test on though.",
       "revId": "4e4034c2e643191947776c08d8f75be2acf4666e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e37a23_1da5e340",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T21:26:14Z",
+      "side": 1,
+      "message": "we only use this on arm at the moment, so add the additional checks",
+      "revId": "4e4034c2e643191947776c08d8f75be2acf4666e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
