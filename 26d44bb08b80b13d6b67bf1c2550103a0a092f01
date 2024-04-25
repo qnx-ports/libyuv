@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd54c3cc_ed8e4096",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T21:03:47Z",
+      "side": 1,
+      "message": "I think you only intend to use this on ARM, and it is likely not allowed in the chromium sandbox, so additional ifdef would be good.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e79589_0696f797",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T21:03:47Z",
+      "side": 1,
+      "message": "I think this only works on ARM?  The old code could run on x86 to parse and arm /proc/cpuinfo but the hwcap only works when built for arm and run on arm or qemu.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1933e5e1_b8fce5cc",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-25T21:03:47Z",
+      "side": 1,
+      "message": "keep in mind __APPLE__ includes many devices, OS and cpus.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
