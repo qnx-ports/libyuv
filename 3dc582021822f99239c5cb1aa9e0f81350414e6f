@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbe29cbb_fd15c302",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T19:38:18Z",
+      "side": 1,
+      "message": "should this be size_t so it can be int32 if sve ever supports aarch32?",
+      "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ad572f_6919341d",
         "filename": "source/row_sve.cc",
         "patchSetId": 3
