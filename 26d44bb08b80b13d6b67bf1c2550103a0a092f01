@@ -125,6 +125,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7ce4ff1_0ffec4d8",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:32:48Z",
+      "side": 1,
+      "message": "This will fail on aarch32 devices that dont have Neon.  If there is a mechanism for detecting Neon, it would be good to use it.\nOtherwise I\u0027ve been trying to provide a way at compile time to build libyuv with all neon disabled.  Mainly comes up on embedded applications\nFuture embedded devices might have Helium and current ones can use ASIMD32, if there is a need to optimize for them.\nEmbedded applications that use libyuv would be things like finger print scanners, webcams and always on chips",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7feed21_9527c3b3",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:32:48Z",
+      "side": 1,
+      "message": "This would break x86 Windows?",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1933e5e1_b8fce5cc",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -136,6 +170,40 @@
       "writtenOn": "2024-04-25T21:03:47Z",
       "side": 1,
       "message": "keep in mind __APPLE__ includes many devices, OS and cpus.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff250a2f_a7fddfe9",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:32:48Z",
+      "side": 1,
+      "message": "In general \u0027ARM\u0027 supports AArch32 and well as AArch64.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd31b29_d3125be8",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:32:48Z",
+      "side": 1,
+      "message": "Is I8MM supported?  When I use pytorch/cpuinfo isa_info on Apple M1 is reports I8MM is not supported.\n\nIt might be handy to expose these platform specific calls in the util/cpu_id.c or the unit test, so we can see the low levels or raw values and ensure they build/run on their own.",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
