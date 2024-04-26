@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15101a4d_3ddef7c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T16:28:05Z",
+      "side": 1,
+      "message": "Looks good.  Tune for A510... the other CPUs will tend to not care about scheduling.  I found Cortex X1 also benefits from scheduling, but also prefers a tight loop, not too unrolled.",
+      "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ad572f_6919341d",
