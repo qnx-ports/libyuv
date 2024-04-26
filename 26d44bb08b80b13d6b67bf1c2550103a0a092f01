@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "768ffa70_cc451abf",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-26T15:25:02Z",
+      "side": 1,
+      "message": "I think these functions are also used by Chromium so perhaps they are fine in the sandbox? e.g. https://source.chromium.org/chromium/chromium/src/+/main:v8/src/base/cpu.cc;l\u003d786?q\u003dIsProcessorFeaturePresent%20base%2F\u0026ss\u003dchromium%2Fchromium%2Fsrc",
+      "parentUuid": "cd54c3cc_ed8e4096",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81e79589_0696f797",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
