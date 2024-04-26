@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a943b1_8caf9def",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:13:58Z",
+      "side": 1,
+      "message": "A simple immediate will also work, hiding the details on how movi works?\nmovi      v2.4s, #0xfffff",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fcd90b_7929c02f",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:13:58Z",
+      "side": 1,
+      "message": "tbl is a little slow on some cpus\ncortex-a35.txt- - throughput: 2.000 CPI (1.538 ns @ 1.300 GHz)\ncortex-a510r1.txt- - throughput: 0.499 CPI (0.341 ns @ 1.461 GHz)\ncortex-a53.txt- - throughput: 1.001 CPI (0.526 ns @ 1.903 GHz)\ncortex-a55r1.txt- - throughput: 1.002 CPI (0.499 ns @ 2.007 GHz)\ncortex-a55.txt- - throughput: 1.001 CPI (0.566 ns @ 1.769 GHz)\ncortex-a57.txt- - throughput: 1.502 CPI (0.765 ns @ 1.963 GHz)\ncortex-a715.txt- - throughput: 0.500 CPI (0.228 ns @ 2.192 GHz)\ncortex-a72.txt- - throughput: 1.498 CPI (0.596 ns @ 2.513 GHz)\ncortex-a73.txt- - throughput: 1.501 CPI (0.635 ns @ 2.363 GHz)\ncortex-a75r2.txt- - throughput: 1.486 CPI (0.741 ns @ 2.004 GHz)\ncortex-a75.txt- - throughput: 1.501 CPI (0.535 ns @ 2.807 GHz)\ncortex-a76.txt- - throughput: 0.485 CPI (0.186 ns @ 2.604 GHz)\ncortex-a78.txt- - throughput: 0.488 CPI (0.205 ns @ 2.383 GHz)\ncortex-x1.txt- - throughput: 0.488 CPI (0.194 ns @ 2.510 GHz)\ncortex-x2.txt- - throughput: 0.250 CPI (0.144 ns @ 1.730 GHz)\ncortex-x3.txt- - throughput: 0.250 CPI (0.107 ns @ 2.346 GHz)\ndenver.txt- - throughput: 1.528 CPI (1.433 ns @ 1.066 GHz)\nexynos-m1.txt- - throughput: 2.003 CPI (0.769 ns @ 2.605 GHz)\nexynos-m2.txt- - throughput: 2.000 CPI (0.863 ns @ 2.317 GHz)\nexynos-m4.txt- - throughput: 0.499 CPI (0.362 ns @ 1.380 GHz)\nexynos-m5.txt- - throughput: 0.499 CPI (0.183 ns @ 2.736 GHz)\nkryo.txt- - throughput: 1.001 CPI (0.465 ns @ 2.153 GHz)\n\nand requires tbl registers, which makes it difficult to use in functions that have register pressure",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f98be47_1b544780",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1752,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:13:58Z",
+      "side": 1,
+      "message": "I havent tried BIF before... I assume its either not in aarch32 or slow on older CPUs?",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150c0361_71b75835",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-26T20:13:58Z",
+      "side": 1,
+      "message": "overall this is too many registers/complex to drop into functions like YUV to RGB\nWould it help to have 2 functions\nARGBToAR30 which is identical to ABGRToAB30\nARGBToAB30 which is identical to ABGRToAR30, reversing the RGB order\n\nThe common case is same endian, so ARGBToAR30 doesn\u0027t require tbl.\nWhat if you first take 8 bit argb and made it 16 bit, replicating values.  Probably UZP1 / UZP2\nThen use SRI to combine fields\nA (2 bits) with R (10 bits) and G (4 upper bits).  2 SRI\nG (lower 6 bits) with B (10 bits).  1 SHL+1 SHI\ncombine upper ARG with lower GB using zip or st2.",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
