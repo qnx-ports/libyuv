@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce80961_3e2a0f17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-26T20:18:05Z",
+      "side": 1,
+      "message": "These are the equivalent changes in libaom and libvpx:\n\n* https://aomedia-review.googlesource.com/c/aom/+/178022\n* https://aomedia-review.googlesource.com/c/aom/+/178023\n* https://chromium-review.googlesource.com/c/webm/libvpx/+/4833331",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59730ada_e276b070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-26T20:18:05Z",
+      "side": 1,
+      "message": "\u003e James, can you review this cpu detect change for libyuv?\n\nLooks OK aside from your comments.",
+      "parentUuid": "55e56cea_b5fceb9b",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd54c3cc_ed8e4096",
@@ -49,6 +84,24 @@
       "side": 1,
       "message": "I think these functions are also used by Chromium so perhaps they are fine in the sandbox? e.g. https://source.chromium.org/chromium/chromium/src/+/main:v8/src/base/cpu.cc;l\u003d786?q\u003dIsProcessorFeaturePresent%20base%2F\u0026ss\u003dchromium%2Fchromium%2Fsrc",
       "parentUuid": "cd54c3cc_ed8e4096",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7055b02f_767b6105",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-04-26T20:18:05Z",
+      "side": 1,
+      "message": "\u003e I think these functions are also used by Chromium so perhaps they are fine in the sandbox? e.g. https://source.chromium.org/chromium/chromium/src/+/main:v8/src/base/cpu.cc;l\u003d786?q\u003dIsProcessorFeaturePresent%20base%2F\u0026ss\u003dchromium%2Fchromium%2Fsrc\n\nWe haven\u0027t run into any issues in libaom or libvpx where both have runtime cpu detection enabled for Arm targets now.",
+      "parentUuid": "768ffa70_cc451abf",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
