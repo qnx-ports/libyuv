@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89e90a8_c58ce7bc",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T18:10:48Z",
+      "side": 1,
+      "message": "usually best to weave these together with neon math, such as the trn1 below.  You can only dispatch 1 or 2 per cycle.  A510 can do 2 per cycle.\nMaybe weave the inch/w as well, since those are different ports from prfm and trn1",
+      "revId": "aedb9c66ec40ee6c2ad7dd2b2810b896be8852e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6625757_9da05a11",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T18:10:48Z",
+      "side": 1,
+      "message": "note that ARGB is used on all platforms except Android, which uses ABGR.  - R,G,B,A in memory, ABGR in a register.  The R\u0026G will need swapping somehow for that one.",
+      "revId": "aedb9c66ec40ee6c2ad7dd2b2810b896be8852e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
