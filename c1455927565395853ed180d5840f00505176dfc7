@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8808592_75ace515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "looks like a win but could remove the other cmp",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea549d81_1779c04e",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "should RA use the same? \nuqshrnt     z18.b, z19.h, #6\n\nIf you zip the results together BG and RA to get BGRA, the store becomes STP which may be at least break even, but faster on A510\n\nOn row_neon64 I use macros to allow ST2 to be avoided with compile time code if you want to try both methods.",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131da577_fac3fe5b",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "change to subs\nsubs      %w[width], %w[width], %w[vl]\nremove sub below.",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902b4385_567b544a",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "is st2h slow on A510?  on neon I would tend to zip the 2 vectors and use stp.\n\nThis BG, RA format wont lend itself to outputting 3 byte BGR, which needs st3b\nOn x86 the stores are complicated so I did a set of store macros similar to the read.  e.g.\n\n// Store 8 RGB24 values.\n#define STORERGB24                                                      \\\n  \"punpcklbw   %%xmm1,%%xmm0                                        \\n\" \\\n  \"punpcklbw   %%xmm2,%%xmm2                                        \\n\" \\\n  \"movdqa      %%xmm0,%%xmm1                                        \\n\" \\\n  \"punpcklwd   %%xmm2,%%xmm0                                        \\n\" \\\n  \"punpckhwd   %%xmm2,%%xmm1                                        \\n\" \\\n  \"pshufb      %%xmm5,%%xmm0                                        \\n\" \\\n  \"pshufb      %%xmm6,%%xmm1                                        \\n\" \\\n  \"palignr     $0xc,%%xmm0,%%xmm1                                   \\n\" \\\n  \"movq        %%xmm0,(%[dst_rgb24])                                \\n\" \\\n  \"movdqu      %%xmm1,0x8(%[dst_rgb24])                             \\n\" \\\n  \"lea         0x18(%[dst_rgb24]),%[dst_rgb24]                      \\n\"\n\nwith st3/4 its so easy on ARM I didnt bother, but with AR30 it would be worth it, and you might want to put the st2h in a macro that you can reuse and change in the future.",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46b547c_221512a1",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "b.ge if you want the main loop to handle the last full vector.\ne.g width is 32 and vl is 16\nsub 16 from width.  width is 16.\ndo main loop once\nsub 16 from width.  width is 0.\nb.ge to do the 2nd loop\nsub 16 from width.  width is -16.\nfall out of main loop and check if there is a remainder\n\nadd 16 to width.  width is 0.  no remainder\nyou can use adds and take a branch for no remainder case",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b573845_041410b4",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-27T16:43:06Z",
+      "side": 1,
+      "message": "its probably possible to compute this predicate earlier, if it has high latency.\nIt can be avoided with a branch around this code, if width is 0",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
