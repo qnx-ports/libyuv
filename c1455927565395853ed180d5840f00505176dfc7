@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b3a586_df1d2049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8808592_75ace515",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea549d81_1779c04e",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fce5cb7_044fec3a",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "UQSHRNT has worse performance than TRN1 so the existing approach is nicer if we can control the format of the alpha component to be 8bit rather than needing to widen it to 16bit.\n\nI think ST2H performs quite a bit better than ZIP1 + ST1B + ST1B on Cortex-A720 (there is no 2-reg ST1 or STP in SVE until SVE2.1) so we can\u0027t generally prefer the ZIP version. According to the Cortex-A510 software optimization guide ( https://developer.arm.com/documentation/PJDOC-466751330-536816/latest/ ) the performance of ST2H is fine unlike the Neon ones, so there should be no need to special case it?",
+      "parentUuid": "ea549d81_1779c04e",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "131da577_fac3fe5b",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2024-04-27T16:43:06Z",
       "side": 1,
       "message": "change to subs\nsubs      %w[width], %w[width], %w[vl]\nremove sub below.",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cc0d59_e08168dc",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131da577_fac3fe5b",
       "revId": "c1455927565395853ed180d5840f00505176dfc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ac25900_0c5f44df",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "ST2H is fine on A510, throughput of one every two cycles. Agree that we\u0027ll need a different approach for RGB24/RAW, I\u0027m not sure the best approach for that yet, will need to try a few different things.",
+      "parentUuid": "902b4385_567b544a",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b46b547c_221512a1",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -88,6 +166,24 @@
       "writtenOn": "2024-04-27T16:43:06Z",
       "side": 1,
       "message": "b.ge if you want the main loop to handle the last full vector.\ne.g width is 32 and vl is 16\nsub 16 from width.  width is 16.\ndo main loop once\nsub 16 from width.  width is 0.\nb.ge to do the 2nd loop\nsub 16 from width.  width is -16.\nfall out of main loop and check if there is a remainder\n\nadd 16 to width.  width is 0.  no remainder\nyou can use adds and take a branch for no remainder case",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b7f53b_722b1041",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46b547c_221512a1",
       "revId": "c1455927565395853ed180d5840f00505176dfc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +201,24 @@
       "writtenOn": "2024-04-27T16:43:06Z",
       "side": 1,
       "message": "its probably possible to compute this predicate earlier, if it has high latency.\nIt can be avoided with a branch around this code, if width is 0",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa2c3ba_0fddb9a8",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:55:56Z",
+      "side": 1,
+      "message": "With the ADDS change this should be rarely executed so not going to worry about this?",
+      "parentUuid": "7b573845_041410b4",
       "revId": "c1455927565395853ed180d5840f00505176dfc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
