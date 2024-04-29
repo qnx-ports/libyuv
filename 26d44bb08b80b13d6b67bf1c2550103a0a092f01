@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73578f9_b6964628",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "Acknowledged for sandbox.\nStill a good idea to do the ifdef selectively for ARM unless you intend to implement x86 or ppc.",
+      "parentUuid": "7055b02f_767b6105",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e79589_0696f797",
@@ -137,6 +155,41 @@
       "side": 1,
       "message": "The actual hwcap testing code here should be fine running on any architecture since it is just checking the bitwise-and, I wrote it so that a user can in theory inject their own hwcap values as parameters in the same way that a user could in theory inject their own /proc/cpuinfo?\n\nAs far as I know though there isn\u0027t a way to currently provide a path to a custom /proc/cpuinfo though since the path is hardcoded in the call in GetCpuFlags, so I haven\u0027t attempted to wire up a way for a user to specify a custom set of hwcaps via an environment variable or similar.",
       "parentUuid": "81e79589_0696f797",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1b343e_9da16a74",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7a20536e_577d8eae",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4512ae1f_3023d7b7",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "Are these hwcap values really AARCH64 specific?  Seems like they are ARM, at least for dot product / i8mm.",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40892b25_eb64764e",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "If this is not called from AArch32, can you\n1. ifdef it so we dont have an unused function and/or\n2. implement an AArch32 version.\nIn AArch32 this would benefit from the ability to run under qemu with or without Neon, and in future the dot product functions",
+      "parentUuid": "cd5e10e1_a395b608",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7feed21_9527c3b3",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -207,6 +278,24 @@
       "side": 1,
       "message": "Not tested but I think this is okay, since PF_ARM_V82_DP_INSTRUCTIONS_AVAILABLE would not be defined on non-Arm windows platforms?",
       "parentUuid": "f7feed21_9527c3b3",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940b1cf9_ed28c06e",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "but if you run this function, no features are detected (e.g. AVX) and NEON is enabled by default, which is wrong for non-ARM cpus.\nWin32 is more of an OS that can run any cpu, like linux.  There are PPC (xbox), arm (windows) and x86.\nAlso WIN32 doesnt specify the compiler, so it may be Visual C, Intel C, or clangcl, so the macros may vary, but I think PF_ARM_V82_DP_INSTRUCTIONS_AVAILABLE would be okay.",
+      "parentUuid": "d3329955_ebeb3f94",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -294,6 +383,24 @@
       "side": 1,
       "message": "I believe later Apple Silicon models support the I8MM extension. Agree that it could be good to hook the platform-specific calls up in a way that allows them to be unit-tested, do you have a preferred code layout in mind?",
       "parentUuid": "dbd31b29_d3125be8",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1da0dc_d6a40831",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T18:25:07Z",
+      "side": 1,
+      "message": "I think the proper test is mock, but I\u0027m not sure its worth the time.\n\nA practical test is actually run on M1/M2/M3 and see which features are detected... make sure the util/cpuid.c tool outputs enough information to confirm, and run a benchmark that uses i8mm.\nThen extend /unit_test.cc to have macros to disable I8MM.  See how NEON is disabled\nunit_test.cc:  if (TestEnv(\"LIBYUV_DISABLE_NEON\")) {\nThen run the benchmark again with I8MM or NEONDOT disabled to compare performance to NEON to ensure the I8MM is working well.\nOn linux/android I would use perf or simpleperf to record/report on a benchmark to ensure the expected row function is used.",
+      "parentUuid": "976b8d8c_9f350b14",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
