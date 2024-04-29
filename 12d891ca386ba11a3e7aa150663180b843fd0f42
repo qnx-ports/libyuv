@@ -33,6 +33,24 @@
       "message": "would it help to have\nadds      %w[width], %w[width], %w[vl] \nb.eq 9f\nto skip the remainder when width is (usually) a multiple of vl?",
       "revId": "12d891ca386ba11a3e7aa150663180b843fd0f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ca4f66_961369b9",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "413def90_140810e9",
+      "revId": "12d891ca386ba11a3e7aa150663180b843fd0f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
