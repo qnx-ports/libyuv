@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1c6bfe_86e73eb3",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T17:44:11Z",
+      "side": 1,
+      "message": "Doh!  No STP and ST3/ST4 are crazy slow, so overall ST2 is best, allowing 2 registers.\nUnlike Neon where ST2 is slower than STP or ST1 with 2 registers.\n\nAlthough this function is pretty good, this approach doesnt scale to the other RGB formats.  There are a number of supported RGB formats in libyuv.  See video_common.h\n  // 13 Primary RGB formats: 4 32 bpp, 2 24 bpp, 3 16 bpp, 1 10 bpc 2 64 bpp\n  FOURCC_ARGB \u003d FOURCC(\u0027A\u0027, \u0027R\u0027, \u0027G\u0027, \u0027B\u0027),\n  FOURCC_BGRA \u003d FOURCC(\u0027B\u0027, \u0027G\u0027, \u0027R\u0027, \u0027A\u0027),\n  FOURCC_ABGR \u003d FOURCC(\u0027A\u0027, \u0027B\u0027, \u0027G\u0027, \u0027R\u0027),\n  FOURCC_AR30 \u003d FOURCC(\u0027A\u0027, \u0027R\u0027, \u00273\u0027, \u00270\u0027),  // 10 bit per channel. 2101010.\n  FOURCC_AB30 \u003d FOURCC(\u0027A\u0027, \u0027B\u0027, \u00273\u0027, \u00270\u0027),  // ABGR version of 10 bit\n  FOURCC_AR64 \u003d FOURCC(\u0027A\u0027, \u0027R\u0027, \u00276\u0027, \u00274\u0027),  // 16 bit per channel.\n  FOURCC_AB64 \u003d FOURCC(\u0027A\u0027, \u0027B\u0027, \u00276\u0027, \u00274\u0027),  // ABGR version of 16 bit\n  FOURCC_24BG \u003d FOURCC(\u00272\u0027, \u00274\u0027, \u0027B\u0027, \u0027G\u0027),\n  FOURCC_RAW \u003d FOURCC(\u0027r\u0027, \u0027a\u0027, \u0027w\u0027, \u0027 \u0027),\n  FOURCC_RGBA \u003d FOURCC(\u0027R\u0027, \u0027G\u0027, \u0027B\u0027, \u0027A\u0027),\n  FOURCC_RGBP \u003d FOURCC(\u0027R\u0027, \u0027G\u0027, \u0027B\u0027, \u0027P\u0027),  // rgb565 LE.\n  FOURCC_RGBO \u003d FOURCC(\u0027R\u0027, \u0027G\u0027, \u0027B\u0027, \u0027O\u0027),  // argb1555 LE.\n  FOURCC_R444 \u003d FOURCC(\u0027R\u0027, \u00274\u0027, \u00274\u0027, \u00274\u0027),  // argb4444 LE.\n\nOf these the important formats are\nARGB\nABGR\nRGB (RAW)\nBGR (RGB24)\nAR30\n\nTo reorder channels, I think you\u0027ll need RGBToRGBA macros for each format, so it may be better to create store macros that include the ST2H\nThen you can weave the R,G,B in different orders or use ST3B if necessary.",
+      "parentUuid": "0fce5cb7_044fec3a",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "131da577_fac3fe5b",
@@ -153,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552ca7eb_3b413c34",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T17:44:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3ac25900_0c5f44df",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 11
+      },
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b46b547c_221512a1",
@@ -219,6 +261,24 @@
       "side": 1,
       "message": "With the ADDS change this should be rarely executed so not going to worry about this?",
       "parentUuid": "7b573845_041410b4",
+      "revId": "c1455927565395853ed180d5840f00505176dfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37770855_5c7a26be",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-04-29T17:44:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9aa2c3ba_0fddb9a8",
       "revId": "c1455927565395853ed180d5840f00505176dfc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
