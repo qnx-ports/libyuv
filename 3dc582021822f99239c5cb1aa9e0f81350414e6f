@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "badb7a75_03d227b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3baa33c0_538e5edb",
+      "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbe29cbb_fd15c302",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e134f1e3_e94859c2",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:17:49Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any plans for SVE to be available for AArch32 so I\u0027d prefer to use the exact type sizes for now?",
+      "parentUuid": "bbe29cbb_fd15c302",
+      "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ad572f_6919341d",
@@ -65,6 +101,24 @@
       "writtenOn": "2024-04-26T16:25:32Z",
       "side": 1,
       "message": "Remove the \u0027volatile\u0027 from future asm.  Make sure to declare clobbers correctly.\nVolatile is not respected by link time code generation (pgolite) and confuses clang-format.",
+      "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd5936d_5ae45b47",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T13:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ad572f_6919341d",
       "revId": "3dc582021822f99239c5cb1aa9e0f81350414e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
