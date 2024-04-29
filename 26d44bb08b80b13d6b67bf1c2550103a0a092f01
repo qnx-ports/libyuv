@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a20536e_577d8eae",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T12:11:06Z",
+      "side": 1,
+      "message": "The actual hwcap testing code here should be fine running on any architecture since it is just checking the bitwise-and, I wrote it so that a user can in theory inject their own hwcap values as parameters in the same way that a user could in theory inject their own /proc/cpuinfo?\n\nAs far as I know though there isn\u0027t a way to currently provide a path to a custom /proc/cpuinfo though since the path is hardcoded in the call in GetCpuFlags, so I haven\u0027t attempted to wire up a way for a user to specify a custom set of hwcaps via an environment variable or similar.",
+      "parentUuid": "81e79589_0696f797",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7ce4ff1_0ffec4d8",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -142,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd5e10e1_a395b608",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T12:11:06Z",
+      "side": 1,
+      "message": "This is AArch64CpuCaps? ArmCpuCaps does not use this code path.",
+      "parentUuid": "e7ce4ff1_0ffec4d8",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7feed21_9527c3b3",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -153,6 +189,24 @@
       "writtenOn": "2024-04-26T20:32:48Z",
       "side": 1,
       "message": "This would break x86 Windows?",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3329955_ebeb3f94",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T12:11:06Z",
+      "side": 1,
+      "message": "Not tested but I think this is okay, since PF_ARM_V82_DP_INSTRUCTIONS_AVAILABLE would not be defined on non-Arm windows platforms?",
+      "parentUuid": "f7feed21_9527c3b3",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -193,6 +247,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd041224_6a79ec2f",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T12:11:06Z",
+      "side": 1,
+      "message": "Not sure what you mean? This is AArch64CpuCaps, AArch32 continues to take the old /proc/cpuinfo code path in ArmCpuCaps.",
+      "parentUuid": "ff250a2f_a7fddfe9",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd31b29_d3125be8",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -204,6 +276,24 @@
       "writtenOn": "2024-04-26T20:32:48Z",
       "side": 1,
       "message": "Is I8MM supported?  When I use pytorch/cpuinfo isa_info on Apple M1 is reports I8MM is not supported.\n\nIt might be handy to expose these platform specific calls in the util/cpu_id.c or the unit test, so we can see the low levels or raw values and ensure they build/run on their own.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976b8d8c_9f350b14",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-04-29T12:11:06Z",
+      "side": 1,
+      "message": "I believe later Apple Silicon models support the I8MM extension. Agree that it could be good to hook the platform-specific calls up in a way that allows them to be unit-tested, do you have a preferred code layout in mind?",
+      "parentUuid": "dbd31b29_d3125be8",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
