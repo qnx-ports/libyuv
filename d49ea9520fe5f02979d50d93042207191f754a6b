@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c0a7e0_90711c14",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-05-01T21:31:30Z",
+      "side": 1,
+      "message": "nit: here and in the below function, can you put these macros on their own line?\n\nI realize the rest of the file does this too, but I think that might be a clang formatting bug.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 67
+      },
+      "revId": "d49ea9520fe5f02979d50d93042207191f754a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
