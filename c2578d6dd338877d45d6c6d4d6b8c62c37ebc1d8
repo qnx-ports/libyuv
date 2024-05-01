@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2520920_4450190f",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-01T17:59:21Z",
+      "side": 1,
+      "message": "I notice you always load/store full vectors.  Most row functions in libyuv do try to write a full vector, but is this somewhat a requirement in sve?  To write less than a vector you\u0027d need to come up with a predicate for half a vector or whatnot?",
+      "fixSuggestions": [
+        {
+          "fixId": "e9b09813_dc33c083",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 531,
+                "startChar": 0,
+                "endLine": 532,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b    {z1.b}, p0, [%[dst]]         \\n\"  // 16 bytes\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 541,
+                "startChar": 0,
+                "endLine": 542,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b    {z1.b}, p0, [%[dst]]         \\n\"  // 16 bytes\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 575,
+                "startChar": 0,
+                "endLine": 576,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b    {z1.b}, p0, [%[dst]]         \\n\"  // 16 bytes\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 587,
+                "startChar": 0,
+                "endLine": 588,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b    {z1.b}, p0, [%[dst]]         \\n\"  // 16 bytes\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c2578d6dd338877d45d6c6d4d6b8c62c37ebc1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
