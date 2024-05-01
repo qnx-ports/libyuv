@@ -1,0 +1,114 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd1b5a4_ade716f6",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-01T19:33:34Z",
+      "side": 1,
+      "message": "this loads BR in z0 and GA in z1?\nyour weaving of 2 channels at a time is weird.  Remains to be seen if these scale to all functions/data types.",
+      "fixSuggestions": [
+        {
+          "fixId": "ed268019_11760def",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 504,
+                "startChar": 0,
+                "endLine": 506,
+                "endChar": 0
+              },
+              "replacement": "   * z0: rrrrrxxxbbbbbxxx, xxxxxxxxggggggxx  \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 510,
+                "startChar": 0,
+                "endLine": 512,
+                "endChar": 0
+              },
+              "replacement": "  \"lsl     z0.h, z0.h, #3               \\n\" \\\n  \"bsl     z0.d, z0.d, z0.d, z4.d       \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 528,
+                "startChar": 0,
+                "endLine": 530,
+                "endChar": 0
+              },
+              "replacement": "      \"ld2b    {z0.b, z1.b}, p0/z, [%[src]] \\n\"  // BR, GA\n      \"incb    %[src], all, mul #4          \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 531,
+                "startChar": 0,
+                "endLine": 532,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b    {z0.b}, p0, [%[dst]]         \\n\"\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 540,
+                "startChar": 0,
+                "endLine": 542,
+                "endChar": 0
+              },
+              "replacement": "      \"ld2b    {z0.b, z1.b}, p0/z, [%[src]] \\n\"  // BR, GA\n      ARGBTORGB565_SVE\n      \"st1b    {z0.b}, p0, [%[dst]]         \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749bc619_d53f842f",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-01T19:33:34Z",
+      "side": 1,
+      "message": "the intent of these macros is to be indented the same as the assembly, not at the end of line.  Does clang-format still move it here?  Try moving it to the next line\n\n      \"subs    %w[width], %w[width], %w[vl] \\n\"\n      ARGBTORGB565_SVE",
+      "fixSuggestions": [
+        {
+          "fixId": "66f0760c_daf3560e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 530,
+                "startChar": 0,
+                "endLine": 531,
+                "endChar": 0
+              },
+              "replacement": "      \"subs    %w[width], %w[width], %w[vl] \\n\"\n      ARGBTORGB565_SVE\n"
+            }
+          ]
+        }
+      ],
+      "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
