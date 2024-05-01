@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7f991e_324866d3",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "Done ifdefs",
+      "parentUuid": "f73578f9_b6964628",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81e79589_0696f797",
@@ -196,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7abd073_4d24f909",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "Similar defines exist for Arm but they have different values:\n\nFor Arm:\n\n    #define HWCAP_ASIMDDP (1 \u003c\u003c 24)\n    #define HWCAP_I8MM    (1 \u003c\u003c 27)\n\nFor AArch64:\n\n    #define HWCAP_ASIMDDP (1 \u003c\u003c 20)\n    #define HWCAP2_I8MM   (1 \u003c\u003c 13)",
+      "parentUuid": "4512ae1f_3023d7b7",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7ce4ff1_0ffec4d8",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -243,6 +279,24 @@
       "side": 1,
       "message": "If this is not called from AArch32, can you\n1. ifdef it so we dont have an unused function and/or\n2. implement an AArch32 version.\nIn AArch32 this would benefit from the ability to run under qemu with or without Neon, and in future the dot product functions",
       "parentUuid": "cd5e10e1_a395b608",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924f7467_53ea7b4d",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "ifdef\u0027d out for non-AArch64 builds",
+      "parentUuid": "40892b25_eb64764e",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -302,6 +356,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f10b1b04_9cb4c057",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "ifdef\u0027d out on non-AArch64 builds",
+      "parentUuid": "940b1cf9_ed28c06e",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1933e5e1_b8fce5cc",
         "filename": "source/cpu_id.cc",
         "patchSetId": 2
@@ -313,6 +385,24 @@
       "writtenOn": "2024-04-25T21:03:47Z",
       "side": 1,
       "message": "keep in mind __APPLE__ includes many devices, OS and cpus.",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a623799_10093c9d",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "ifdef\u0027d out on non-AArch64 builds",
+      "parentUuid": "1933e5e1_b8fce5cc",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -401,6 +491,24 @@
       "side": 1,
       "message": "I think the proper test is mock, but I\u0027m not sure its worth the time.\n\nA practical test is actually run on M1/M2/M3 and see which features are detected... make sure the util/cpuid.c tool outputs enough information to confirm, and run a benchmark that uses i8mm.\nThen extend /unit_test.cc to have macros to disable I8MM.  See how NEON is disabled\nunit_test.cc:  if (TestEnv(\"LIBYUV_DISABLE_NEON\")) {\nThen run the benchmark again with I8MM or NEONDOT disabled to compare performance to NEON to ensure the I8MM is working well.\nOn linux/android I would use perf or simpleperf to record/report on a benchmark to ensure the expected row function is used.",
       "parentUuid": "976b8d8c_9f350b14",
+      "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9420b16b_a6a5a62a",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-01T08:53:22Z",
+      "side": 1,
+      "message": "Confirmed that cpuid reports Neon DotProd correctly on an M1 machine. I don\u0027t have access to an M2/M3 machine to test I8MM.",
+      "parentUuid": "3b1da0dc_d6a40831",
       "revId": "26d44bb08b80b13d6b67bf1c2550103a0a092f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
