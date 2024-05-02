@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba848ff_c3ddf1eb",
+        "filename": "source/row_any.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2289,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:21:48Z",
+      "side": 1,
+      "message": "Indeed. My original implementation used the vector length here rather than 1 but using the vector length meant that for a VL of 2048 bits we ended up looking for multiplies of 256 elements which seems far too strong a requirement, especially given that we have an easy way of handling most of the remainder with predication anyway.",
+      "parentUuid": "968f94ad_fc84a1c6",
+      "revId": "a600aad5de9fdcb05f25bd5efe8242486b580e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e9afebc_2ffceb78",
@@ -322,6 +340,24 @@
           ]
         }
       ],
+      "revId": "a600aad5de9fdcb05f25bd5efe8242486b580e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51303e2b_351a4008",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:21:48Z",
+      "side": 1,
+      "message": "Ack, will put it on the TODO list!",
+      "parentUuid": "4fc4a49e_7cc7d6ac",
       "revId": "a600aad5de9fdcb05f25bd5efe8242486b580e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
