@@ -81,6 +81,24 @@
       ],
       "revId": "c2578d6dd338877d45d6c6d4d6b8c62c37ebc1d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c5d437_dff41b80",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:19:05Z",
+      "side": 1,
+      "message": "Most operations in SVE operate on narrowing or widening within odd/even elements rather than e.g. the bottom half of the vector like you might see in Neon. So with that in mind the obvious way to store half a vector of data is usually to store e.g. even bytes of the vector and skip odd bytes with something like:\n\n    st1b {z0.h}, p0, [...]\n       |     ^ read 16-bit elements\n       ^ but only store the low byte from each of them\n\nOr for a quarter of a vector:\n\n    st1b {z0.s}, p0, [...]\n       |     ^ read 32-bit elements\n       ^ but only store the low byte from each of them\n\nThis sounds awkward but it tends to work out pretty nicely in practice since loads mirror the same pattern and the predicate creation lines up.\n\nObviously there is nothing stopping you from creating a predicate to use the low few elements and ignoring the rest, this can be useful when dealing with awkward sizes like multiples of three while wanting to avoid ST3, e.g. in ARGB to RGB24 conversion:\n\n    int vl; asm(\"cntb %x0\" : \"\u003dr\"(vl))); // number of bytes in a vector\n    int x \u003d vl * 3 / 4;\n    asm(\"whilelt p0.b, wzr, %w[x] \\n\"    // create a predicate for the first 3/4 of a vector\n        ...\n        \"st1b {z0.b}, p0, [...]   \\n\" :: \"r\"(x));",
+      "parentUuid": "f2520920_4450190f",
+      "revId": "c2578d6dd338877d45d6c6d4d6b8c62c37ebc1d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
