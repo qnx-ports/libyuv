@@ -22,6 +22,30 @@
       },
       "revId": "d49ea9520fe5f02979d50d93042207191f754a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a386375f_0032068a",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:24:35Z",
+      "side": 1,
+      "message": "Also discussed https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5505538/1..2/source/row_sve.cc#b530 but I think this is just what clang-format wants. I had a quick look at the clang-format options but didn\u0027t see anything obvious to control it.\n\nAny ideas?",
+      "parentUuid": "d9c0a7e0_90711c14",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 67
+      },
+      "revId": "d49ea9520fe5f02979d50d93042207191f754a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
