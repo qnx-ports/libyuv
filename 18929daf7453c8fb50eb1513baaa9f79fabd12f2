@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "449f52b7_5b020c87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63789d5d_d2799744",
+      "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8fd1b5a4_ade716f6",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
@@ -93,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2436f8b7_9f6115ba",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:22:35Z",
+      "side": 1,
+      "message": "Indeed. I\u0027m not sure it will scale too far but the ARGB/BGRA/etc versions tend to want quite different layouts compared to the I4XX or NVXX versions anyway.",
+      "parentUuid": "8fd1b5a4_ade716f6",
+      "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "749bc619_d53f842f",
@@ -124,6 +160,24 @@
           ]
         }
       ],
+      "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f73945_0038d051",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-02T12:22:35Z",
+      "side": 1,
+      "message": "Yep this is clang-format wanting this, it did the same in row_neon64.cc. I had a quick look over the list of options on https://clang.llvm.org/docs/ClangFormatStyleOptions.html but couldn\u0027t see anything obvious. The closest I could find was BreakAdjacentStringLiterals but that only applies to literals and not macros it seems?\n\nI can force it onto the next line by leaving a comment on the line before if that\u0027s what we want?",
+      "parentUuid": "749bc619_d53f842f",
       "revId": "18929daf7453c8fb50eb1513baaa9f79fabd12f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
