@@ -46,6 +46,30 @@
       },
       "revId": "d49ea9520fe5f02979d50d93042207191f754a6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d84b7d5_359c0495",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-05-06T17:05:19Z",
+      "side": 1,
+      "message": "We could just disable clang formatting for inline assembly blocks honestly. Frank, do you have any thoughts about this?\n\nMarking as resolved since I don\u0027t think this should be a blocker.",
+      "parentUuid": "a386375f_0032068a",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 67
+      },
+      "revId": "d49ea9520fe5f02979d50d93042207191f754a6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
