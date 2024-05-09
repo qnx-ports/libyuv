@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebcf4f3_b872119f",
+        "filename": "source/convert_argb.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-05-09T22:41:10Z",
+      "side": 0,
+      "message": "I suspect these were copied from some other file without checking whether they were needed in these files.",
+      "revId": "ee830a5f7707570537b2c1701fa88aa64cf1bb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
