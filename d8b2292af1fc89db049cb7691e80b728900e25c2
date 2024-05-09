@@ -16,6 +16,24 @@
       "message": "Its not required, but if you disable jpeg, wouldnt you want those removed?",
       "revId": "d8b2292af1fc89db049cb7691e80b728900e25c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c271653_1446b347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-05-09T22:58:01Z",
+      "side": 1,
+      "message": "Yes. This CL deleted all three lines, not just the `#ifdef HAVE_JPEG` tests:\n\n```\n#ifdef HAVE_JPEG\n#include \"libyuv/mjpeg_decoder.h\"\n#endif\n```\n\nI.e., this CL deletes the `#include \"libyuv/mjpeg_decoder.h\"` statement in these three files whether JPEG is enabled or disabled.",
+      "parentUuid": "ca957361_b4fb6b45",
+      "revId": "d8b2292af1fc89db049cb7691e80b728900e25c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
