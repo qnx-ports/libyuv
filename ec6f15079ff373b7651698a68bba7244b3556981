@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a57be3_731a3437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-05-09T23:05:15Z",
+      "side": 1,
+      "message": "Thanks for the review!\n\nI wrote this CL while trying to answer a user question: what optional features of libyuv are disabled if the JPEG library is not installed on the system?\n\nSo I inspected all the code inside `#ifdef HAVE_JPEG` blocks, and found these three files that don\u0027t need to include \"libyuv/mjpeg_decoder.h\".",
+      "revId": "ec6f15079ff373b7651698a68bba7244b3556981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
