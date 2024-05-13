@@ -45,8 +45,6 @@ extern "C" {
 // The following are available for GCC 32 or 64 bit:
 #if !defined(LIBYUV_DISABLE_X86) && (defined(__i386__) || defined(__x86_64__))
 #define HAS_TRANSPOSEWX8_SSSE3
-#define HAS_TRANSPOSE4X4_32_SSE2
-#define HAS_TRANSPOSE4X4_32_AVX2
 #endif
 
 // The following are available for 64 bit GCC:
@@ -63,7 +61,6 @@ extern "C" {
 #define HAS_TRANSPOSEWX8_NEON
 #endif
 #define HAS_TRANSPOSEUVWX8_NEON
-#define HAS_TRANSPOSE4X4_32_NEON
 #endif
 
 #if !defined(LIBYUV_DISABLE_MSA) && defined(__mips_msa)
@@ -250,31 +247,6 @@ void TransposeWx8_16_C(const uint16_t* src,
 void TransposeWx1_16_C(const uint16_t* src,
                        int src_stride,
                        uint16_t* dst,
-                       int dst_stride,
-                       int width);
-
-// Transpose 32 bit values (ARGB)
-void Transpose4x4_32_NEON(const uint8_t* src,
-                          int src_stride,
-                          uint8_t* dst,
-                          int dst_stride,
-                          int width);
-
-void Transpose4x4_32_SSE2(const uint8_t* src,
-                          int src_stride,
-                          uint8_t* dst,
-                          int dst_stride,
-                          int width);
-
-void Transpose4x4_32_AVX2(const uint8_t* src,
-                          int src_stride,
-                          uint8_t* dst,
-                          int dst_stride,
-                          int width);
-
-void Transpose4x4_32_C(const uint8_t* src,
-                       int src_stride,
-                       uint8_t* dst,
                        int dst_stride,
                        int width);
 
