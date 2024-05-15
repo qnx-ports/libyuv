@@ -414,7 +414,7 @@ static void ScalePlaneDown34(int src_width,
       ScaleRowDown34_0 = ScaleRowDown34_0_Box_Any_NEON;
       ScaleRowDown34_1 = ScaleRowDown34_1_Box_Any_NEON;
     }
-    if (dst_width % 24 == 0) {
+    if (dst_width % 48 == 0) {
       if (!filtering) {
         ScaleRowDown34_0 = ScaleRowDown34_NEON;
         ScaleRowDown34_1 = ScaleRowDown34_NEON;
