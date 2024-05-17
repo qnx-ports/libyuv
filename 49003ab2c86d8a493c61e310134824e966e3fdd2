@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732f66e5_59ab05cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-17T17:19:38Z",
+      "side": 1,
+      "message": "thanks for doing this one\nin general the emphasis was aarch32 and when porting to 64 bit, they had the same constraint, and it often wasnt possible to do the same implementation...e.g.  128 bit trn instructions, on 32 bit.\nBut the most common issue is simply the ld4 of 4 128 bit vectors and for that one I found a trick.  In aarch32 you can do 2 ld4 of 4 64 bit vectors... the first being even vectors, the 2nd being odd.  Then the rest of the neon code can be 128 bit on aarch32 and the calling code can check for 16 bytes and use row any in the same way for both 32 bit and 64 bit.\nIts not a hard constraint... the aarch64 can do more, and the calling code can check for a larger alignment, while the aarch32 can do less per loop and it is just wasteful in the 32 bit version that it could have used the neon function for a multiple of 8, but it will use the row_any wrapper instead.\n\ntranspose is something that comes up ALOT in machine learning, so I\u0027ve been giving this alot of thought.  There are 3 ways to transpose in neon\ntrn (zip) which is how intel does it.  never the best, never the worst.\ntbl4 which can do 4x4 transposes.  best on high end\nld4/st4 - loads and stores with no math, can do transpose.  best on low end\n\nthe ld4 technique is 3x faster than zip on cortex a75\nbut slowest on cortex x1.  probably the lanes in the method I did.\ntbl4 is a little faster than trn on cortex x1 etc.\n\nI\u0027m also looking for how to transpose 4 bit images.\n\nThe grand idea is use ld4 to transpose 4x4 int using just the loads.\nthen tbl or zip to transpose shorts and bytes\nthen sri and shi to transpse 4 bit values\noptionally use st2 to transpose shorts, but depends on the output format, and st2/st4 are known to be slow on cortex a510.\n\nThat said, the old code you replaced is faster than the code we have in xnnpack for bytes... probably just a good clean assembly implementation vs intrinsics in xnnpack.\n\nI would like the identical function for 16 bit and 32 bit.\nI think the code you\u0027ve done almost works if you remove the byte transpose.\n\n16 bit for 10 bit formats, but maybe a variation for the UV in nv12\n32 bit for ARGB.\nOur ARGBRotate (by 90) is very slow.  It uses the ARGBScale to read 4 pixels at a time in a column.\nBoth get used a fair bit.\nYUV from cameras on phones when portrait vs landscape\nARGB from rotated screens cast or camera formats that convert to ARGB.  e.g. MJPG is sometimes converted to ARGB during capture.\nAR30 is 32 bit and we dont care about channels\n32 bit will also be some of the YUV formats, like P010 UV channel\n\nEven 32 bit transpose might use ld2 with 64 bit values to do the first level of transpose.",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5000eb_4c0dabff",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-17T17:19:38Z",
+      "side": 1,
+      "message": "consider ld4 to replace the 8x8 and 4x4 transposes.",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b4b374_5dc69986",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-17T17:19:38Z",
+      "side": 1,
+      "message": "tbl4 can replace 2 trn instructions and is faster on modern arm.\nIt could be done as a new row function, so they can be compared cpu by cpu\nwe dont have uarch detect to dispatch different version of neon, so perhaps save this optimization for sve2, which only runs on newer cpus.\nWe could also do 64 bit with tbl4 and 32 bit with trn, but its not really true... we run 64 bit on cortex a35, and 32 bit on cortex a710",
+      "fixSuggestions": [
+        {
+          "fixId": "457c475c_f878641f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/rotate_neon64.cc",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 125,
+                "endChar": 0
+              },
+              "replacement": "      \"tbl1  v0.16b, {v16.16b, v17.16b}               \\n\"\n      \"tbl1  v1.16b, {v16.16b, v17.16b}               \\n\"\n      \"tbl1  v2.16b, {v18.16b, v19.16b}               \\n\"\n      \"tbl1  v3.16b, {v18.16b, v19.16b}               \\n\"\n      \"tbl1  v4.16b, {v20.16b, v21.16b}               \\n\"\n      \"tbl1  v5.16b, {v20.16b, v21.16b}               \\n\"\n      \"tbl1  v6.16b, {v22.16b, v23.16b}               \\n\"\n      \"tbl1  v7.16b, {v22.16b, v23.16b}               \\n\"\n      \"tbl1  v8.16b, {v24.16b, v25.16b}               \\n\"\n      \"tbl1  v9.16b, {v24.16b, v25.16b}               \\n\"\n      \"tbl1  v10.16b, {v26.16b, v27.16b}              \\n\"\n      \"tbl1  v11.16b, {v26.16b, v27.16b}              \\n\"\n      \"tbl1  v12.16b, {v28.16b, v29.16b}              \\n\"\n      \"tbl1  v13.16b, {v28.16b, v29.16b}              \\n\"\n      \"tbl1  v14.16b, {v30.16b, v31.16b}              \\n\"\n      \"tbl1  v15.16b, {v30.16b, v31.16b}              \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
