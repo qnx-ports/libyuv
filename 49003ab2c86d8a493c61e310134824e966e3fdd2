@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fbdc5f1_f233e7df",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-20T13:21:00Z",
+      "side": 1,
+      "message": "LD2/4 won\u0027t work here due to the stride between loads or stores?",
+      "parentUuid": "ce5000eb_4c0dabff",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90b4b374_5dc69986",
         "filename": "source/rotate_neon64.cc",
         "patchSetId": 1
@@ -66,6 +84,24 @@
           ]
         }
       ],
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a57cd8cf_51ce0f60",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-20T13:21:00Z",
+      "side": 1,
+      "message": "Throughput of 4-reg TBL is only one per 9 cycles on Cortex-A510, compared with 2 per cycle for TRN, so TRN should be preferred here. Also we don\u0027t have any free registers to store TBL indices, we need all 32 for the transpose data.",
+      "parentUuid": "90b4b374_5dc69986",
       "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
