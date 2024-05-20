@@ -16,6 +16,24 @@
       "message": "The change itself is okay.  It has the drawback of not allowing ISAs to be selectively enabled/disabled.  e.g. if there is a way in qemu to disable neon, it might be nice to use that to test sve, but this change will disable all isa\u0027s that depend on a lower isa.\n\nYour description might be good to preserve as either a comment or a document.\nMaybe cpu features needs its own document?\n\nIts worth noting we use the i8mm cpuid for dotproducts.\nIt seems like an odd cpu choice, that if a vendor decided to not include the actual vmmla instruction, they technically can\u0027t support the dotproduct associated with that cpuid.\nApple M1 supports dot product but not i8mm.  I havent poked at it to see if it supports vsudot\n\nlibyuv has pretty simple simd requirements, and historically arm was just neon, or not.  But it is becoming interesting, where we can have multiple implementations of the same row function.\nWe have the ability to test with cpu features turned off in 3 ways\n1. compile time disable cpus.  We\u0027ll probably want fine grained compile time flags, to allow dot product and sve to be disabled, but keep neon, for use cases on specific cpus, to work around bugs, for testing or for enabling builds on compilers that dont support certain ISAs.\n2. unittests can be run with command line flags to disable sve etc, mainly to allow benchmarking with different instructions.  They can also be disabled with environment variables\n3. runtime can set the cpu id directly, allowing isa to be disabled.",
       "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949f7ae7_17f3aaeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-20T12:41:34Z",
+      "side": 1,
+      "message": "I agree a CPU features document could be useful, I will draft something for the AArch64 extensions.\n\nIt isn\u0027t reasonable to try and test SVE without Neon since SVE kernels can and do use Neon instructions especially for tail loops or reductions.\n\nAgree with the CPU features toggles, I don\u0027t think there\u0027s anything for me to do there?",
+      "parentUuid": "0810aac5_af173c3c",
+      "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
