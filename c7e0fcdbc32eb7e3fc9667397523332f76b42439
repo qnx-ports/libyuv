@@ -52,6 +52,24 @@
       "parentUuid": "949f7ae7_17f3aaeb",
       "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0289576d_f5bf3375",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-21T16:18:15Z",
+      "side": 1,
+      "message": "Streaming-SVE needs to be toggled on explicitly with SMSTART/SMSTOP instructions so there is no chance of accidentally hitting this in the SVE code today, we\u0027ll need separate code paths for most of the SME/SSVE code anyway since the instruction sets are slightly different so it will end up as a separate library like :libyuv_sve vs :libyuv_neon today, although they can probably share some macros.\n\nCPU features document added in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5554431",
+      "parentUuid": "0843dfe4_67a6ceec",
+      "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
