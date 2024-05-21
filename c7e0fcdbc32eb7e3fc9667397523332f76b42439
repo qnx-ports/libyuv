@@ -34,6 +34,24 @@
       "parentUuid": "0810aac5_af173c3c",
       "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0843dfe4_67a6ceec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-21T07:21:41Z",
+      "side": 1,
+      "message": "with ssve I understand mixing neon and sve wont work.\nbut mainly its for testing/benchmarking that it can be interesting to disable instruction sets selectively",
+      "parentUuid": "949f7ae7_17f3aaeb",
+      "revId": "c7e0fcdbc32eb7e3fc9667397523332f76b42439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
