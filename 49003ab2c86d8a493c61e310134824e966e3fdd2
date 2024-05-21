@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2720383f_c920269a",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-21T07:46:23Z",
+      "side": 1,
+      "message": "ld4 lane can be used to load 4 int32 values into lane 0, then lane 1, 2 and 3, instead of 4 ldr and 32 bit trn.",
+      "parentUuid": "8fbdc5f1_f233e7df",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90b4b374_5dc69986",
         "filename": "source/rotate_neon64.cc",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Throughput of 4-reg TBL is only one per 9 cycles on Cortex-A510, compared with 2 per cycle for TRN, so TRN should be preferred here. Also we don\u0027t have any free registers to store TBL indices, we need all 32 for the transpose data.",
       "parentUuid": "90b4b374_5dc69986",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f273093_fd238e38",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-21T07:46:23Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a57cd8cf_51ce0f60",
       "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
