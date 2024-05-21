@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a04d0a_7a33ad09",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4597,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-21T07:26:25Z",
+      "side": 1,
+      "message": "the original tbl version was done for performance compared to rev16.\nI would need to rerun benchmarks to compare on all cpus, but rev16 should be fine",
+      "revId": "e767981f8a2c3fcd688c779ec2fef228ebbed2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
