@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "408b92b7_ba2d31e5",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-21T08:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c2dbbc1_d235fa73",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f98be47_1b544780",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Yep, we have a different approach for YUV to AR30 kernels since the layout in registers is different (e.g. ARGB being packed in registers versus the output of RGBTOYUV being 16-bit values in different registers).\n\nWhen everything is in separate registers then the SRI approach that you suggest works well, but when they are adjacent in the same register then SRI/SLI aren\u0027t helpful.\n\nNot sure if that\u0027s what you meant by that comment, let me know if not and I can investigate further?",
       "parentUuid": "150c0361_71b75835",
+      "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3fff4e_fec64294",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-21T08:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "791b9922_0989d3d8",
       "revId": "636177387b8290aeb06b012e7a99fe269f46065b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
