@@ -66,6 +66,10 @@ extern "C" {
 #define HAS_TRANSPOSE4X4_32_NEON
 #endif
 
+#if !defined(LIBYUV_DISABLE_SME) && defined(__aarch64__)
+#define HAS_TRANSPOSEWXH_SME
+#endif
+
 #if !defined(LIBYUV_DISABLE_MSA) && defined(__mips_msa)
 #define HAS_TRANSPOSEWX16_MSA
 #define HAS_TRANSPOSEUVWX16_MSA
@@ -103,6 +107,12 @@ void TransposeWx16_NEON(const uint8_t* src,
                         uint8_t* dst,
                         int dst_stride,
                         int width);
+void TransposeWxH_SME(const uint8_t* src,
+                      int src_stride,
+                      uint8_t* dst,
+                      int dst_stride,
+                      int width,
+                      int height);
 void TransposeWx8_SSSE3(const uint8_t* src,
                         int src_stride,
                         uint8_t* dst,
