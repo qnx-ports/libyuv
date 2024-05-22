@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173ac134_23c46ece",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-05-22T08:37:20Z",
+      "side": 1,
+      "message": "I experimented a bit and found that ST2 appears to work well and saves us one step of TRN instructions. I\u0027ll put this up as a later patch.",
+      "parentUuid": "2720383f_c920269a",
+      "revId": "49003ab2c86d8a493c61e310134824e966e3fdd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90b4b374_5dc69986",
