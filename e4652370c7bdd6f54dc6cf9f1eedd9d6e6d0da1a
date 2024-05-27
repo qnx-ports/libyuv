@@ -16,6 +16,29 @@
       "message": "(originally suggested in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5546385 )",
       "revId": "e4652370c7bdd6f54dc6cf9f1eedd9d6e6d0da1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c8c538_aae7dd8e",
+        "filename": "docs/feature_detection.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-05-27T21:56:02Z",
+      "side": 1,
+      "message": "auxiliary",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "e4652370c7bdd6f54dc6cf9f1eedd9d6e6d0da1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
