@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e798ad7_6676edf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1560543
+      },
+      "writtenOn": "2024-05-31T02:07:45Z",
+      "side": 1,
+      "message": "Please CQ+2 if lg, can\u0027t AS+1.",
+      "revId": "f750ed823a1fcf539816f70fcef8679dd458fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
