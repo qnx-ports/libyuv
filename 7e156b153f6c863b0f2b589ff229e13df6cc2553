@@ -34,6 +34,24 @@
       "parentUuid": "09b6049d_21f7dee3",
       "revId": "7e156b153f6c863b0f2b589ff229e13df6cc2553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c56258c_f46712b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T22:31:57Z",
+      "side": 1,
+      "message": "The intent is to implement 16 bit and 32 bit transpose.  Currently ARGBRotate uses a slow method - read a column, write a row.  This code prototypes how to do 4x4 transpose with just load and store.  Next step would be high levels, similar to how 8 bit is done.  I think we can keep it simple and handle remainders with an \u0027any\u0027 function, so it just needs to implement a block.\nThe high levels can be simplified... there is a RotatePlane (and ScalePlane) and those can be made public and extended to 16 and 32 bit in a format agnostic way.\nThen call them from higher levels to implement formats like NV12 (8 bit and 1/2 size UV), P010 - 16 bit with half size 32 bit UV.\n\nIts also interesting to see how SVE would prefer to transpose.  Does it need to be forced to a particular block size or does the block size vary by vl?",
+      "parentUuid": "1104fd08_42828047",
+      "revId": "7e156b153f6c863b0f2b589ff229e13df6cc2553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
