@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdfd845_b0eeed5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T22:38:51Z",
+      "side": 1,
+      "message": "I think it will be interesting to try streaming mode for libyuv.\nThe biggest code changes are\n1. use svl instead of vl.  does this require duplicate code?\n2. in streaming mode, disable neon (cpuid), and add ssve2 detect and row functions.\n3. try a transpose in za registers.  write rows, read back columns.",
+      "revId": "d635e012f3d3f0623ad5d8a7b7d944c48cf9e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
