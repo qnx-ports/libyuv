@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f503465_b2884ed8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T22:43:02Z",
+      "side": 1,
+      "message": "ARGB to YUV with \u0027matrix\u0027 is a work in progress.  The low level Matrix function is there in Neon but internal.\nThe goal is public level Matrix\u0027 functions allowing any color space.  But to do that the C and preferebly X86 versions also need to exist.\nThen these constants for \u0027JPEG\u0027 move to row_common.c",
+      "revId": "b63286029073683c035a271a1087b3b0b9c57161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
