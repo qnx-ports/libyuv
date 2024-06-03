@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28e16ca_50ab104c",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T23:14:07Z",
+      "side": 1,
+      "message": "interesting... this weaves the U with Y\nBut overall this seems complicated?  For every 32 bits, we want the low 16 bits.\noh right... subsampling.\nIn Neon I uses uadalp.  You used add and then addp... more instructions.",
+      "fixSuggestions": [
+        {
+          "fixId": "a13ca626_b96ffab6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 662,
+                "startChar": 0,
+                "endLine": 666,
+                "endChar": 0
+              },
+              "replacement": "  \"uaddlb   z4.h, z0.b, z2.b                           \\n\" /* V */               \\\n  \"uaddlt   z5.h, z0.b, z2.b                           \\n\" /* U */               \\\n  \"uaddlb   z6.h, z1.b, z3.b                           \\n\" /* V */               \\\n  \"uaddlt   z7.h, z1.b, z3.b                           \\n\" /* U */               \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 673,
+                "startChar": 0,
+                "endLine": 673,
+                "endChar": 0
+              },
+              "replacement": "  \"incb     %[dst]                                     \\n\"                     \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8b71ce_231f26a0",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T23:14:07Z",
+      "side": 1,
+      "message": "\u0027q\u0027 can be removed?  255 * 4 \u003d 1020",
+      "range": {
+        "startLine": 669,
+        "startChar": 11,
+        "endLine": 669,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "61348a7a_d7452efa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 669,
+                "startChar": 0,
+                "endLine": 671,
+                "endChar": 0
+              },
+              "replacement": "  \"urshrnb z0.b, \" #zU0 \".h, #2                       \\n\" /* U0V0 */          \\\n  \"urshrnb z1.b, \" #zU1 \".h, #2                       \\n\" /* U0V0 */          \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a011156_047094ee",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-03T23:14:07Z",
+      "side": 1,
+      "message": "interesting.  so you set the 2nd predicate to mask for a second vl using /z for the read and /h for the write.",
+      "fixSuggestions": [
+        {
+          "fixId": "79a3286f_bc5b0918",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 700,
+                "startChar": 0,
+                "endLine": 702,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt p0.h, wzr, %w[width]              \\n\"  // 1st row\n      \"whilelt p1.h, %w[vl], %w[width]           \\n\"  // 2nd row\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 739,
+                "startChar": 0,
+                "endLine": 741,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt p0.h, wzr, %w[width]              \\n\"  // 1st row\n      \"whilelt p1.h, %w[vl], %w[width]           \\n\"  // 2nd row\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
