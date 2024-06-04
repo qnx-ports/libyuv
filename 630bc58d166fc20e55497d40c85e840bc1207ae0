@@ -16,6 +16,24 @@
       "message": "wow so much simplier!\nThe 16 bit rgb formats are almost never used anymore... they were for early 16 bit displays and gpus.\nOn Android ABGR   (r,g,b,a in memory) is used\nARGB (b,g,r,a) is used everywhere else.\nRAW (r,g,b) and RGB24 (b,g,r) are fairly common too.  Drishti uses them for TFLite.",
       "revId": "630bc58d166fc20e55497d40c85e840bc1207ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5abfb7_5a44ee09",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T13:00:01Z",
+      "side": 1,
+      "message": "Ack, thanks for the context!",
+      "parentUuid": "1a310a94_3fd0d11f",
+      "revId": "630bc58d166fc20e55497d40c85e840bc1207ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
