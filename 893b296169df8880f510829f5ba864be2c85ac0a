@@ -1,0 +1,59 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd67faf7_b2224d1e",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-04T17:12:27Z",
+      "side": 1,
+      "message": "3 instructions is better than 4.  But ARGB and ABGR are the most common formats... can we achieve 3 instructions on the RGBTOARGB by using this code?",
+      "fixSuggestions": [
+        {
+          "fixId": "5757cd95_5db03fa8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 196,
+                "startChar": 0,
+                "endLine": 197,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SVE I4XXTORGB_SVE\n      \"uqshrnt     z19.b, z16.h, #6     \\n\" /* AB */          \\\n      \"uqshrnb     z20.b, z17.h, #6     \\n\" /* G0 */          \\\n      \"uqshrnt     z20.b, z18.h, #6     \\n\" /* GR */\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 208,
+                "startChar": 0,
+                "endLine": 209,
+                "endChar": 0
+              },
+              "replacement": "      READYUV422_SVE I4XXTORGB_SVE\n      \"uqshrnt     z19.b, z16.h, #6     \\n\" /* AB */          \\\n      \"uqshrnb     z20.b, z17.h, #6     \\n\" /* G0 */          \\\n      \"uqshrnt     z20.b, z18.h, #6     \\n\" /* GR */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "893b296169df8880f510829f5ba864be2c85ac0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
