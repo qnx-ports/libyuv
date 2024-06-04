@@ -16,6 +16,24 @@
       "message": "nice trick saturating.  I think it doesnt clamp negative values to 0?",
       "revId": "1d42560666843e9397e8b7ed0c4e1e8bd8abf8e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e311fa1b_701fa0c4",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T12:58:45Z",
+      "side": 1,
+      "message": "The U prefix means unsigned here, so no negative values, a one in the top bit would be interpreted as a large positive integer and be saturated to all-1s by the shift left?",
+      "parentUuid": "fd686a44_544882c8",
+      "revId": "1d42560666843e9397e8b7ed0c4e1e8bd8abf8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
