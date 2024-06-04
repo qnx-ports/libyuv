@@ -16,6 +16,24 @@
       "message": "I think it will be interesting to try streaming mode for libyuv.\nThe biggest code changes are\n1. use svl instead of vl.  does this require duplicate code?\n2. in streaming mode, disable neon (cpuid), and add ssve2 detect and row functions.\n3. try a transpose in za registers.  write rows, read back columns.",
       "revId": "d635e012f3d3f0623ad5d8a7b7d944c48cf9e1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c630a011_44feb6bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T12:57:17Z",
+      "side": 1,
+      "message": "1) yes, they are two partially-overlapping instruction sets so we will want separate libraries to make best use of both instruction sets. we should be able to share some implementation details via re-using common macros etc though.\n\n2) no need to disable cpu features, the streaming-mode kernels can be self-contained so no need for any complicated logic around features for now.\n\n3) yes, transposes are the most obvious application for the za tile registers, i have some initial kernels for these downstream which i will try to put up soon once we have the initial sme library framework code done.",
+      "parentUuid": "4cdfd845_b0eeed5d",
+      "revId": "d635e012f3d3f0623ad5d8a7b7d944c48cf9e1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
