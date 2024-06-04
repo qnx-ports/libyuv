@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1d4ae0_6f3c39da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-04T18:17:53Z",
+      "side": 1,
+      "message": "Note the term \u0027rgb\u0027 is used for generic naming.  The fully supported formats are\nARGB - little endian style B,G,R,A \nABGR - Android preferred format R,G,B,A\nBGRA - big endian style B,G,R,A \nRGBA (not used in practice) A,B,G,R\nRGB24 - little endian style B,G,R\nRAW - big endian style R,B,B\n\n16 bit formats are treated as little endian 16 bit with bit fields\nARGB1555  note this has 1 bit alpha\nARGB4444\nRGB565\nAs far as I know, 16 bit formats are obsolete\n\nNew formats for HDR include\nAR64 - B,G,R,A 16 bit\nAB64 - R,G,B,A 16 bit\nAR30 - 2:10:10:10 with A,R,G,B in register.  B would be first 10 bits in memory\nAB30 - 2:10:10:10 with A,B,G,R in register.  R would be first 10 bits in memory",
+      "revId": "893b296169df8880f510829f5ba864be2c85ac0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd67faf7_b2224d1e",
