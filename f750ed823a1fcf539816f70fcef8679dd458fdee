@@ -16,6 +16,23 @@
       "message": "Please CQ+2 if lg, can\u0027t AS+1.",
       "revId": "f750ed823a1fcf539816f70fcef8679dd458fdee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a42dda_b038fa58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1560543
+      },
+      "writtenOn": "2024-06-04T16:24:35Z",
+      "side": 1,
+      "message": "Looks like the latest version of buildtools does not work well with libyuv:\n\n /b/s/w/ir/cache/builder/src/out/Release/libyuv_unittest --undefok\u003dno-sandbox --no-sandbox\n  FATAL: ThreadSanitizer: unexpected memory mapping 0x59d0f4d8f000-0x59d0f4f9f000\n  \nFiled: https://libyuv.issues.chromium.org/issues/344883415?pli\u003d1",
+      "revId": "f750ed823a1fcf539816f70fcef8679dd458fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
