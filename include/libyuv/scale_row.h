@@ -182,7 +182,8 @@ extern "C" {
 #define HAS_SCALEADDROW_RVV
 // TODO: Test ScaleARGBRowDownEven_RVV and enable it
 // #define HAS_SCALEARGBROWDOWNEVEN_RVV
-#define HAS_SCALEUVROWDOWN4_RVV
+// TODO(b/344954354): compile with zve64x
+//#define HAS_SCALEUVROWDOWN4_RVV
 #define HAS_SCALEUVROWDOWNEVEN_RVV
 #if __riscv_v_intrinsic == 11000
 #define HAS_SCALEARGBROWDOWN2_RVV
