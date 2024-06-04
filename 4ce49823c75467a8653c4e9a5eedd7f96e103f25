@@ -46,6 +46,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "142ab586_3eb80d23",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T12:42:02Z",
+      "side": 1,
+      "message": "Indeed, but a few complementary reasons for preferring the current approach:\n\n1) Avoid UADALP since it is slow on little cores like Cortex-A510 (8 cycles vs 4+3 for UADDL+ADDP)\n\n2) Avoid LD4 in favour of 2x LD2, marginal but slightly preferred and works better with predication in this case.\n\n3) The ADDP performs the interleaving so no need for ST2, ADDP + 2x ST1 vs ST2 should be cheaper as well.",
+      "parentUuid": "f28e16ca_50ab104c",
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8b71ce_231f26a0",
@@ -83,6 +101,30 @@
           ]
         }
       ],
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4dcb6a_ca6f6ea1",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T12:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8b71ce_231f26a0",
+      "range": {
+        "startLine": 669,
+        "startChar": 11,
+        "endLine": 669,
+        "endChar": 12
+      },
       "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +170,24 @@
           ]
         }
       ],
+      "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "699ea554_68bc8d7e",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-04T12:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a011156_047094ee",
       "revId": "4ce49823c75467a8653c4e9a5eedd7f96e103f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
