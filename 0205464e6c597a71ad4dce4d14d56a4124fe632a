@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cd9c70_5765b1d8",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-07T02:51:22Z",
+      "side": 1,
+      "message": "I dont think we want this any more.\nO2 is like O3 used to be, with a lot of unrolling, and the default build on android is Oz which hurts C performance, but overall helps assembly row functions.\nSo I think we can stop over riding the build options and just let chromium optimize for size.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 61
+      },
+      "revId": "0205464e6c597a71ad4dce4d14d56a4124fe632a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98d1bad_d18e31c3",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-07T02:51:22Z",
+      "side": 1,
+      "message": "this should be fun.  I think it will want 64x64 bytes?  Or whatever the vector size is, if you want to be general.\nSimilar transpose kernels should work for 16 bit and 32 bit, so it would be great if you can do 3 functions, and then make the calling code more flexible.\nIdeally do a 24 bit transpose, if that is somehow possible... ld3 into 3 tiles?\nIf it helps, write an _any function to keep the transpose as simple as possible.\nBut do predicates work to allow any width/height?\nI\u0027m told ld2 etc can help?  does that load into multiple tiles?\nIf svl is 2048 bytes, it may not be best practice to use a full tile, and its worth trying smaller sizes based on memory behavior.\nTypically it is best to read a column of tiles and write a row of tiles.",
+      "fixSuggestions": [
+        {
+          "fixId": "a8bbd3cd_efb4033b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/rotate_sme.cc",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 24,
+                "endChar": 0
+              },
+              "replacement": "// TODO: Port rotate kernels to SME. The vector size is 64 bytes.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0205464e6c597a71ad4dce4d14d56a4124fe632a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
