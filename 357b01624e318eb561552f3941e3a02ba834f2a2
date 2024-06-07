@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca278468_756b771b",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-07T17:53:53Z",
+      "side": 1,
+      "message": "Could this not be replaced with an vsri.16? I would assume that\u0027s substantially cheaper than tbl.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
