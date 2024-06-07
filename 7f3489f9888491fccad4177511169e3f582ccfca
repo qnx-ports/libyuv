@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d25ed1_0ed5f39d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-07T02:41:22Z",
+      "side": 1,
+      "message": "Looks good but can you add the commandline and environment varariables for unittests to allow LIBYUV_DISABLE_SME\u003d1",
+      "revId": "7f3489f9888491fccad4177511169e3f582ccfca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
