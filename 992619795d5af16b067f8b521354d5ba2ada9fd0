@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bcf6b9_e20dd5fe",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-08T23:52:41Z",
+      "side": 1,
+      "message": "feels redundent to add and subtract?  Combine the constants outside the loop?\n\nnormally the 3 channels of yuv would have different scale, and we adjust the bias after the multiply, so they are different per channel.\nBut I400 is just \u0027Y\u0027\nIf Y range is 16 to 235 for studio range and you scale out to full range rgb, a hot color beyond 235 could overflow.  I think you uses 8 bit coefficients so the result was about 24 bits and the overflow caused 25 bits, and you take the upper part so 17 bits.\nFor a Y in the illegal range of 0 to 15, the uqsubq of 16 would clamp to 0.\nThe output of this function is 16 bits with values 0 to 278.\nWhen doing J400 which is full range, the scale is 1.",
+      "fixSuggestions": [
+        {
+          "fixId": "67e9fc8d_021ffb5d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "#define I4XXTORGB_SVE                                                              \\\n  \"umulh      z0.h, z24.h, z0.h              \\n\" /* Y */                          \\\n  \"mul        z6.h, z30.h, z1.h              \\n\" /* DB */                         \\\n  \"mul        z4.h, z28.h, z1.h              \\n\" /* DR */                         \\\n  \"mla        z6.h, p0/m, z31.h, z2.h        \\n\" /* DG */                         \\\n  \"add        z17.h, z0.h, z26.h             \\n\" /* G */                          \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B */                          \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R */                          \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G */                          \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B */                          \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 89,
+                "startChar": 0,
+                "endLine": 96,
+                "endChar": 0
+              },
+              "replacement": "#define I400TORGB_SVE                                                              \\\n  \"umulh      z0.h, z24.h, z0.h              \\n\" /* Y */                          \\\n  \"add        z17.h, z0.h, z26.h             \\n\" /* G */                          \\\n  \"add        z16.h, z0.h, z4.h              \\n\" /* B */                          \\\n  \"add        z18.h, z0.h, z5.h              \\n\" /* R */                          \\\n  \"uqsub      z17.h, z17.h, z6.h             \\n\" /* G */                          \\\n  \"uqsub      z16.h, z16.h, z25.h            \\n\" /* B */                          \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "992619795d5af16b067f8b521354d5ba2ada9fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
