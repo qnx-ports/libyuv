@@ -22,6 +22,30 @@
       },
       "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898f2397_1c692164",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-08T06:11:48Z",
+      "side": 1,
+      "message": "I don\u0027t think so. Sorry for the long text, explanation and thought process:\n\nWe\u0027re going from full 16-bit elements to 8-bit elements which in theory sounds like a shift I agree, but in this case the rest of the Neon code is expecting all U components to be in the low half of the vector and all V components to be in the high half of the vector. Since we need to de-interleave them with a permute anyway, we can also use the permute to pick out the high half of each 16-bit element and save us the need for a narrowing shift.\n\n210 also needs an additional permute to handle duplicating the UV components due to the sub-sampling, which is also handled in the same TBL. I guess this duplication might be why you\u0027re suggesting SRI/SLI which is a fun idea since if the U/V components were being de-interleaved into separate vectors then we could just overwrite the other component as part of the widening? I don\u0027t think there is a benefit to putting them in separate vectors here though since we would end up needing two instructions to pick out the elements (and a MOV to set up another vector) or a pair of TRNs rather than a single TBL that handles both together.\n\nIf we were to unroll the loop such that we were processing an additional vector of Y data per iteration then that maybe becomes interesting from the PoV of how best to arrange the UV data, although in the 210 case I guess we would prefer to just delay the duplication until at least part-way through the yuv-\u003ergb conversion and save ourselves some instructions on the conversion, but I\u0027m not 100% sure.\n\nThe SVE code has this slightly easier since SVE wants to keep UV elements interleaved (due to the difference in how SVE performs widening arithmetic) and we also have some tricks we can play in terms of loading every-other lane to leave some space for shifting into, in which case I think it can be a shift or a simpler permute in both 210 and 410. We might prefer to keep it as a TBL though just so we can share the macro between multiple kernels and just pass in different indices?\n\nPerformance-wise they\u0027re about the same on Arm micro-architectures at least, SLI/SRI has lower latency than TBL in a couple of cases (e.g. 3 cycles vs 4 cycles on Cortex-A510) but also lower throughput in a couple of cases (e.g. 1 SLI/SRI per cycle vs 2 TBL per cycle on Cortex-A720).",
+      "parentUuid": "ca278468_756b771b",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
