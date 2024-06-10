@@ -70,6 +70,30 @@
       },
       "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b41da0d_0dcdf1a9",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-10T15:16:11Z",
+      "side": 1,
+      "message": "So in effect you\u0027re right that we can pseudo-\"trade\" the bitwidth from the truncation to the upsampling by duplicating the top bits with SRI:\n\n    abcdefgh_ijklmnop \u003d\u003e sri #8 \u003d\u003e abcdefgh_abcdefgh\n    abcdefgh_ijklmnop \u003d\u003e sli #8 \u003d\u003e ijklmnop_ijklmnop\n\nI think the part that you\u0027re missing is that we additionally want to de-interleave the U/V components, since Neon widening multiply instructions take input from the lower or upper half of the vector rather than even/odd elements like SVE does.\n\nIn particular, after the load we have:\n\n    v1.8h \u003d [u0 v0 u1 v1 u2 v2 u3 v3]\n    \nBut we need (doubling the number of elements due to the .8h-\u003e.16b, but hopefully you get the point):\n\n    v1.16b \u003d [u0 u0 u1 u1 u2 u2 u3 u3 v0 v0 v1 v1 v2 v2 v3 v3]\n    \nAs opposed to SRI #8 which would instead give us:\n\n    v1.16b \u003d [u0 u0 v0 v0 u1 u1 v1 v1 u2 u2 v2 v2 u3 u3 v3 v3]",
+      "parentUuid": "d566f4e7_ce362603",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
