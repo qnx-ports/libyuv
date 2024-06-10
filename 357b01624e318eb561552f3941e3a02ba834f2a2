@@ -94,6 +94,30 @@
       },
       "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bd198a_68294082",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-10T20:31:14Z",
+      "side": 1,
+      "message": "Oh, my bad I was reading the indices in the wrong order. I see the de-interleave now, that makes sense. Thanks for the explanation!",
+      "parentUuid": "6b41da0d_0dcdf1a9",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
