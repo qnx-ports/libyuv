@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd169e1d_4568def0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:12:09Z",
+      "side": 1,
+      "message": "This should be the fastest YUV to RGB there is, due to memory access of UV.\nIn future there may be NV24, NV42, NV16 and NV61 which are the 4:4:4 and 4:2:2 variations of NV12, and NV21.\nAnd then 10 bit variations are P010 etc, which should be the same with a different read function.",
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff185cf_9a00cb92",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:12:09Z",
+      "side": 1,
+      "message": "normally I\u0027d fall back on row_any but even this case is complicated in row_any.  yuy2 is also complicated with 1 Y and 2 UV.",
+      "fixSuggestions": [
+        {
+          "fixId": "7aa4ab67_16b739ca",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 46,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "// We need a different predicate for the UV component to handle the tail.\n// If there is a single element remaining then we want to load one Y element\n// but two UV elements.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e7b1fe_4097b55d",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:12:09Z",
+      "side": 1,
+      "message": "448 is 7 cache lines of 64 bytes ahead.  going beyond that may improve performance but on an 8 way L1 cache risks eviction.  I simple changed ALL prfm to various values, ran all the benchmarks, on all the arm cpus, and took the sum of performance, arriving at 448 is the single best value, and a net win on all arm cpus.\nOn cpus with 16 way cache or 128 byte cache lines, 15 cache lines ahead can be a win.  And in the extreme with extremely large memory, 4096 (a page) ahead can be a win.\nOn high end cpus, prfm may not be a win, and the goal is to make it free and not slowing down a good cpu.\nBest to test/tune this for A510/A520 that likely benefit.",
+      "fixSuggestions": [
+        {
+          "fixId": "597d0f48_a51819e9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 55,
+                "startChar": 0,
+                "endLine": 56,
+                "endChar": 0
+              },
+              "replacement": "  \"prfm       pldl1keep, [%[src_uv], 448]    \\n\" \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d18bacd0_cef2e2ef",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:12:09Z",
+      "side": 1,
+      "message": "would it be faster to load Y as is instead of ld1b and use zip to replicate it?",
+      "fixSuggestions": [
+        {
+          "fixId": "375961bd_eee7fa88",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 59,
+                "endChar": 0
+              },
+              "replacement": "  \"ld1b       {z0.h}, p1/z, [%[src_y]]       \\n\"  // Y\n  \"ld1b       {z1.h}, p2/z, [%[src_uv]]      \\n\"  // UV\n  \"inch       %[src_y]                       \\n\"\n  \"inch       %[src_uv]                      \\n\"\n  \"prfm       pldl1keep, [%[src_y], 448]     \\n\"\n  \"prfm       pldl1keep, [%[src_uv], 256]    \\n\"\n  \"zip1       z0.b, z0.b, z0.b               \\n\"  // Y Y\n  \"tbl        z2.h, {z1.h}, z23.h            \\n\"  // U\n  \"tbl        z1.h, {z1.h}, z22.h            \\n\"  // V\n"
+            }
+          ]
+        }
+      ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fffdcf_9b1a6f97",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:12:09Z",
+      "side": 1,
+      "message": "These tables are unfortunate.  NV12 style UV are increasingly common and it would be good if the code tuned to having UV weaved together, and make 3 plane do a zip.\nOn x86 we keep the UV together in pairs but replicate it to convert from 4:2:2 to 4:4:4 so UV -\u003e UVUV.  Then use vpmaddubsw with is similar to mull+addp, producing 16 bit results.",
+      "fixSuggestions": [
+        {
+          "fixId": "67ddec6b_104d809f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 49,
+                "startChar": 0,
+                "endLine": 58,
+                "endChar": 0
+              },
+              "replacement": "#define READNV_SVE                                                              \\\n  \"ld1b       {z0.h}, p1/z, [%[src_y]]       \\n\"                               \\\n  \"ld1b       {z1.h}, p2/z, [%[src_uv]]      \\n\"                               \\\n  \"inch       %[src_y]                       \\n\"                               \\\n  \"inch       %[src_uv]                      \\n\"                               \\\n  \"prfm       pldl1keep, [%[src_y], 448]     \\n\"                               \\\n  \"prfm       pldl1keep, [%[src_uv], 256]    \\n\"                               \\\n  \"trn1       z0.b, z0.b, z0.b               \\n\"                               \\\n  \"tbl        z2.h, {z1.h}, z23.h            \\n\"                               \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 370,
+                "startChar": 0,
+                "endLine": 371,
+                "endChar": 0
+              },
+              "replacement": "      \"3:                                               \\n\"  //\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 893,
+                "startChar": 0,
+                "endLine": 895,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt p0.h, wzr, %w[width]              \\n\"  // first row\n      \"whilelt p1.h, %w[vl], %w[width]           \\n\"  // second row\n      \"whilelt p0.h, wzr, %w[width]              \\n\"  // first row\n      \"whilelt p1.h, %w[vl], %w[width]           \\n\"  // second row\n"
+            }
+          ]
+        }
+      ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
