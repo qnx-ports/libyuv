@@ -46,6 +46,30 @@
       },
       "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d566f4e7_ce362603",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-10T13:58:14Z",
+      "side": 1,
+      "message": "No worries at all, thanks for the explanation!\n\nI was mostly focused on the P210 case. So my reading of the code (please correct me if I\u0027ve misunderstood) is that this particular tbl instruction was designed to do two things for P210:\n1. Truncating a 16-bit value (really 10-bits usually) to an 8-bit value. That\u0027s why all the indices are odd numbers, because these values are 16-bit little endian, so odd number bytes will be the high byte.\n2. Upsample the width of the chroma channels. That\u0027s why each index is duplicated.\n\nMy assumption was that you could accomplish both of these things with `sri v1.8h, v1.8h, #8`.\n\nIf the throughput of sri is lower than tbl then I suppose it\u0027s a moot point. I just seem to recall tbl being particularly expensive on e.g. Cortex A72. I agree though that for SVE tbl makes sense, since any processor that supports SVE is going to be new enough to have a fast tbl instruction.",
+      "parentUuid": "898f2397_1c692164",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "357b01624e318eb561552f3941e3a02ba834f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
