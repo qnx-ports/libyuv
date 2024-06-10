@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91e9911_cd181e58",
+        "filename": "source/rotate_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-10T18:40:08Z",
+      "side": 0,
+      "message": "I\u0027m hoping this, or something like it, could replace the way 8 bit is transposed.\nThe 8 bit can use either 16 bit or 32 bit transpose with a vtrn to transpose the bytes / words within the larger 16 or 32 bit transposes.\nWe need higher level transpose functions that handle the \u0027any\u0027 case and at least a C version to make the API portable.\nThe transpose functions should probably be exposed as a public API for 8, 16 and 32 bit, and maybe 24 bit.  And then Rotate by 90/270 re-implemented on top of transpose.  Rotate by 180 is a Mirror row function.",
+      "revId": "969e36093fad197d33e7c85d1bb901269d99da16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
