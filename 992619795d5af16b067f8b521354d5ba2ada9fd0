@@ -62,6 +62,24 @@
       "parentUuid": "77bcf6b9_e20dd5fe",
       "revId": "992619795d5af16b067f8b521354d5ba2ada9fd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a42026e_1ee6afda",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-11T23:33:31Z",
+      "side": 1,
+      "message": "The add is always positive?  So it can be removed from the amount that is uqsub?",
+      "parentUuid": "8f57765e_a80dc4ff",
+      "revId": "992619795d5af16b067f8b521354d5ba2ada9fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
