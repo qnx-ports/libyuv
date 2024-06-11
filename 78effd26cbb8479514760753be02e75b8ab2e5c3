@@ -230,6 +230,24 @@
       "parentUuid": "56fffdcf_9b1a6f97",
       "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4378a73a_9e7dada3",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-11T13:53:18Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5622133",
+      "parentUuid": "c8a2f25f_401cb586",
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
