@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25dbdc4e_b8516d61",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-11T07:49:42Z",
+      "side": 1,
+      "message": "Ack, I\u0027ve not been particularly rigorous in choosing the prefetch distances so far for the SVE kernels, generally I\u0027ve just been copying whatever previously existed for Neon. We\u0027ll probably want to go back and benchmark whether these are actually making a difference or if a better distance distance might be good instead later?",
+      "parentUuid": "d3e7b1fe_4097b55d",
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d18bacd0_cef2e2ef",
@@ -119,6 +137,24 @@
           ]
         }
       ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc3c90e_48725746",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-11T07:49:42Z",
+      "side": 1,
+      "message": "For `ld1b {z0.h}, ...` load of Y, the b in ld1b means we\u0027re loading bytes but the h in z0.h means we are filling into 16-bit elements, so in effect we end up with something like:\n\n    y0y0y0y0y0...\n\nWe could use something like `ld1b {z0.b}, ...` to load the data as-is, loading bytes and filling into byte elements, however then the predicates could not be shared with the later st2h of ARGB data since the lanes would not line up so we would need a new predicate calculation. There is no performance difference between the different load instructions, so generally it\u0027s preferred to load data such that the data widths mostly line up to make predication work well.",
+      "parentUuid": "d18bacd0_cef2e2ef",
       "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -174,6 +210,24 @@
           ]
         }
       ],
+      "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a2f25f_401cb586",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-11T07:49:42Z",
+      "side": 1,
+      "message": "The TBL instructions here are definitely sub-optimal. I\u0027ve got a follow-on commit that improves this by keeping the UV components interleaved but with replication that I\u0027ll try to put up soon.",
+      "parentUuid": "56fffdcf_9b1a6f97",
       "revId": "78effd26cbb8479514760753be02e75b8ab2e5c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
