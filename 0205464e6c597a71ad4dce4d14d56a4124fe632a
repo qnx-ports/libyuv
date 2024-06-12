@@ -57,6 +57,24 @@
       ],
       "revId": "0205464e6c597a71ad4dce4d14d56a4124fe632a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3380dc21_d6cec15a",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-12T08:19:15Z",
+      "side": 1,
+      "message": "Hi!\n\n1) I think the transpose/rotate kernels can be vector-length agnostic: unrolling or setting a fixed vector-length doesn\u0027t really seem to help us so there is not much point in writing a more specialised implementation.\n\n2) 24-bit seems hard, there is no LD2/3/4 into ZA tile registers.\n\n3) Yes predicates work correctly here, there shouldn\u0027t be a need for \"any\" kernels here.\n\n4) Indeed, we might need to tune these further once we get real silicon, but either way it should be an improvement over the existing Neon implementations to start with.",
+      "parentUuid": "d98d1bad_d18e31c3",
+      "revId": "0205464e6c597a71ad4dce4d14d56a4124fe632a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
