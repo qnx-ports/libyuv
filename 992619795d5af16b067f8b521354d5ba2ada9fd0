@@ -80,6 +80,24 @@
       "parentUuid": "8f57765e_a80dc4ff",
       "revId": "992619795d5af16b067f8b521354d5ba2ada9fd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af796fa1_db18e205",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-12T10:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a42026e_1ee6afda",
+      "revId": "992619795d5af16b067f8b521354d5ba2ada9fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
