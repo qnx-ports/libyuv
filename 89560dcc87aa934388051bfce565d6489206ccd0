@@ -16,6 +16,24 @@
       "message": "kind of complicated having variations for these, but sure.  1555 is rarely used on modern displays/cameras, so dont put too much effort into these formats",
       "revId": "89560dcc87aa934388051bfce565d6489206ccd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61192c0_f07f7e52",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-12T08:11:04Z",
+      "side": 1,
+      "message": "Ack! I\u0027ve got a couple of other commits downstream for these kinds of formats which I\u0027ll slowly put up but I think that\u0027s it for the most part. The RGBTORGB8_TOP macro is quite useful for a lot of these routines.",
+      "parentUuid": "25b15fd6_7103ec25",
+      "revId": "89560dcc87aa934388051bfce565d6489206ccd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
