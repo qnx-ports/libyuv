@@ -71,6 +71,24 @@
       ],
       "revId": "893b296169df8880f510829f5ba864be2c85ac0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c015c956_ac581456",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-12T08:23:49Z",
+      "side": 1,
+      "message": "The hidden trick here is that the *B variants of instructions zero the odd elements of the vector whereas the *T variants merge in the even elements from the previous value of the vector. In the RGBA code we can take advantage of the A component already being in the right place and just overwrite the odd (B) elements. Such an approach won\u0027t work for ARGB since the alpha then needs to be in even bytes of the vector rather than odd bytes.\n\nThe approach we\u0027ve used here for RGBA does mean that there is a loop-carried dependency on the value of z19 for variants with a fixed alpha, but there is enough other work in the loop that this isn\u0027t a big issue I think.",
+      "parentUuid": "cd67faf7_b2224d1e",
+      "revId": "893b296169df8880f510829f5ba864be2c85ac0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
