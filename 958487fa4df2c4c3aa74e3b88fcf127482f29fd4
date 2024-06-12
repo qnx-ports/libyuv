@@ -1,0 +1,94 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef9c654_a036222e",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-12T16:29:00Z",
+      "side": 1,
+      "message": "in general try to avoid tables when a simple zip/uzp or something will suffice.  They take up registers and are not always fast instructions.  Use tbl for non-trivial shuffles.",
+      "fixSuggestions": [
+        {
+          "fixId": "3ae50aba_31c5fc6e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 72,
+                "endChar": 0
+              },
+              "replacement": "  \"uzp1       z2.b, z0.b, z0.b              \\n\" /* V0V0 */ \\\n  \"uzp1       z1.b, z0.b, z0.b              \\n\" /* U0U0 */ \\\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 78,
+                "startChar": 0,
+                "endLine": 80,
+                "endChar": 0
+              },
+              "replacement": "  \"uzp1       z2.b, z0.b, z0.b              \\n\" /* V0V0 */ \\\n  \"uzp1       z1.b, z0.b, z0.b              \\n\" /* U0U0 */ \\\n"
+            }
+          ]
+        }
+      ],
+      "revId": "958487fa4df2c4c3aa74e3b88fcf127482f29fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40b8f2b_f0d0b56b",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-12T16:29:00Z",
+      "side": 1,
+      "message": "The READ macros etc should be on their own line, indented the same as the \" in the assembly.  If clang-format is disabled, try to fix them up manually as you go.",
+      "fixSuggestions": [
+        {
+          "fixId": "89ecf8ad_e201620d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1006,
+                "startChar": 0,
+                "endLine": 1008,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                               \\n\"\n      READYUY2_SVE\n      I4XXTORGB_SVE RGBTOARGB8_SVE\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1075,
+                "startChar": 0,
+                "endLine": 1078,
+                "endChar": 0
+              },
+              "replacement": "      \"whilelt  p1.h, wzr, %w[width_last_y]             \\n\" READUYVY_SVE\n      \"whilelt  p2.h, wzr, %w[width_last_uv]            \\n\"\n      I4XXTORGB_SVE RGBTOARGB8_SVE\n"
+            }
+          ]
+        }
+      ],
+      "revId": "958487fa4df2c4c3aa74e3b88fcf127482f29fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
