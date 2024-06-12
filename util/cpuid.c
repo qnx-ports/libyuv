@@ -112,14 +112,20 @@ int main(int argc, const char* argv[]) {
     // Read and print the SVE and SME vector lengths.
     if (has_sve) {
       int sve_vl;
-      // rdvl x0, #1
-      asm(".inst 0x04bf5020; mov %w0, w0" : "=r"(sve_vl)::"x0");
+      asm(".inst 0x04bf5020    \n"  // rdvl x0, #1
+          "mov %w[sve_vl], w0  \n"
+          : [sve_vl] "=r"(sve_vl)  // %[sve_vl]
+          :
+          : "x0");
       printf("SVE vector length: %d bytes\n", sve_vl);
     }
     if (has_sme) {
       int sme_vl;
-      // rdsvl x0, #1
-      asm(".inst 0x04bf5820; mov %w0, w0" : "=r"(sme_vl)::"x0");
+      asm(".inst 0x04bf5820    \n"  // rdsvl x0, #1
+          "mov %w[sme_vl], w0  \n"
+          : [sme_vl] "=r"(sme_vl)  // %[sme_vl]
+          :
+          : "x0");
       printf("SME vector length: %d bytes\n", sme_vl);
     }
 #endif
