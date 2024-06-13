@@ -46,6 +46,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34362c0_0f219d75",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-13T10:21:59Z",
+      "side": 1,
+      "message": "Ack! We need them here to do the shift and sub-sampling in one instruction which is usually faster than a non-tbl permute.",
+      "parentUuid": "6ef9c654_a036222e",
+      "revId": "958487fa4df2c4c3aa74e3b88fcf127482f29fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d40b8f2b_f0d0b56b",
@@ -87,6 +105,24 @@
           ]
         }
       ],
+      "revId": "958487fa4df2c4c3aa74e3b88fcf127482f29fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad435f5_f9a09c0d",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-13T10:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40b8f2b_f0d0b56b",
       "revId": "958487fa4df2c4c3aa74e3b88fcf127482f29fd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
