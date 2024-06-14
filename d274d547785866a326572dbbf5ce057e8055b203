@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83989913_7aedf1ea",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-14T10:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78550ac6_2fe6b95c",
+      "revId": "d274d547785866a326572dbbf5ce057e8055b203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a42f2e06_c0ea7ee7",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-06-13T22:05:19Z",
       "side": 1,
       "message": "consider passing an immediate... which i think is \u0027i\u0027?  or just dup the immediate directly",
+      "range": {
+        "startLine": 471,
+        "startChar": 27,
+        "endLine": 471,
+        "endChar": 28
+      },
+      "revId": "d274d547785866a326572dbbf5ce057e8055b203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69de9388_87c007f1",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-14T10:19:23Z",
+      "side": 1,
+      "message": "Can do an immediate for alpha, but limit doesn\u0027t fit in an immediate format so leaving that one as is. Done?",
+      "parentUuid": "a42f2e06_c0ea7ee7",
       "range": {
         "startLine": 471,
         "startChar": 27,
