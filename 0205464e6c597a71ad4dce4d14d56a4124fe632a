@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f74985_3acc822f",
+        "filename": "BUILD.gn",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-14T09:47:39Z",
+      "side": 1,
+      "message": "Done here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5633654",
+      "parentUuid": "c0cd9c70_5765b1d8",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 61
+      },
+      "revId": "0205464e6c597a71ad4dce4d14d56a4124fe632a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d98d1bad_d18e31c3",
