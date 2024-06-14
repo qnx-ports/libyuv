@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a89fcd4_f9059ce2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-14T19:49:05Z",
+      "side": 1,
+      "message": "This is out of scope for this CL I think, but maybe we should think about refactoring I4XXTORGB_SVE and NV12TORGB_SVE to reduce the code redundancy.",
+      "revId": "c53726158073b2f9f7c6da0b17eb616aac9f659c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
