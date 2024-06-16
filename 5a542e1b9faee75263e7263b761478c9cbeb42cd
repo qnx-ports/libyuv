@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0345b9_77ed5db3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1575067
+      },
+      "writtenOn": "2024-06-16T07:46:40Z",
+      "side": 1,
+      "message": "Hi Frank\nThis CL support rvv intrinsic v0.12. \nAims to fix issues:\n1. https://libyuv.issues.chromium.org/issues/347111119\n2. https://libyuv.issues.chromium.org/issues/347112532\n\nPlease help to review it.",
+      "revId": "5a542e1b9faee75263e7263b761478c9cbeb42cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
