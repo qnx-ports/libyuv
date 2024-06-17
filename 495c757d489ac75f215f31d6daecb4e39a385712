@@ -33,6 +33,24 @@
       "message": "Looks like there\u0027s a few build failures",
       "revId": "495c757d489ac75f215f31d6daecb4e39a385712",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2cb504b_6a2d5a00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-06-17T21:13:26Z",
+      "side": 1,
+      "message": "__asm__ is for c apparently",
+      "parentUuid": "c0994088_25e8ea45",
+      "revId": "495c757d489ac75f215f31d6daecb4e39a385712",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
