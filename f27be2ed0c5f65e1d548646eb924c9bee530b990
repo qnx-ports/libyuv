@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b486c6_a6e85cac",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-17T20:50:24Z",
+      "side": 1,
+      "message": "nit: maybe something like \"XYZ\" would make for a better placeholder, since A, B, and arguably even C have existing meanings in pixel formats.",
+      "range": {
+        "startLine": 1225,
+        "startChar": 25,
+        "endLine": 1225,
+        "endChar": 28
+      },
+      "revId": "f27be2ed0c5f65e1d548646eb924c9bee530b990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12790d7_1262cfc6",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1297,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-17T20:50:24Z",
+      "side": 1,
+      "message": "This is out of scope for this CL obviously, but should we think about procedurally generating these tables? Maybe a simple hook that lazily populates these tables the first time these functions are called.\n\n@fbarchard wdyt?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1297,
+        "endChar": 2
+      },
+      "revId": "f27be2ed0c5f65e1d548646eb924c9bee530b990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
