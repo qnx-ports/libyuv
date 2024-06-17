@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069e3bd4_d7bd60cb",
+        "filename": "source/compare_gcc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-17T20:09:14Z",
+      "side": 0,
+      "message": "Is this intentional?",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "7758c961c58e9b0bb35638e964160b40af791981",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
