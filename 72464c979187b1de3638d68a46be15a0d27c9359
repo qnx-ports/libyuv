@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee84f8a_8c833053",
+        "filename": "util/cpuid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-06-17T19:25:06Z",
+      "side": 1,
+      "message": "nit: I think we usually put these on separate lines for clarity in libyuv.",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 30
+      },
+      "revId": "72464c979187b1de3638d68a46be15a0d27c9359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
