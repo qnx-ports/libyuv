@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8d776a_51564214",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-18T15:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b486c6_a6e85cac",
+      "range": {
+        "startLine": 1225,
+        "startChar": 25,
+        "endLine": 1225,
+        "endChar": 28
+      },
+      "revId": "f27be2ed0c5f65e1d548646eb924c9bee530b990",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f12790d7_1262cfc6",
