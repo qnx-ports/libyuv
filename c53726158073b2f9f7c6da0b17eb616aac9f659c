@@ -16,6 +16,24 @@
       "message": "This is out of scope for this CL I think, but maybe we should think about refactoring I4XXTORGB_SVE and NV12TORGB_SVE to reduce the code redundancy.",
       "revId": "c53726158073b2f9f7c6da0b17eb616aac9f659c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c191f6f0_b89cfbc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-18T15:41:37Z",
+      "side": 1,
+      "message": "Agreed. Unfortunately for the time being over the next few commits it only really gets more complicated. In particular the current code for loading 422 etc duplicates the UV components immediately but we can actually delay this until part-way through the I4XXTORGB_SVE calculation and use the free space in the vectors to give us a cheap round of unrolling the loop. Unrolling like this is beneficial across the board but in particular on in-order little cores.",
+      "parentUuid": "5a89fcd4_f9059ce2",
+      "revId": "c53726158073b2f9f7c6da0b17eb616aac9f659c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
