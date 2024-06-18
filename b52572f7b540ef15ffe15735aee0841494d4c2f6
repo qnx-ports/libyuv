@@ -16,6 +16,24 @@
       "message": "Hmmm... this looks alot like a \u0027matrix\u0027 function where the format (ARGB/RGBA) is expressed with constants.\nIf this could do more, like RGB24ToABGR, the next step would be porting the API to more platforms.  But its probably not what x86 wants.",
       "revId": "b52572f7b540ef15ffe15735aee0841494d4c2f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b9d2d6_80dc5fdd",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-18T15:17:46Z",
+      "side": 1,
+      "message": "I don\u0027t see a RGB24ToABGR in row.h, do you mean RGB24ToARGBRow? We can definitely use this function to implement that as well. I\u0027ll try to put up a patch in the next couple of days.",
+      "parentUuid": "f6580f18_e0fb046d",
+      "revId": "b52572f7b540ef15ffe15735aee0841494d4c2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
