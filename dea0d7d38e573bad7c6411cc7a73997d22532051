@@ -16,6 +16,24 @@
       "message": "Won\u0027t this break 32-bit neon code?",
       "revId": "dea0d7d38e573bad7c6411cc7a73997d22532051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "380e0781_6d4567c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-06-18T15:07:08Z",
+      "side": 1,
+      "message": "It wouldn\u0027t break but it would definitely be sub-optimal since the 32-bit code can still handle multiples of 8 but not 16 more efficiently. Done.",
+      "parentUuid": "d692b11e_1dd4891e",
+      "revId": "dea0d7d38e573bad7c6411cc7a73997d22532051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
