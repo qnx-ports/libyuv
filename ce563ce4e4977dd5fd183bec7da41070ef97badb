@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2baadb41_1bde6715",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-06T22:39:59Z",
+      "side": 1,
+      "message": "WXYZ looks weird... how about ABCD as a notation.  We can rearrange ABCD to the different orders when necessary",
+      "fixSuggestions": [
+        {
+          "fixId": "d368e699_5cdf2611",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1116,
+                "startChar": 0,
+                "endLine": 1122,
+                "endChar": 0
+              },
+              "replacement": "static inline void RAWToABCDRow_SVE2(const uint8_t* src_raw,\n                                    uint8_t* dst_abcd,\n                                    int width,\n                                    uint32_t idx_start,\n                                    uint32_t idx_step,\n                                    uint32_t alpha) {\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1160,
+                "startChar": 0,
+                "endLine": 1162,
+                "endChar": 0
+              },
+              "replacement": "      : [src] \"+r\"(src_raw),          // %[src]\n        [dst] \"+r\"(dst_abcd),        // %[dst]\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1172,
+                "startChar": 0,
+                "endLine": 1173,
+                "endChar": 0
+              },
+              "replacement": "  RAWToABCDRow_SVE2(src_raw, dst_argb, width, 0xff000102U, 0x00030303U,\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1177,
+                "startChar": 0,
+                "endLine": 1179,
+                "endChar": 0
+              },
+              "replacement": "  RAWToABCDRow_SVE2(src_raw, dst_rgba, width, 0x000102ffU, 0x03030300U,\n                    0x0000ffU);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ce563ce4e4977dd5fd183bec7da41070ef97badb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
