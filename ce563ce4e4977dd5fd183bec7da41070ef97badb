@@ -64,6 +64,24 @@
       ],
       "revId": "ce563ce4e4977dd5fd183bec7da41070ef97badb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca603425_1b8405e2",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-08T10:12:15Z",
+      "side": 1,
+      "message": "XYZ was previously suggested by Justin here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5631544/1..4/source/row_sve.cc#b1225\n\nFine with changing it back in a later commit if we have a consensus, @justin what do you think?",
+      "parentUuid": "2baadb41_1bde6715",
+      "revId": "ce563ce4e4977dd5fd183bec7da41070ef97badb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
