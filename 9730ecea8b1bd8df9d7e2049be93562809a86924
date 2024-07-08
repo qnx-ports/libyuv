@@ -34,6 +34,24 @@
       "parentUuid": "eea6939f_23b8a2be",
       "revId": "9730ecea8b1bd8df9d7e2049be93562809a86924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf94589_5e02ac85",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T15:52:39Z",
+      "side": 1,
+      "message": "Will the code/table work when vl is longer than 256?",
+      "parentUuid": "bea2b144_21167d86",
+      "revId": "9730ecea8b1bd8df9d7e2049be93562809a86924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
