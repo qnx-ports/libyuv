@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c4f362_c802785a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T20:19:06Z",
+      "side": 1,
+      "message": "There are 2 historical reasons for 64 bit\n1. cpus at the time this code was created, didnt benefit from 128 bit neon\nI\u0027ve especially noted a benefit on Cortex X series, which likes LDP for 256 bit loads and 128 bit neon... probably as much because the number of instructions per cycle is a limiting factor, so using larger vectors helps\n\n2. I wanted the calling code/any to not need to care if it is aarch32 or aarch64.  At the time I didnt know how to read multiple 128 bit vectors in aarch32\ne.g. ld4 on aarch64 can read 4 128bit vectors\nBut it is possible to do 2 ld4 of 64 bit vectors, reading the low 64 bits into d0, d2, d4, d6 and then the high 64 bits into d1, d3, d5, d7\nAllowing aarch32 to mimic the aarch64 code.\n\nIts also fine to have aarch64 process more and the any function and calling code tuned for aarch64, making aarch32 loop 2x more.",
+      "revId": "102889355d4fbed11002080fbdbc8904c567154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad218de0_42d62b0e",
+        "filename": "source/row_any.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T20:19:06Z",
+      "side": 1,
+      "message": "the code that calls ARGB4444ToY also checks the width is aligned to 8 and should check for 16",
+      "revId": "102889355d4fbed11002080fbdbc8904c567154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
