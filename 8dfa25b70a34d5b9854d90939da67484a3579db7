@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe627ae_1604efc8",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T20:26:04Z",
+      "side": 1,
+      "message": "this is a weird literal format.  I think the single quote is ignored?  I\u0027d suggest removing the quote as it may not compile on all compilers and doesnt add much to the readability.",
+      "fixSuggestions": [
+        {
+          "fixId": "a2399733_0c47c248",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 492,
+                "startChar": 0,
+                "endLine": 494,
+                "endChar": 0
+              },
+              "replacement": "  uint32_t nv_uv_start \u003d 0x02000200U;\n  uint32_t nv_uv_step \u003d 0x04040404U;\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 503,
+                "startChar": 0,
+                "endLine": 505,
+                "endChar": 0
+              },
+              "replacement": "  uint32_t nv_uv_start \u003d 0x00020002U;\n  uint32_t nv_uv_step \u003d 0x04040404U;\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1007,
+                "startChar": 0,
+                "endLine": 1009,
+                "endChar": 0
+              },
+              "replacement": "  uint32_t nv_uv_start \u003d 0x03010301U;\n  uint32_t nv_uv_step \u003d 0x04040404U;\n"
+            },
+            {
+              "path": "source/row_sve.cc",
+              "range": {
+                "startLine": 1060,
+                "startChar": 0,
+                "endLine": 1062,
+                "endChar": 0
+              },
+              "replacement": "  uint32_t nv_uv_start \u003d 0x02000200U;\n  uint32_t nv_uv_step \u003d 0x04040404U;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "8dfa25b70a34d5b9854d90939da67484a3579db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
