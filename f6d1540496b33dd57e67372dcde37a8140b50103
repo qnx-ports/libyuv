@@ -50,6 +50,40 @@
       "message": "missing comment?  i forget why we reduce .s to .h here",
       "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8202b3ab_2367a2ae",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T16:19:02Z",
+      "side": 1,
+      "message": "it may help to use a different register for output to allow renaming?",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34006f23_79c30799",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T16:19:02Z",
+      "side": 1,
+      "message": "comments are terse... f is fixed point interpolant?  the eor indicates f and (127-f) are used but it should really be 128-f?  And really it wanted to be 256-f but it would overflow a byte.  if f was widened to .h a umulw could widen the pixels.\nIf this is clearly better, the C could be changed to match and make \u0027exact\u0027 disable x86 until it is changed to match",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
