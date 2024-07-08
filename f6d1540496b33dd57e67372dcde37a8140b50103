@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a72a617_089af943",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T16:06:57Z",
+      "side": 1,
+      "message": "suggest moving this up 1 line because it has no dependency on %5.\nin my experience, ARM can not co-issue if the destination is the same as any source, but Intel can, so advanced ARM cpus may be able to coissue the first lsr #3 and add #3 in future cpus",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bf8959_0935123d",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T16:06:57Z",
+      "side": 1,
+      "message": "I wonder if it would help to have 4 pointers?",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8515ce_4e6ef8f1",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-08T16:06:57Z",
+      "side": 1,
+      "message": "missing comment?  i forget why we reduce .s to .h here",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
