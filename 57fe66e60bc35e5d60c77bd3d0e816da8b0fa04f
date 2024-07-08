@@ -50,6 +50,24 @@
       "message": "I\u0027m surprised the win isnt more?  especially on A510",
       "revId": "57fe66e60bc35e5d60c77bd3d0e816da8b0fa04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37616b7_c49dab22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-08T10:52:54Z",
+      "side": 1,
+      "message": "Hmm yes these improvements look like typos. Re-measured on Cortex-A510, Neon versus C compiled with LLVM-18:\n\n    P210ToAR30Row: -82.9%\n    P210ToARGBRow: -78.1%\n    P410ToAR30Row: -82.7%\n    P410ToARGBRow: -78.3%\n\nThe C code is not auto-vectorised at all so this makes a lot more sense to me. Apologies for the confusion.",
+      "parentUuid": "2473209d_eebf8823",
+      "revId": "57fe66e60bc35e5d60c77bd3d0e816da8b0fa04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
