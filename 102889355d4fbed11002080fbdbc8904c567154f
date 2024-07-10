@@ -33,6 +33,24 @@
       "message": "the code that calls ARGB4444ToY also checks the width is aligned to 8 and should check for 16",
       "revId": "102889355d4fbed11002080fbdbc8904c567154f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e44cbb_631e8e1a",
+        "filename": "source/row_any.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1294,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-10T23:12:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ad218de0_42d62b0e",
+      "revId": "102889355d4fbed11002080fbdbc8904c567154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
