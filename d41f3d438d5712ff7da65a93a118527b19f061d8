@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e90330_2d2b0ca8",
+        "filename": "util/cpuid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-07-10T20:40:35Z",
+      "side": 1,
+      "message": "Just curious: do you know what is wrong with using `asm`? Does something define `asm` as a macro?",
+      "revId": "d41f3d438d5712ff7da65a93a118527b19f061d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
