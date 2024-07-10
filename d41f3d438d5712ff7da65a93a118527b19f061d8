@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2fefd69_edf2bece",
+        "filename": "util/cpuid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-10T20:58:54Z",
+      "side": 1,
+      "message": "Maybe.  asm() is apparently only for C++, and we do build .cc files as C++, but the intent is that library as well as headers work as C as well.\nutil/cpuid.c is done as C to ensure compatability with C, and was only flagged by IOS.\n__asm__ would likely work in both C and C++ but we\u0027ve been using asm as long as I can remember.  I\u0027d need to do a 1 off test to see if libyuv still builds with C.\nWe really are not using any C++ in the code... the intent is at the header level, we can use name space, overload or default arguments in C++ to allow the API to adapt.  I\u0027m often tempted to make the formal switch of .cc files to .c since it is unlikely the content of libyuv will truely do C++.  XNNPack is C99 and works well with tests in C++.  There is one feature I would kind of like to use, however - template types.  There is a lot of duplicate code for 16 bit vs 8 bit channels, at the high level functions.\n\nI think leave the .cc files as asm() for now.",
+      "parentUuid": "362f7c8d_f54cf6c4",
+      "revId": "d41f3d438d5712ff7da65a93a118527b19f061d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59e90330_2d2b0ca8",
         "filename": "util/cpuid.c",
         "patchSetId": 1
