@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "362f7c8d_f54cf6c4",
+        "filename": "util/cpuid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-07-10T20:46:42Z",
+      "side": 1,
+      "message": "Should we fix the uses of `asm` in other files? I also found them in the following files:\n- include/libyuv/macros_msa.h\n- unit_test/cpu_test.cc\n- source/compare_neon64.cc\n- source/cpu_id.cc\n- source/row_sve.cc\n\n```\n$ find . -name \"*\" -a -type f | xargs grep \" asm(\"\n./include/libyuv/macros_msa.h:    asm(\"lw  %[val_m],  %[psrc_lw_m]  \\n\"              \\\n./include/libyuv/macros_msa.h:    asm(\"ld  %[val_m],  %[psrc_ld_m]  \\n\"              \\\n./include/libyuv/macros_msa.h:    asm(\"sw  %[val_m],  %[pdst_sw_m]  \\n\"               \\\n./include/libyuv/macros_msa.h:    asm(\"sd  %[val_m],  %[pdst_sd_m]  \\n\"               \\\n./include/libyuv/macros_msa.h:    asm(\"lwr %[val_lw_m], 0(%[psrc_lw_m]) \\n\\t\" \\\n./include/libyuv/macros_msa.h:    asm(\"ldr %[val_ld_m], 0(%[psrc_ld_m]) \\n\\t\" \\\n./include/libyuv/macros_msa.h:    asm(\"usw  %[val_m],  %[pdst_sw_m]  \\n\"              \\\n./unit_test/cpu_test.cc:      asm(\".inst 0x04bf5020    \\n\"  // rdvl x0, #1\n./unit_test/cpu_test.cc:      asm(\".inst 0x04bf5820    \\n\"  // rdsvl x0, #1\n./util/cpuid.c:      asm(\".inst 0x04bf5020    \\n\"  // rdvl x0, #1\n./util/cpuid.c:      asm(\".inst 0x04bf5820    \\n\"  // rdsvl x0, #1\n./source/compare_neon64.cc:  asm(\"ld1   {v16.4s, v17.4s, v18.4s, v19.4s}, [%[kIdx]] \\n\"\n./source/cpu_id.cc:  asm(\".byte 0x0f, 0x01, 0xd0\" : \"\u003da\"(xcr0) : \"c\"(0) : \"%edx\");\n./source/row_sve.cc:  asm(\"cnth %0\" : \"\u003dr\"(vl));\n./source/row_sve.cc:  asm(\"cnth %0\" : \"\u003dr\"(vl));\n./source/row_sve.cc:  asm(\"cntw %x0\" : \"\u003dr\"(vl));\n./source/row_sve.cc:  asm(\"cntw %x0\" : \"\u003dr\"(vl));\n```",
+      "revId": "d41f3d438d5712ff7da65a93a118527b19f061d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59e90330_2d2b0ca8",
