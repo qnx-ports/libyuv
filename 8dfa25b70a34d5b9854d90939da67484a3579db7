@@ -64,6 +64,24 @@
       ],
       "revId": "8dfa25b70a34d5b9854d90939da67484a3579db7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacfe4b4_28e01a4a",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:44:04Z",
+      "side": 1,
+      "message": "Indeed, single quotes are an optional integer separator character as of a recent C++ standard, see https://en.cppreference.com/w/cpp/language/integer_literal:\n\n    Optional single quotes (\u0027) may be inserted between the digits as a separator; they are ignored when determining the value of the literal.\n\nBut agree they are unnecessary here, will remove in a subsequent commit.",
+      "parentUuid": "dfe627ae_1604efc8",
+      "revId": "8dfa25b70a34d5b9854d90939da67484a3579db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
