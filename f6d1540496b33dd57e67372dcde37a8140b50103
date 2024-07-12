@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9407db5b_518885f2",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:40:32Z",
+      "side": 1,
+      "message": "Ack, will investigate and get back to you.",
+      "parentUuid": "7a72a617_089af943",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3bf8959_0935123d",
         "filename": "source/scale_neon64.cc",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2024-07-08T16:06:57Z",
       "side": 1,
       "message": "I wonder if it would help to have 4 pointers?",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f2e985_02642771",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:40:32Z",
+      "side": 1,
+      "message": "Ack, will investigate and get back to you.",
+      "parentUuid": "c3bf8959_0935123d",
       "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37016805_c0ec2045",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:40:32Z",
+      "side": 1,
+      "message": "Not a missing comment, just forcing clang-format to make sure that the macro ends up on the next line. The narrowing is safe since we AND with 0x7f later, and processing only 64-bit vectors is advantageous compared to full 128-bit vectors on earlier cores like Cortex-A72.",
+      "parentUuid": "1a8515ce_4e6ef8f1",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8202b3ab_2367a2ae",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c511a292_f900c058",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:40:32Z",
+      "side": 1,
+      "message": "Renaming like this doesn\u0027t make a difference on modern cpus for most instructions.\nThere are known issues where this doesn\u0027t apply on some complex instructions like SVE gather or reduction instructions, but I don\u0027t think we have anything to worry about here.",
+      "parentUuid": "8202b3ab_2367a2ae",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34006f23_79c30799",
@@ -82,6 +154,24 @@
       "writtenOn": "2024-07-08T16:19:02Z",
       "side": 1,
       "message": "comments are terse... f is fixed point interpolant?  the eor indicates f and (127-f) are used but it should really be 128-f?  And really it wanted to be 256-f but it would overflow a byte.  if f was widened to .h a umulw could widen the pixels.\nIf this is clearly better, the C could be changed to match and make \u0027exact\u0027 disable x86 until it is changed to match",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5820b50c_4ad0c17a",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-12T17:40:32Z",
+      "side": 1,
+      "message": "Ack! The comments are inherited from the original code and I don\u0027t really have a better explanation in mind or one I can steal from the C code. If you have a particular explanation in mind I\u0027m happy to paste that in a subsequent commit?\n\nWidening here would regress performance on earlier cores that only have half throughput for full 128-bit instructions like Cortex-A72, so suggest we don\u0027t widen unless you have a strong preference to change it?",
+      "parentUuid": "34006f23_79c30799",
       "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
