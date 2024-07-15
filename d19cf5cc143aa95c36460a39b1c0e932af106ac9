@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515c1be1_143e27d8",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-15T18:30:50Z",
+      "side": 1,
+      "message": "I think in the future we should think of this as 16 bit channels, and provide a 32 bit version as well, and then hook them up to various rotates.\nIt may be worth having a tranpose plane public API with 8,16,32 bit support (and maybe 24).\nThe weirdness with 16 bit planes is the stride is measured in elements.\nWhile 32 bit planes are really ARGB and measured in bytes and use uint8_t*\n\nIf we stay with UV and int8* then TransposeARGBWxH_SME would be the next function.\nThats really what we need, since ARGBRotate is very slow.\nWhat do you think?",
+      "fixSuggestions": [
+        {
+          "fixId": "2d63fa1a_36a37e68",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/rotate_sme.cc",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 90,
+                "endChar": 0
+              },
+              "replacement": "// TODO(fbarchard): Add 32-bit version.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff8822a_4a16fde3",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-15T18:30:50Z",
+      "side": 1,
+      "message": "should these be svl for sme?\nThis is the code snippet from util/cpuid.c\n\n#if __aarch64__\n    // Read and print the SVE and SME vector lengths.\n    if (has_sve) {\n      int sve_vl;\n      __asm__(\".inst 0x04bf5020    \\n\"  // rdvl x0, #1\n          \"mov %w[sve_vl], w0  \\n\"\n          : [sve_vl] \"\u003dr\"(sve_vl)  // %[sve_vl]\n          :\n          : \"x0\");\n      printf(\"SVE vector length: %d bytes\\n\", sve_vl);\n    }\n    if (has_sme) {\n      int sme_vl;\n      __asm__(\".inst 0x04bf5820    \\n\"  // rdsvl x0, #1\n          \"mov %w[sme_vl], w0  \\n\"\n          : [sme_vl] \"\u003dr\"(sme_vl)  // %[sme_vl]\n          :\n          : \"x0\");\n      printf(\"SME vector length: %d bytes\\n\", sme_vl);\n    }\n#endif  // defined(__aarch64__)",
+      "fixSuggestions": [
+        {
+          "fixId": "11680e8f_71c35938",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/rotate_sme.cc",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "  asm(\"svl %x0\" : \"\u003dr\"(vl));\n"
+            },
+            {
+              "path": "source/rotate_sme.cc",
+              "range": {
+                "startLine": 100,
+                "startChar": 0,
+                "endLine": 101,
+                "endChar": 0
+              },
+              "replacement": "  asm(\"svl %x0\" : \"\u003dr\"(vl));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
