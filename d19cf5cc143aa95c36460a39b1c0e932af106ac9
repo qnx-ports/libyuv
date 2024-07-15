@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3a83bd3_09d2ad62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-15T20:48:28Z",
+      "side": 1,
+      "message": "__arm_locally_streaming requires clang19.  include/libyuv/row.h should check clang version and disable sme, similar to how neon is disabled for clang 3.4 and earlier.",
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "515c1be1_143e27d8",
         "filename": "source/rotate_sme.cc",
         "patchSetId": 1
