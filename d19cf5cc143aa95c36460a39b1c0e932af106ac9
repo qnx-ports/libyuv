@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a197d890_d741ff1e",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-16T17:34:03Z",
+      "side": 1,
+      "message": "I suggest adding a clang 19 check here\n\n// clang \u003e\u003d 19.0.0 required for SME\n#if defined(__clang__) \u0026\u0026 defined(__aarch64__) \u0026\u0026 !defined(LIBYUV_DISABLE_SME)\n#if __clang_major__ \u003c 19\n#define LIBYUV_DISABLE_SME\n#endif  // __clang_major__ \u003c 19\n#endif  // __clang__",
+      "fixSuggestions": [
+        {
+          "fixId": "76d2e34f_cbd8ee8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/rotate_row.h",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": "// clang \u003e\u003d 19.0.0 required for SME\n#if defined(__clang__) \u0026\u0026 defined(__aarch64__) \u0026\u0026 !defined(LIBYUV_DISABLE_SME)\n#if __clang_major__ \u003c 19\n#define LIBYUV_DISABLE_SME\n#endif\n#endif\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "515c1be1_143e27d8",
         "filename": "source/rotate_sme.cc",
         "patchSetId": 1
