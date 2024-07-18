@@ -16,6 +16,24 @@
       "message": "These should be on their own line.  We may have to disable clang-format around row functions... Its messing up formatting quite a bit.\nI had hoped removing volatile would fix it.  Now I\u0027m thinking __asm__ might help, but for now, dont run the formatting scripts",
       "revId": "ce0773ee3e66fbb261f62127875d53e810d91b5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098e26c9_865e72ee",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-18T12:58:45Z",
+      "side": 1,
+      "message": "I like having clang-format for the rest of the kernel layout so I\u0027d rather it wasn\u0027t disabled. I don\u0027t think it reads too badly as long as the macros are definitely on their own line as we have it here?",
+      "parentUuid": "38b2fe27_e81a4e04",
+      "revId": "ce0773ee3e66fbb261f62127875d53e810d91b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
