@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "829c42b7_b03df5b8",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-18T12:52:44Z",
+      "side": 1,
+      "message": "Makes no difference on all the cores I can measure on.",
+      "parentUuid": "9407db5b_518885f2",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3bf8959_0935123d",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Ack, will investigate and get back to you.",
       "parentUuid": "c3bf8959_0935123d",
+      "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c2ee07_8aa0b749",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-18T12:52:44Z",
+      "side": 1,
+      "message": "Having four pointers made things ~2-5% slower on little cores, no difference on larger cores.",
+      "parentUuid": "91f2e985_02642771",
       "revId": "f6d1540496b33dd57e67372dcde37a8140b50103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
