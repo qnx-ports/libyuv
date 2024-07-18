@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4271fe75_35206206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-18T08:39:41Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5703587 .",
+      "parentUuid": "c3a83bd3_09d2ad62",
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a197d890_d741ff1e",
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a72f6a_ac953d0f",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-18T08:39:41Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5703587 is the first patch in the series so done there. Done.",
+      "parentUuid": "a197d890_d741ff1e",
       "revId": "d19cf5cc143aa95c36460a39b1c0e932af106ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
