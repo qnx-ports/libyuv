@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c984e2_7fbffbb0",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T18:59:22Z",
+      "side": 1,
+      "message": "vqrshrn2 likely stalls... and overall doesnt co-issue well.\nConsider reordering and using more registers so the a0 and a2 code are weaved together.\n\nRoughly make the registers unique:\n      // a1 \u003d (src[1] * 1 + s[2] * 1 + 1) \u003e\u003e 1\n      \"urhadd      v1.16b, v1.16b, v2.16b        \\n\"\n      \"prfm        pldl1keep, [%3, 448]          \\n\"\n\n      // a0 \u003d (src[0] * 3 + s[1] * 1 + 2) \u003e\u003e 2\n      \"ushll       v4.8h, v1.8b, #0              \\n\"\n      \"ushll2      v5.8h, v1.16b, #0             \\n\"\n      \"umlal       v4.8h, v0.8b, v20.8b          \\n\"\n      \"umlal2      v5.8h, v0.16b, v20.16b        \\n\"\n      \"uqrshrn     v0.8b, v4.8h, #2              \\n\"\n      \"uqrshrn2    v0.16b, v5.8h, #2             \\n\"\n\n      // a2 \u003d (src[2] * 1 + s[3] * 3 + 2) \u003e\u003e 2\n      \"ushll       v6.8h, v2.8b, #0              \\n\"\n      \"ushll2      v7.8h, v2.16b, #0             \\n\"\n      \"umlal       v6.8h, v3.8b, v20.8b          \\n\"\n      \"umlal2      v7.8h, v3.16b, v20.16b        \\n\"\n      \"uqrshrn     v2.8b, v6.8h, #2              \\n\"\n      \"uqrshrn2    v2.16b, v5.7h, #2             \\n\"\n      \nThen weave the a0 and a2 code into pairs of instructions:\n      \n      // a0 \u003d (src[0] * 3 + s[1] * 1 + 2) \u003e\u003e 2\n      // a2 \u003d (src[2] * 1 + s[3] * 3 + 2) \u003e\u003e 2\n      \"ushll       v4.8h, v1.8b, #0              \\n\"\n      \"ushll       v6.8h, v2.8b, #0              \\n\"\n      \"ushll2      v5.8h, v1.16b, #0             \\n\"\n      \"ushll2      v7.8h, v2.16b, #0             \\n\"\n      \"umlal       v4.8h, v0.8b, v20.8b          \\n\"\n      \"umlal       v6.8h, v3.8b, v20.8b          \\n\"\n      \"umlal2      v5.8h, v0.16b, v20.16b        \\n\"\n      \"umlal2      v7.8h, v3.16b, v20.16b        \\n\"\n      \"uqrshrn     v0.8b, v4.8h, #2              \\n\"\n      \"uqrshrn     v2.8b, v6.8h, #2              \\n\"\n      \"uqrshrn2    v0.16b, v5.8h, #2             \\n\"\n      \"uqrshrn2    v2.16b, v5.7h, #2             \\n\"",
+      "revId": "b3e52dcc05e9339753afb58824476153a34a9e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
