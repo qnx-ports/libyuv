@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0eb5fb3_a690a664",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T12:14:00Z",
+      "side": 1,
+      "message": "Note that some documentation says 18.1.4 supports SME.\nBut I tested 18.0 does not.",
+      "fixSuggestions": [
+        {
+          "fixId": "de253d80_bf0475a6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/rotate_row.h",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "// clang \u003e\u003d 18.1.4 required for SME\n"
+            },
+            {
+              "path": "include/libyuv/rotate_row.h",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": "#if __clang_major__ \u003c 18 || (__clang_major__ \u003d\u003d 18 \u0026\u0026 __clang_minor__ \u003c 1)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "da6ff8bc944fc47b4e747f48b875cf2040b25a44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
