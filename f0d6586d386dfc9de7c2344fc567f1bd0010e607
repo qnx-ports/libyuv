@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee21b9e0_94eb1f40",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:33:54Z",
+      "side": 1,
+      "message": "post increments are not free.. they take a micro-op.  Is there a better way to do this?\nldr         q0, [%0]\nldr         q1, [%0, #1]\nadd         %0, %0, #16",
+      "revId": "f0d6586d386dfc9de7c2344fc567f1bd0010e607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33175242_b9c07c81",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:33:54Z",
+      "side": 1,
+      "message": "Typically best to have after the first set of math... 4 instructions lower, so it can co-issue.  The 2 LDR use the 2 load units, followed by 4 math that may co-issue.  To test prfm, do a very small image and make sure prfm is free.  Then do a very large image and measure an improvement.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 6
+      },
+      "revId": "f0d6586d386dfc9de7c2344fc567f1bd0010e607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "678fd718_469857f8",
         "filename": "source/scale_neon64.cc",
         "patchSetId": 1
