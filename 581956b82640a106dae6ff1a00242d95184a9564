@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b353b433_f919f024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T18:50:48Z",
+      "side": 1,
+      "message": "This is similar to ARGB to RGB.  For that code we read 4 vectors and write 3 vectors, but avoid st3.  I wonder if this is possible?",
+      "revId": "581956b82640a106dae6ff1a00242d95184a9564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
