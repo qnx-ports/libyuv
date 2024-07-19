@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d7c633_a9d46e89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:01:41Z",
+      "side": 1,
+      "message": "In NEON I find Cortex X3 prefers ldp.  I guess that doesnt work with predicate masking the source?",
+      "revId": "996f1ceaabed59706917c9262b09e88550e0eb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3dec0d_da69d08b",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:01:41Z",
+      "side": 1,
+      "message": "do ldp or ld1 with 2 registers and a post increment?\nld1b    {z0.b, z1.b}, p1/z, [%[src]]",
+      "revId": "996f1ceaabed59706917c9262b09e88550e0eb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
