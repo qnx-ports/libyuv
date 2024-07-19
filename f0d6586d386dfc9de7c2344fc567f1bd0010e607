@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "678fd718_469857f8",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:25:40Z",
+      "side": 1,
+      "message": "this will likely stall on Cortex X1/X2/X3.  It may be better to output 4 registers of 8b size?",
+      "revId": "f0d6586d386dfc9de7c2344fc567f1bd0010e607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c34c98_6d923686",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-19T16:25:40Z",
+      "side": 1,
+      "message": "stp is preferred for full registers?",
+      "revId": "f0d6586d386dfc9de7c2344fc567f1bd0010e607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
