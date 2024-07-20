@@ -33,6 +33,24 @@
       "message": "do ldp or ld1 with 2 registers and a post increment?\nld1b    {z0.b, z1.b}, p1/z, [%[src]]",
       "revId": "996f1ceaabed59706917c9262b09e88550e0eb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ace2f0_b46b8ec9",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-07-20T11:44:36Z",
+      "side": 1,
+      "message": "Unfortunately multi-vector SVE loads are only introduced from SVE2.1, however there are no currently announced cores that support this extension. The multi-vector load instructions are also present in SME2 so we may be able to use them for streaming-SVE versions of some kernels at least.\n\ne.g.\nhttps://developer.arm.com/documentation/ddi0602/2022-09/SVE-Instructions/LD1B--scalar-plus-immediate--consecutive-registers---Contiguous-load-of-bytes-to-multiple-consecutive-vectors--immediate-index--?lang\u003den",
+      "parentUuid": "2a3dec0d_da69d08b",
+      "revId": "996f1ceaabed59706917c9262b09e88550e0eb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
