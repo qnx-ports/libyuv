@@ -16,6 +16,24 @@
       "message": "Nit: As I asked elsewhere, should we also define `LIBYUV_DISABLE_SME` for non-clang compilers such as GCC and MSVC?",
       "revId": "5e4e4e934c1516386675b2de3334b8ba8b37730c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87894832_d3195949",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-07-23T17:41:27Z",
+      "side": 1,
+      "message": "GCC will use the same code and should work but the version # expected is unknown, so I think wait til we have more information.\n__aarch64__ is for gcc/clang, so Visual C wont enable any SME row functions",
+      "parentUuid": "16f5b1a8_30216d42",
+      "revId": "5e4e4e934c1516386675b2de3334b8ba8b37730c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
