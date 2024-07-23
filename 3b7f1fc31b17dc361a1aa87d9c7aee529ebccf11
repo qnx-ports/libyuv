@@ -16,6 +16,29 @@
       "message": "Thanks for working on this. I don\u0027t have permission to approve commits to libyuv, so adding Frank/Justin to review.",
       "revId": "3b7f1fc31b17dc361a1aa87d9c7aee529ebccf11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae7ed68_775511f8",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-07-23T15:19:02Z",
+      "side": 1,
+      "message": "nit: missing an I in REQUIRED",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "3b7f1fc31b17dc361a1aa87d9c7aee529ebccf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
