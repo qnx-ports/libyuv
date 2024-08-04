@@ -2551,12 +2551,11 @@ int TestHalfFloatPlane(int benchmark_width,
 #if defined(__arm__)
 static void EnableFlushDenormalToZero(void) {
   uint32_t cw;
-  asm volatile (
-    "vmrs   %0, fpscr                 \n"
-    "orr    %0, %0, #0x1000000        \n"
-    "vmsr   fpscr, %0                 \n"
-    : "=r"(cw)
-    ::"memory", "cc"); // Clobber List
+  asm volatile(
+      "vmrs   %0, fpscr                 \n"
+      "orr    %0, %0, #0x1000000        \n"
+      "vmsr   fpscr, %0                 \n"
+      : "=r"(cw)::"memory", "cc");  // Clobber List
 }
 #endif
 
