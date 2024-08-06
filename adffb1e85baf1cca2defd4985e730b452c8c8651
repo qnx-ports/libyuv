@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fdcb15c_b1190360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253028
+      },
+      "writtenOn": "2024-08-06T08:01:35Z",
+      "side": 1,
+      "message": "Frank@, PTAL. Just wonder whether there is zero copy path. Thanks.",
+      "revId": "adffb1e85baf1cca2defd4985e730b452c8c8651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
