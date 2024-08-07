@@ -16,6 +16,24 @@
       "message": "thanks for the contribution.  It should have a test, and bump the version number so the user can see the new api and do ifdef in their code to maintain backwards compatability if they want.\nBut thats okay... I can add those (see the I010ToNV12)\n\nTo do this efficiently, I\u0027d look to see if there is already a Merge16To8 row function.  If not, either write one, or do a row buffer that does 2 row functions - Convert16To8 and MergeUV\nBut I can get that in a followup CL and benchmark to show the improvement.",
       "revId": "48900df6ea9d815b4d18975d004701389ac40795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390e9eea_ae24c077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253028
+      },
+      "writtenOn": "2024-08-07T02:18:20Z",
+      "side": 1,
+      "message": "Thank Frank@ for the follow up. I\u0027d like to have the new version in Chromium, so I can continue with code review of MPO enabling. Appreciate your continuous support.",
+      "parentUuid": "2a234774_7dc8a72e",
+      "revId": "48900df6ea9d815b4d18975d004701389ac40795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
