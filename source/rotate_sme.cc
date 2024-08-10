@@ -18,7 +18,9 @@ namespace libyuv {
 extern "C" {
 #endif
 
+#error rotate_sme source
 #if !defined(LIBYUV_DISABLE_SME) && defined(__aarch64__)
+
 
 __arm_locally_streaming __arm_new("za") void TransposeWxH_SME(
     const uint8_t* src,
