@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbab805b_dc83ec22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-10T12:45:05Z",
+      "side": 1,
+      "message": "Compare this with the SVE CL:\nhttps://chromium-review.googlesource.com/c/libyuv/libyuv/+/5424738.",
+      "revId": "a085e7e1bfd4eb6d0ce9cfaa28109318e893fc5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
