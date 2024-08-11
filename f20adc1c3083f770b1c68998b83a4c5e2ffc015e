@@ -16,6 +16,24 @@
       "message": "should probably have this as a todo as the first 2 platforms to have SME are mac and android and SME appears to be supported on chromium emulator",
       "revId": "f20adc1c3083f770b1c68998b83a4c5e2ffc015e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b300a1d0_68eff95b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-11T20:28:57Z",
+      "side": 1,
+      "message": "Done. I filed bug libyuv:359006069 with detailed information of the linker and compilation errors in Chrome builds when we attempt to use rotate_sme.cc in libyuv.",
+      "parentUuid": "4bacb0c8_9e45fc62",
+      "revId": "f20adc1c3083f770b1c68998b83a4c5e2ffc015e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

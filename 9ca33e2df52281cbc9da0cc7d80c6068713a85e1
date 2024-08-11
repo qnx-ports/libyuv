@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0882b068_5d34c041",
+        "filename": "libyuv.gni",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-11T20:28:57Z",
+      "side": 1,
+      "message": "I used the first form of TODO comment recommended in the Style Guide:\nhttps://google.github.io/styleguide/cppguide.html#TODO_Comments\n\nPlease let me know if you prefer the third form.",
+      "revId": "9ca33e2df52281cbc9da0cc7d80c6068713a85e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
