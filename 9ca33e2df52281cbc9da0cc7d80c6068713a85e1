@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ee3d82b2_062a4724",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-11T20:31:09Z",
+      "side": 1,
+      "message": "Is this actually working on linux, or just that is not a platform with sme builds so its not an error because its not tested?\nlinux usually falls into 2 categories - cloud or sbc... such as raspberry pi.  cloud can have sve but so far no sme.",
+      "revId": "9ca33e2df52281cbc9da0cc7d80c6068713a85e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0882b068_5d34c041",
         "filename": "libyuv.gni",
         "patchSetId": 8
