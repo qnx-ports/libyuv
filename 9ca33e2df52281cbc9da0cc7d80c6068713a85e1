@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e8c74593_77ec6dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-11T21:05:14Z",
+      "side": 1,
+      "message": "My last attempted libyuv roll in Chrome showed linker or compilation errors on Android, Fuchsia, macOS, and Windows:\nhttps://chromium-review.googlesource.com/c/chromium/src/+/5775949\n\nSo Linux, ChromeOS, and iOS have not been eliminated. Since iOS is similar to macOS, I think it is likely to have the same linker errors as macOS. So only Linux and ChromeOS remain. I decided to restrict `libyuv_use_sme` to just Linux.\n\nI will try to roll to this comment in Chrome. If this still fails, then I am afraid that we will need to set `libyuv_use_sme` to `false` on all platforms until we have fixed the Chrome build errors.",
+      "parentUuid": "ee3d82b2_062a4724",
+      "revId": "9ca33e2df52281cbc9da0cc7d80c6068713a85e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0882b068_5d34c041",
         "filename": "libyuv.gni",
         "patchSetId": 8
