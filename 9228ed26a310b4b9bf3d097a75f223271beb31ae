@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ccb661e_46dc78e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-11T20:33:44Z",
+      "side": 1,
+      "message": "tsan is an ongoing bot issue assigned to mirko.  This prevents CQ\nsme has various build issues and will need to be disabled on more platforms",
+      "parentUuid": "172def6a_916136a4",
+      "revId": "9228ed26a310b4b9bf3d097a75f223271beb31ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa007ee6_3e751f0d",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-10T18:49:43Z",
       "side": 1,
       "message": "Nit: Delete this blank line?",
+      "revId": "9228ed26a310b4b9bf3d097a75f223271beb31ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70762d49_ae05540a",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-11T20:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa007ee6_3e751f0d",
       "revId": "9228ed26a310b4b9bf3d097a75f223271beb31ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
