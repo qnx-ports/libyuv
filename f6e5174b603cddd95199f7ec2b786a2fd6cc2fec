@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2ea3f52_3e56b15f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-12T18:22:31Z",
+      "side": 1,
+      "message": "Bump the version number to help detect the bug fixes.",
+      "revId": "f6e5174b603cddd95199f7ec2b786a2fd6cc2fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ad0bd81_0d3513c5",
         "filename": "source/convert.cc",
         "patchSetId": 8
