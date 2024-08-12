@@ -16,6 +16,24 @@
       "message": "Can you add some comments to the negative height scenario? That would help new-comers like me to understand more fully?",
       "revId": "f6e5174b603cddd95199f7ec2b786a2fd6cc2fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f694d6_39b75b8c",
+        "filename": "source/convert.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-12T18:16:15Z",
+      "side": 1,
+      "message": "In the rotation.md theres a brief comment\n```\n# Invert - Vertical Flip\n\nInverting can be achieved with almost any libyuv function by passing a negative source height.\n```\nHistorically the reason for this is WIN32 Capture would save images upside down with negative height indicating the first row is at the bottom left.\nUsually this was for webcam formats not natively supported by GDI such as JPEG, would get converted to RGB24.\nIt is relatively simple to support - adjust the source pointers to point to the last row and negate the strides.\n\nAll functions accept stride and can crop on a byte boundary.\n\nWhen a format is subsampled, such as NV12 and I010, an odd width or height is supported by rounding up so there is a UV for the remainder pixel.\ne.g.  a normal 2x2 NV12 would be\nYY\nYY\nUV\n4 Y values and 1 UV.\nBut if there is less than 2 there still needs to be a UV value.\ne.g.  a 1x1 NV12 would be\nY\nUV\nThe UV plane is (width + 1) / 2 for width which is 1.\nUV plane height is (height + 1) / 2 which is 1.\nSo after checking width and height are positive, round up for anything that works on the UV plane\nAfter subsampling is taken into account, NV12 is 2 values - U and V.  So multiply by 2 for number of elements per row\nFor P010 the elements are 16 bit, so the number of bytes in a row is also * 2 for element size, but libyuv usually measures rows in elements to allow an uint16_t* for C version to be simplier to step thru rows.",
+      "parentUuid": "1ad0bd81_0d3513c5",
+      "revId": "f6e5174b603cddd95199f7ec2b786a2fd6cc2fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
