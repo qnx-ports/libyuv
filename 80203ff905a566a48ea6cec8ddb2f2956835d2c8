@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d893101_73185f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002030
+      },
+      "writtenOn": "2024-08-13T22:47:41Z",
+      "side": 1,
+      "message": "lgtm after the [32] [64] bit alignment fix to make sure test works. refactor for sme ARM. Will look at optimizations for mtl this week.",
+      "revId": "80203ff905a566a48ea6cec8ddb2f2956835d2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
