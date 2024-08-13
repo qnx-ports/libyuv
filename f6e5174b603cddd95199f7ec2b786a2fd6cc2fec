@@ -69,6 +69,24 @@
       "parentUuid": "1ad0bd81_0d3513c5",
       "revId": "f6e5174b603cddd95199f7ec2b786a2fd6cc2fec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bb62fe_82ea4670",
+        "filename": "source/convert.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1253028
+      },
+      "writtenOn": "2024-08-13T01:36:21Z",
+      "side": 1,
+      "message": "Learned. Thanks for detailed explanation.",
+      "parentUuid": "f1f694d6_39b75b8c",
+      "revId": "f6e5174b603cddd95199f7ec2b786a2fd6cc2fec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
