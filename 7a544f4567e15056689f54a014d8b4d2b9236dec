@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c36939_41c58e4a",
+        "filename": "source/scale_neon.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-13T00:37:49Z",
+      "side": 1,
+      "message": "This function and several other functions defined in this file are declared in scale_row.h, so this file needs to include scale_row.h.",
+      "revId": "7a544f4567e15056689f54a014d8b4d2b9236dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
