@@ -88,10 +88,6 @@ group("libyuv") {
     deps += [ ":libyuv_sve" ]
   }
 
-  if (libyuv_use_sme) {
-    deps += [ ":libyuv_sme" ]
-  }
-
   if (libyuv_use_msa) {
     deps += [ ":libyuv_msa" ]
   }
