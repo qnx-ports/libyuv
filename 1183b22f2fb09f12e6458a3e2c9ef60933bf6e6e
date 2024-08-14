@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a5ce292_b859d22b",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-14T20:47:35Z",
+      "side": 1,
+      "message": "prefer a single if\n\n#if defined(__aarch64__) \u0026\u0026 defined(__linux__)\n// On Linux, parse AArch64 features from getauxval(AT_HWCAP{,2}).\nLIBYUV_API\nint AArch64CpuCaps(unsigned long hwcap, unsigned long hwcap2);\n#else\nLIBYUV_API\nint AArch64CpuCaps();\n#endif\n\nAlso I think this is really just linux and not aarch64 specific, but we can leave that.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "97a6760d_708d1c58",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "include/libyuv/cpu_id.h",
+              "range": {
+                "startLine": 96,
+                "startChar": 0,
+                "endLine": 98,
+                "endChar": 0
+              },
+              "replacement": "#if defined(__aarch64__) \u0026\u0026 defined(__linux__)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1183b22f2fb09f12e6458a3e2c9ef60933bf6e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
