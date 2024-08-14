@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ba16ad_7a113694",
+        "filename": "source/scale_uv.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-14T16:23:51Z",
+      "side": 1,
+      "message": "Frank: In this function the `src_width` and `src_height` parameters are simply not used, not even in assertions. Should they be removed? Or should we use them in checks or assertions?\n\n(This question is independent of this CL.)",
+      "revId": "02ab9133486a1dd269688b1250cfbd9c4f5f7f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
