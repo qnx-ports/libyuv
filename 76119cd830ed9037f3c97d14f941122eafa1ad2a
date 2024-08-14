@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52729a10_3d885081",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-14T17:35:09Z",
+      "side": 1,
+      "message": "Fixed the compliation errors:\n\n```\n/Users/wtc/src/aom.1/aom/third_party/libyuv/source/row_sve.cc:1055:32: warning: missing terminating \u0027 character [-Winvalid-pp-token]\n  uint32_t nv_uv_start \u003d 0x0301\u00270301U;\n                               ^\n/Users/wtc/src/aom.1/aom/third_party/libyuv/source/row_sve.cc:1055:32: error: expected \u0027;\u0027 at end of declaration\n  uint32_t nv_uv_start \u003d 0x0301\u00270301U;\n                               ^\n                               ;\n```",
+      "revId": "76119cd830ed9037f3c97d14f941122eafa1ad2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
