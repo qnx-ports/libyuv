@@ -64,6 +64,30 @@
       },
       "revId": "1183b22f2fb09f12e6458a3e2c9ef60933bf6e6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79e7f4c_07485fd9",
+        "filename": "include/libyuv/cpu_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-14T21:09:32Z",
+      "side": 1,
+      "message": "Done. I took a closer look. I got rid of `#ifdef __aarch64__` as you mentioned.",
+      "parentUuid": "035e0cb3_d8a1da54",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "1183b22f2fb09f12e6458a3e2c9ef60933bf6e6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
