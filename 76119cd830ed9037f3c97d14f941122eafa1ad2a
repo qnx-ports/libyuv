@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "161ad53d_c8b45a18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-14T17:42:33Z",
+      "side": 1,
+      "message": "I don\u0027t have permission to approve, but thanks for the fix!",
+      "revId": "76119cd830ed9037f3c97d14f941122eafa1ad2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "52729a10_3d885081",
         "filename": "source/row_sve.cc",
         "patchSetId": 1
