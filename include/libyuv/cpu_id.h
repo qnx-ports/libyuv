@@ -94,7 +94,7 @@ LIBYUV_API
 int RiscvCpuCaps(const char* cpuinfo_name);
 
 #ifdef __aarch64__
-#if __linux__
+#ifdef __linux__
 // On Linux, parse AArch64 features from getauxval(AT_HWCAP{,2}).
 LIBYUV_API
 int AArch64CpuCaps(unsigned long hwcap, unsigned long hwcap2);
