@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a418081a_2306c709",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3432,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2024-08-15T17:23:00Z",
+      "side": 1,
+      "message": "Sorry if I missed something, but does v1 just get discarded at the end of this loop?",
+      "range": {
+        "startLine": 3432,
+        "startChar": 6,
+        "endLine": 3432,
+        "endChar": 52
+      },
+      "revId": "6695aceb54adcc5f000a7c856081bec295a097c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
