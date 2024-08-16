@@ -16,6 +16,24 @@
       "message": "George, Jonathan: Note this change.",
       "revId": "679e851f653866a49e21f69fe8380bd20123f0ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1914d77a_68ad4f98",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-16T08:51:35Z",
+      "side": 1,
+      "message": "Thanks for highlighting! In future I would prefer we didn\u0027t hide such changes in an AVX512 changeset so we actually have visibility of them more easily, and preferably also with a commit message that actually explains why the change is being made.\n\nIs there a reason this also disables SME for Linux, which I believe works fine at present?\n\nNon-Linux platforms should also be handled correctly by the recent .gni changes to restrict the enablement to just `is_linux` platforms, so I\u0027m unsure why this was needed at all really?\n\nI\u0027ll assume that Linux is fine and prepare a change to re-enable guarded by `__gnu_linux__` which should be sufficient until upstream compilers have resolved the present issues with other platforms.",
+      "parentUuid": "215fc406_284b39d0",
+      "revId": "679e851f653866a49e21f69fe8380bd20123f0ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
