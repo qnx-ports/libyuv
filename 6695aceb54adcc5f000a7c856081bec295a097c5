@@ -22,6 +22,30 @@
       },
       "revId": "6695aceb54adcc5f000a7c856081bec295a097c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b8ffbc_c952a312",
+        "filename": "source/row_neon64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3432,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-19T09:12:22Z",
+      "side": 1,
+      "message": "The STP below stores both d0 and d1, which in AArch64 are the low 64-bits of v0 and v1 respectively.",
+      "parentUuid": "a418081a_2306c709",
+      "range": {
+        "startLine": 3432,
+        "startChar": 6,
+        "endLine": 3432,
+        "endChar": 52
+      },
+      "revId": "6695aceb54adcc5f000a7c856081bec295a097c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
