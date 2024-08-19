@@ -50,7 +50,7 @@ extern "C" {
 #define HAS_TRANSPOSE4X4_32_NEON
 #endif
 
-#if !defined(LIBYUV_DISABLE_SME) && defined(__aarch64__)
+#if defined(LIBYUV_HAS_SME) && defined(__aarch64__)
 #define HAS_TRANSPOSEWXH_SME
 #define HAS_TRANSPOSEUVWXH_SME
 #endif
