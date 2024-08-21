@@ -33,6 +33,51 @@
       "message": "mirko@, FYI. linux_tsan2 keeps failing in the CI.",
       "revId": "9a3c3608c24dc6703e416bf6345aee479099b481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e78c42f_9494c628",
+        "filename": "unit_test/unit_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-08-21T00:07:31Z",
+      "side": 1,
+      "message": "should be indented, but I\u0027ll leave that to clang-format.\nBut it is generally best practice to use {} for if statements",
+      "fixSuggestions": [
+        {
+          "fixId": "e3e13c0b_9af42fc3",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "unit_test/unit_test.h",
+              "range": {
+                "startLine": 76,
+                "startChar": 0,
+                "endLine": 79,
+                "endChar": 0
+              },
+              "replacement": "  if (var##_mem) {                                                      \\\n    var \u003d reinterpret_cast\u003cuint8_t*\u003e(                                   \\\n        (intptr_t)(var##_mem + (((size) + 4095 + 63) \u0026 ~4095) - (size)) \u0026 ~63); \\\n  }\n"
+            },
+            {
+              "path": "unit_test/unit_test.h",
+              "range": {
+                "startLine": 88,
+                "startChar": 0,
+                "endLine": 92,
+                "endChar": 0
+              },
+              "replacement": "  if (var##_mem) {                                                          \\\n    var \u003d reinterpret_cast\u003cuint16_t*\u003e(                                      \\\n        (intptr_t)(var##_mem + (((size)*2 + 4095 + 63) \u0026 ~4095) - (size)*2) \u0026 ~63); \\\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9a3c3608c24dc6703e416bf6345aee479099b481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
