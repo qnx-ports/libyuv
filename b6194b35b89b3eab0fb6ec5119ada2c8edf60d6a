@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329691a1_88631f2a",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-22T21:05:13Z",
+      "side": 1,
+      "message": "Nit: I suggest keeping `defined(__clang__) \u0026\u0026 (__clang_major__ \u003e\u003d 19)` together, because it matches the comment \"Clang 19 required\".",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46b6c02_e099a4d8",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-22T21:05:13Z",
+      "side": 1,
+      "message": "We usually test the `__linux__` macro to detect Linux.\n\nI have never used `__gnu_linux__`. Is it a synonym for `__linux__`, or is it slightly different?",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873b9603_8c5db87b",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-08-22T21:05:13Z",
+      "side": 1,
+      "message": "The original `LIBYUV_DISABLE_SME` macro matches the prevalent style in this file better. The similar macros are all named `LIBYUV_DISABLE_xxx`.",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
