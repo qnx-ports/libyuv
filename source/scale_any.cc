@@ -130,6 +130,12 @@ SDODD(ScaleRowDown2Box_Odd_NEON,
 #endif
 #ifdef HAS_SCALEROWDOWN2_SME
 SDANY(ScaleRowDown2_Any_SME, ScaleRowDown2_SME, ScaleRowDown2_C, 2, 1, 1)
+SDANY(ScaleRowDown2Linear_Any_SME,
+      ScaleRowDown2Linear_SME,
+      ScaleRowDown2Linear_C,
+      2,
+      1,
+      1)
 #endif
 #ifdef HAS_SCALEUVROWDOWN2_NEON
 SDANY(ScaleUVRowDown2_Any_NEON,

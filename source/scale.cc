@@ -76,10 +76,12 @@ static void ScalePlaneDown2(int src_width,
 #endif
 #if defined(HAS_SCALEROWDOWN2_SME)
   if (TestCpuFlag(kCpuHasSME)) {
-    if (filtering == kFilterNone) {
-      ScaleRowDown2 = ScaleRowDown2_Any_SME;
+    if (filtering == kFilterNone || filtering == kFilterLinear) {
+      ScaleRowDown2 = filtering == kFilterNone ? ScaleRowDown2_Any_SME
+                                               : ScaleRowDown2Linear_Any_SME;
       if (IS_ALIGNED(dst_width, 2)) {
-        ScaleRowDown2 = ScaleRowDown2_SME;
+        ScaleRowDown2 = filtering == kFilterNone ? ScaleRowDown2_SME
+                                                 : ScaleRowDown2Linear_SME;
       }
     }
   }
