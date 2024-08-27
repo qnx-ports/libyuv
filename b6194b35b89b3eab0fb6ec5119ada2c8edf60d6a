@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a60d9d_a2a60d9c",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-27T08:59:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "329691a1_88631f2a",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a46b6c02_e099a4d8",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1aa19d36_3cb06e7d",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-27T08:59:45Z",
+      "side": 1,
+      "message": "I believe that Android also defines `__linux__` as 1, but on Android `__gnu_linux__` is not defined. For this initial enablement patch I would prefer to restrict this to just Linux where we know that SME works correctly and then expand to other platforms in subsequent patches.\n\nLet me know if you would prefer a different method of distinguishing between Linux and Android here.",
+      "parentUuid": "a46b6c02_e099a4d8",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "873b9603_8c5db87b",
         "filename": "include/libyuv/rotate_row.h",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2024-08-22T21:05:13Z",
       "side": 1,
       "message": "The original `LIBYUV_DISABLE_SME` macro matches the prevalent style in this file better. The similar macros are all named `LIBYUV_DISABLE_xxx`.",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a202729c_10428417",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-08-27T08:59:45Z",
+      "side": 1,
+      "message": "Using a positive condition rather than a negative one was suggested here: https://libyuv.issues.chromium.org/issues/358636100#comment3 .\n\nI\u0027m happy with either style, I agree that the rest of the code is predominantly negatives but a lot of the newer extensions use positive conditions instead, e.g. https://chromium.googlesource.com/libyuv/libyuv/+/refs/changes/58/5802958/1/include/libyuv/row.h#352 .\n\nShould I still proceed with switching back to a negative condition?",
+      "parentUuid": "873b9603_8c5db87b",
       "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
