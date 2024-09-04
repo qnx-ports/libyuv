@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc23538_33cfd19d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-04T19:02:48Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "2740a089eb66273ef3a61aba5371ad9ccf333e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26cf828_7d9ef663",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-04T19:02:48Z",
+      "side": 1,
+      "message": "This StackOverflow article is related to this issue:\nhttps://stackoverflow.com/questions/77826068/keep-cmake-from-from-installing-the-import-library-when-installing-a-shared-libr",
+      "revId": "2740a089eb66273ef3a61aba5371ad9ccf333e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
