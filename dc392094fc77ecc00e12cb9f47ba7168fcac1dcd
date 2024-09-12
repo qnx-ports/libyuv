@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62f67fe_e113ff6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-12T23:10:44Z",
+      "side": 1,
+      "message": "Note that this change introduced an overwrite because scale.cc checks for width % 24 \u003d\u003d 0 but the unrolled ScaleRowDown34_0_Box_NEON requires a multiple of 48\nAlso the unittests didnt catch it.\n\nIn practice it happens on\n1440x2460 scaled to 1080x1920 - 1080 wide is a multiple of 24 but not 48.\nFixed in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5857554",
+      "revId": "dc392094fc77ecc00e12cb9f47ba7168fcac1dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
