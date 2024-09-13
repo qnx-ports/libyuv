@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7072974e_2fb24507",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-13T01:04:52Z",
+      "side": 1,
+      "message": "Could you rebase this CL on the tip of the main branch? These three changes are already in git. I made these three changes in both git and Google\u0027s internal repository.",
+      "revId": "00d2425129b8ba55cecdffe1adb9b75353c286a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
