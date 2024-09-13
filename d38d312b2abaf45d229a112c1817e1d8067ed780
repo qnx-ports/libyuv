@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e18f645_90ba7ccd",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-13T12:44:24Z",
+      "side": 1,
+      "message": "Already done here: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5857554/5/source/scale.cc\n\nThat is the only call site for ScaleRowDown34_NEON.",
+      "parentUuid": "39d4310b_8b43670d",
+      "range": {
+        "startLine": 180,
+        "startChar": 44,
+        "endLine": 180,
+        "endChar": 68
+      },
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9947c5d_3447ab86",
@@ -71,6 +95,24 @@
       "writtenOn": "2024-09-13T12:31:20Z",
       "side": 1,
       "message": "it may help A510 to move prfm up 2 lines, so it co-issues with tbl math",
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f409916_725d7144",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-13T12:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9947c5d_3447ab86",
       "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
