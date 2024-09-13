@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0ad537_739fa00d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-13T10:57:49Z",
+      "side": 1,
+      "message": "No change needed in scale.cc since it is already guarded by width % 48 \u003d\u003d 0 as of https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5857554",
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
