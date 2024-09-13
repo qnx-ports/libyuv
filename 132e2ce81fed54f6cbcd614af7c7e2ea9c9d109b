@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f7fc2f_776656c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T10:47:13Z",
+      "side": 1,
+      "message": "sorry for slow review... didnt notice you had a bunch waiting.",
+      "revId": "132e2ce81fed54f6cbcd614af7c7e2ea9c9d109b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "014d5a06_2fce6a65",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T10:47:13Z",
+      "side": 1,
+      "message": "note that this can be mimicked in aarch32 by doing 2 ld4... the first with even registers d0,d2,d4,d6.  The second ld4 with odd registers: d1,d3,d5,d7\nthen you have the 4 128 bit q0 registers for whatever follows\n\nalso consider ld1 or ldp and then uzp",
+      "revId": "132e2ce81fed54f6cbcd614af7c7e2ea9c9d109b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
