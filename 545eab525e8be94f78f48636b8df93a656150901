@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e9b7a9_b836a969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T11:18:50Z",
+      "side": 1,
+      "message": "hmmm, big win.  but I think rounding is the correct thing to do, and its the C and x86 that should be updated to match the neon?\n\nx86 uses vpmulhuw which doesnt round\nbut x86 takes the bytes and replicates them before doing vpmlhuw, which has an effect of rounding.\narm could do this, although I think it would be slower and less correct\n1. read 8 bit\n2. use zip with itself\nmultiply and shift by 16.  Which probably needs to lengthen to 32 bit.\nisolate the 3rd byte with 2 uzips, tbl or shifts\n\nBut I\u0027d be inclined to come up with x86 that does what arm does.\nAnd make C that is the same as arm",
+      "revId": "545eab525e8be94f78f48636b8df93a656150901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
