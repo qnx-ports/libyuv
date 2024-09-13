@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0eba88e_c28bb781",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T01:19:37Z",
+      "side": 1,
+      "message": "When the loop size changes, all functions that refer to the row function need an update\ngrep ScaleRowDown4_NEON *\n\nscale_any.cc:SDANY(ScaleRowDown4_Any_NEON, ScaleRowDown4_NEON, ScaleRowDown4_C, 4, 1, 7)\n\nscale.cc:      ScaleRowDown4 \u003d filtering ? ScaleRowDown4Box_NEON : ScaleRowDown4_NEON;\n\nYou can see the old code in scale.cc checked for a multiple of 8 and needs an update.\n\ngrep ScaleRowDown4_NEON * -B 1\nscale_any.cc-#ifdef HAS_SCALEROWDOWN4_NEON\nscale_any.cc:SDANY(ScaleRowDown4_Any_NEON, ScaleRowDown4_NEON, ScaleRowDown4_C, 4, 1, 7)\n--\nscale.cc-    if (IS_ALIGNED(dst_width, 8)) {\nscale.cc:      ScaleRowDown4 \u003d filtering ? ScaleRowDown4Box_NEON : ScaleRowDown4_NEON;\n\n\nScale is usually just 1 function and the any, but convert functions often are used in more than one place.\nFor both the any and the calling code, its okay to use the larger of NEON and NEON64.  I\u0027ve always made them the same, but if they need to diverge, just use the NEON64 loop sizes.\n\nIf the \u0027any\u0027 function increases size, the macro that create the wrapper, may need to increase.  But in case of scaling functions, they use C, instead of SIMD for remainders, so not change needed.",
+      "revId": "100fdd0c0df96f7476037f9346b9c15b07b0de7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
