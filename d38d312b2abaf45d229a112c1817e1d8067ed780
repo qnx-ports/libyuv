@@ -16,6 +16,63 @@
       "message": "No change needed in scale.cc since it is already guarded by width % 48 \u003d\u003d 0 as of https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5857554",
       "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf891fe_753c42d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:31:20Z",
+      "side": 1,
+      "message": "update scale.cc to check width % 48",
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d4310b_8b43670d",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:31:20Z",
+      "side": 1,
+      "message": "this constant (48) requires an update in all calling functions",
+      "range": {
+        "startLine": 180,
+        "startChar": 44,
+        "endLine": 180,
+        "endChar": 68
+      },
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9947c5d_3447ab86",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:31:20Z",
+      "side": 1,
+      "message": "it may help A510 to move prfm up 2 lines, so it co-issues with tbl math",
+      "revId": "d38d312b2abaf45d229a112c1817e1d8067ed780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
