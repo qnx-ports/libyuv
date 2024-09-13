@@ -33,6 +33,24 @@
       "message": "note that this can be mimicked in aarch32 by doing 2 ld4... the first with even registers d0,d2,d4,d6.  The second ld4 with odd registers: d1,d3,d5,d7\nthen you have the 4 128 bit q0 registers for whatever follows\n\nalso consider ld1 or ldp and then uzp",
       "revId": "132e2ce81fed54f6cbcd614af7c7e2ea9c9d109b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad228df_e3af2287",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T10:49:38Z",
+      "side": 1,
+      "message": "unfiltered scaling is not often used... box and bilinear are more common.\nnice performance win though",
+      "parentUuid": "014d5a06_2fce6a65",
+      "revId": "132e2ce81fed54f6cbcd614af7c7e2ea9c9d109b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
