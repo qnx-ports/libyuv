@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0331eef_7e659274",
+        "filename": "source/rotate_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:27:05Z",
+      "side": 1,
+      "message": "each function has a macro that can be selectively enabling/disabling, and must be respected in the calling code.\nSo change this to \n#if defined(HAS_TRANSPOSEWXH_SME)\nditto for UV function\n\nThe overall file typically also has \n#if !defined(LIBYUV_DISABLE_SME) \u0026\u0026 defined(__aarch64__)",
+      "revId": "1396e04896f2a7a9744ed4680aad0b090c5547aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
