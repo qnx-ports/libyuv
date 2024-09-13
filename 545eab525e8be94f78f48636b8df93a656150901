@@ -16,6 +16,24 @@
       "message": "hmmm, big win.  but I think rounding is the correct thing to do, and its the C and x86 that should be updated to match the neon?\n\nx86 uses vpmulhuw which doesnt round\nbut x86 takes the bytes and replicates them before doing vpmlhuw, which has an effect of rounding.\narm could do this, although I think it would be slower and less correct\n1. read 8 bit\n2. use zip with itself\nmultiply and shift by 16.  Which probably needs to lengthen to 32 bit.\nisolate the 3rd byte with 2 uzips, tbl or shifts\n\nBut I\u0027d be inclined to come up with x86 that does what arm does.\nAnd make C that is the same as arm",
       "revId": "545eab525e8be94f78f48636b8df93a656150901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76aab661_acd8ea69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-13T14:42:45Z",
+      "side": 1,
+      "message": "Fine with either but it\u0027s curious that the existing tests pass regardless?\n\nContext is that I was trying to write an SVE implementation where we can use UMULH to multiply and get the high half directly rather than needing to widen and then narrow, however there is no rounding version of this instruction so we would lose the further improvement from that as well.",
+      "parentUuid": "77e9b7a9_b836a969",
+      "revId": "545eab525e8be94f78f48636b8df93a656150901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
