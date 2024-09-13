@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fb966f_9ca6e082",
+        "filename": "include/libyuv/cpu_support.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:21:55Z",
+      "side": 1,
+      "message": "its likely we can test sme on apple m4, and chromium with qemu\nfor \u0027linux\u0027 there are typically low end SBC or NeoVerse, which we currently dont have a way to test.\nI\u0027m okay with enabling 1 platform and at least see if it compiles",
+      "parentUuid": "1aa19d36_3cb06e7d",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "873b9603_8c5db87b",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Using a positive condition rather than a negative one was suggested here: https://libyuv.issues.chromium.org/issues/358636100#comment3 .\n\nI\u0027m happy with either style, I agree that the rest of the code is predominantly negatives but a lot of the newer extensions use positive conditions instead, e.g. https://chromium.googlesource.com/libyuv/libyuv/+/refs/changes/58/5802958/1/include/libyuv/row.h#352 .\n\nShould I still proceed with switching back to a negative condition?",
       "parentUuid": "873b9603_8c5db87b",
+      "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b8f0b9_09f41c18",
+        "filename": "include/libyuv/rotate_row.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-13T12:21:55Z",
+      "side": 1,
+      "message": "prefer take the approach of row.h and add CLANG_HAS_SME and in future, add the other compilers. e,g, GCC_HAS_SME\neach compiler has a different version requirement.\nreguardless of compiler, the macro LIBYUV_DISABLE_SME should also be respected, so the user has a mechanism for disabling the ISA",
+      "parentUuid": "a202729c_10428417",
       "revId": "b6194b35b89b3eab0fb6ec5119ada2c8edf60d6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
