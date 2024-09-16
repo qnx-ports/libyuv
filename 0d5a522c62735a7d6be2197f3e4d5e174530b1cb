@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b952972_d58d26b6",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-16T04:20:45Z",
+      "side": 1,
+      "message": "change the subs requires calling code to check the new alignment.\nscale.cc will have width % 24 for old code and needs to check width % 48 now",
+      "revId": "0d5a522c62735a7d6be2197f3e4d5e174530b1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
