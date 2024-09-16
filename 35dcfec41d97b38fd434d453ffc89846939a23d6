@@ -33,6 +33,23 @@
       "message": "Re \"Andrew can you do security review?\" - please refer to \nhttps://b.corp.google.com/issues/356276450#comment11",
       "revId": "35dcfec41d97b38fd434d453ffc89846939a23d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53448144_5a38e30f",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-16T04:26:18Z",
+      "side": 1,
+      "message": "str q2 is preferred?",
+      "revId": "35dcfec41d97b38fd434d453ffc89846939a23d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
