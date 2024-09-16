@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a07133_bcab39de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-16T18:17:34Z",
+      "side": 1,
+      "message": "Needs a rebase\nNote that 16 bit rgb565 etc formats are rarely used now... they were mainly for old android screen formats.\nCurrent emphasis is ARGB/ABGR and 10 bit formats RGB/YUV formats are starting to be used for camera, as well as display and codecs.",
+      "revId": "0aa8db789764c27a14284019150cc65c2244b673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
