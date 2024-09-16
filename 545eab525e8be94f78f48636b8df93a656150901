@@ -52,6 +52,24 @@
       "parentUuid": "76aab661_acd8ea69",
       "revId": "545eab525e8be94f78f48636b8df93a656150901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f392780_47b2ddc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-16T10:27:40Z",
+      "side": 1,
+      "message": "I was thinking about this over the weekend and on balance I think it\u0027s better to keep the rounding behaviour as-is in Neon and fix the C code to perform the rounding correctly.\n\nI\u0027ll put up a new patch to adjust the C code to round correctly and abandon this one.\n\nThanks!",
+      "parentUuid": "4f48e603_c199fbf2",
+      "revId": "545eab525e8be94f78f48636b8df93a656150901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
