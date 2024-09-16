@@ -34,6 +34,24 @@
       "parentUuid": "77e9b7a9_b836a969",
       "revId": "545eab525e8be94f78f48636b8df93a656150901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f48e603_c199fbf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-16T03:56:30Z",
+      "side": 1,
+      "message": "ok, I\u0027m open to having this function not round, but need to think about it\nIn the past, Intel doesnt have rounding, usually just requiring an add 0x80 before shifting, but many functions dont round.\nARM and RISCV do have rounding, and in the past it was free.\nI was planning to add rounding to anything missing, because that seems correct.  But in this case, its not clear\n0xFF * 0xFF \u003d 0xFE01.  Even a rounding shift right is 0xFE.\nOn Intel, I replicate one of 8 bits to 16 bits, but not the other\nFF*FFFF \u003d FEFF01\npmulhuw returns the upper 16 bits, so 0x00FE.\nIf both values were replicated\nFFFF*FFFF \u003d FFFE0001 the top 8 would be FF.\n\n\nLooking at the C code, it mimicks the Intel code.  Note the REPEAT8\n#define REPEAT8(v) (v) | ((v) \u003c\u003c 8)\n#define SHADE(f, v) v* f \u003e\u003e 16\n\nvoid ARGBMultiplyRow_C(const uint8_t* src_argb,\n                       const uint8_t* src_argb1,\n                       uint8_t* dst_argb,\n                       int width) {\n  int i;\n  for (i \u003d 0; i \u003c width; ++i) {\n    const uint32_t b \u003d REPEAT8(src_argb[0]);\n    const uint32_t g \u003d REPEAT8(src_argb[1]);\n    const uint32_t r \u003d REPEAT8(src_argb[2]);\n    const uint32_t a \u003d REPEAT8(src_argb[3]);\n    const uint32_t b_scale \u003d src_argb1[0];\n    const uint32_t g_scale \u003d src_argb1[1];\n    const uint32_t r_scale \u003d src_argb1[2];\n    const uint32_t a_scale \u003d src_argb1[3];\n    dst_argb[0] \u003d STATIC_CAST(uint8_t, SHADE(b, b_scale));\n    dst_argb[1] \u003d STATIC_CAST(uint8_t, SHADE(g, g_scale));\n    dst_argb[2] \u003d STATIC_CAST(uint8_t, SHADE(r, r_scale));\n    dst_argb[3] \u003d STATIC_CAST(uint8_t, SHADE(a, a_scale));\n    src_argb +\u003d 4;\n    src_argb1 +\u003d 4;\n    dst_argb +\u003d 4;\n  }\n}\n#undef REPEAT8\n#undef SHADE\n\nBut repeating just 1 value, does not round enough to maintain 0xFF.\nAlthough rounding on ARM and replication on Intel, produce similar results, there are edge cases where they currently differ and the unittest allows for off by 1\n\nI\u0027m trying hard to make C and SIMD match exactly, and make all SIMD the same.  Which is 2 different things\nBut if you want to go ahead with this optimization as is:\n1. change the unit test to expect C and SIMD exactly match\n2. change the ARGBMultiply_C to have an ifdef to make a new version of C exactly match ARM, but the old C code is used for other platforms\n3. When LIBYUV_BIT_EXACT is set, make the C use your new NEON method on all platforms and disable SIMD versions on all other platforms (Intel/Mips/RISCV)\n\ngrep HAS_ARGBMULTIPLY *\nrow.h:#define HAS_ARGBMULTIPLYROW_SSE2\nrow.h:#define HAS_ARGBMULTIPLYROW_AVX2\nrow.h:#define HAS_ARGBMULTIPLYROW_NEON\nrow.h:#define HAS_ARGBMULTIPLYROW_MSA\nrow.h:#define HAS_ARGBMULTIPLYROW_LSX\nrow.h:#define HAS_ARGBMULTIPLYROW_LASX\n\nThere are other examples of this in row.h and row_common.h\n#if !defined(LIBYUV_BIT_EXACT)\n#define HAS_ABGRTOUVJROW_AVX2\n#define HAS_ABGRTOUVROW_AVX2\n#endif\nAnd then we follow up with porting the new math to x86 etc.\nOff hand I think x86 would unpack with zero to make 0x00FF in both bytes, and then psrlw       $0x8,%%xmm2 to shift without rounding, and pack.\nSpeed will be the same as it is now, but more rounding down behavior.\n\nThere is a related function - ARGBAttenuate, that has similar rounding issues.",
+      "parentUuid": "76aab661_acd8ea69",
+      "revId": "545eab525e8be94f78f48636b8df93a656150901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
