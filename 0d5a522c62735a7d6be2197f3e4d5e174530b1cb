@@ -34,6 +34,24 @@
       "parentUuid": "7b952972_d58d26b6",
       "revId": "0d5a522c62735a7d6be2197f3e4d5e174530b1cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e15e444_0edf1333",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-16T15:37:18Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "34a7f9e3_cd27eb71",
+      "revId": "0d5a522c62735a7d6be2197f3e4d5e174530b1cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
