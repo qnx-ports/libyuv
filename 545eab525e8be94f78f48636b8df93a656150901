@@ -88,6 +88,24 @@
       "parentUuid": "0f392780_47b2ddc3",
       "revId": "545eab525e8be94f78f48636b8df93a656150901",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefbc655_7abef083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-17T10:52:44Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5869115",
+      "parentUuid": "0b94965c_beff05c0",
+      "revId": "545eab525e8be94f78f48636b8df93a656150901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
