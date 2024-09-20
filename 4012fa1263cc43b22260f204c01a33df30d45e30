@@ -120,6 +120,24 @@
       "parentUuid": "8d8f2e9e_d65bda77",
       "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c05d8e72_113ffb02",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-20T22:37:55Z",
+      "side": 1,
+      "message": "Understood. Here is the CL: https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5879350\n\nIt\u0027s good to see the actual change and then we can judge whether it is simpler.",
+      "parentUuid": "d3ead58a_725ebe9f",
+      "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
