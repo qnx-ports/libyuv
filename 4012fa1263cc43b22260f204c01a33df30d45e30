@@ -70,6 +70,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "632f0f5b_96397d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-20T22:12:37Z",
+      "side": 1,
+      "message": "benchmarked on my android device with Cortex A35, but running 32 bit, which is 100% equivalent to A32, aside from memory/clockrate\n\nlibyuv_test \u0027--gunit_filter\u003d*A*G*ToNV*Opt\u0027 --gunit_also_run_disabled_tests --libyuv_width\u003d1280 --libyuv_height\u003d720 --libyuv_repeat\u003d1000 --libyuv_flags\u003d-1 --libyuv_cpu_info\u003d-1\n\nfor 1280x720 ARGBToNV12 is 4.8 ms / frame.  Pretty slow\n[ RUN      ] LibYUVConvertTest.ARGBToNV12_Opt\n[       OK ] LibYUVConvertTest.ARGBToNV12_Opt (4862 ms)\n[ RUN      ] LibYUVConvertTest.ARGBToNV21_Opt\n[       OK ] LibYUVConvertTest.ARGBToNV21_Opt (4837 ms)\n[ RUN      ] LibYUVConvertTest.ABGRToNV12_Opt\n[       OK ] LibYUVConvertTest.ABGRToNV12_Opt (4858 ms)\n[ RUN      ] LibYUVConvertTest.ABGRToNV21_Opt\n[       OK ] LibYUVConvertTest.ABGRToNV21_Opt (4861 ms)",
+      "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d8f2e9e_d65bda77",
@@ -83,6 +100,24 @@
       "writtenOn": "2024-09-20T21:57:07Z",
       "side": 1,
       "message": "Nit/optional: We could split this (lines 454 - 479) into an `#if defined(__arm__)` block and an `#if defined(__aarch64__)`. These two cases share only one line of code (line 478). By separating the two cases, the code will be easier to understand.\n\nWe don\u0027t need to make this change in this CL.",
+      "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ead58a_725ebe9f",
+        "filename": "source/cpu_id.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-20T22:12:37Z",
+      "side": 1,
+      "message": "It could be cleaned up, but may be more complicated.  Theres nothing particularily 32 vs 64 bit specific here, but George added getauxval for aarch64 and only wrote row functions for row_neon64.cc for the newer ISA like dot product.\nThe getauxval is android specific and works in qemu, but has limited functionality and often does not report features in aarch32.\n/proc/cpuinfo does not work in the sandbox, and is linux specific.",
+      "parentUuid": "8d8f2e9e_d65bda77",
       "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
