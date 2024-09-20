@@ -51,6 +51,23 @@
       "parentUuid": "0c64c02e_c3910a7c",
       "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c465e8_5017dfe3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-09-20T21:54:01Z",
+      "side": 1,
+      "message": "This is probably fine since all AArch64 platforms and 32-bit Arm Linux are unaffected by this change but I\u0027d be curious to know how you\u0027re compiling this.\n\nRelying on the compiler flags to determine whether we have Neon or not may or may not be safe depending on how exactly you\u0027re expecting this to be built:\n\n* If compiling through the existing BUILD.gn in libyuv then I would expect -mfpu\u003dneon to be passed unconditionally to all files, so this will always enable Neon and this patch has no effect.\n\n* If compiling with the existing CMakeLists.txt in libyuv then only the *_neon.cc files (and specifically _not_ cpu_id.cc) get compiled with -mfpu\u003dneon so this patch will have the effect of unconditionally disabling Neon on non-Linux 32-bit Arm platforms.\n\nObviously this subtle but dramatic difference in behaviour between the two build systems isn\u0027t ideal but I\u0027m imagining that you have a different setup which means that this isn\u0027t an issue in practice?\n\nUltimately though I don\u0027t have a particularly good suggestion for an alternative, so LGTM!",
+      "revId": "4012fa1263cc43b22260f204c01a33df30d45e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
