@@ -33,6 +33,23 @@
       "message": "seems like a sensible cleanup, thanks!",
       "revId": "e07b5201a53a2c28f9262b3e341a299b2fc0920e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65e0fbb_79720c01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-20T23:39:47Z",
+      "side": 1,
+      "message": "okay.  But its still complicated.  Most OS supports aarch32 and aarch64.  And a 64 bit OS allows aarch32 builds to run on it.\nSo I\u0027d prefer not see any differences between 32 and 64 bit.\nIts also easy to confuse compilers and OS and OS vs cpu\n\naarch64 is clang/gcc.  But if you\u0027re making a call to the OS, you likely dont need to know the compiler that was used, and maybe not the cpu.\n\nNearly all ISA on all cpus have support for 32 and 64 bit.\n\nMost aspects of this file are OS related\ngetauxval (and hwprobe) are OS calls you can make from any cpu (x86, arm, riscv) and 32 bit or 64 bit.\nWindows and Mac support x86 and arm\n/proc/cpuinfo works on linux\n\nx86 has historically used cpuid but there is an OS call for amx.  So far we have linux, but any OS that x86 can run on will need the",
+      "revId": "e07b5201a53a2c28f9262b3e341a299b2fc0920e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
