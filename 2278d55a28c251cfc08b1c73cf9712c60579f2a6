@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e319f79_1abeeb46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-09-24T17:50:21Z",
+      "side": 1,
+      "message": "Box filter test added to ARGB.  Doesnt really apply to UV, as it only has bilinear at the moment.",
+      "revId": "2278d55a28c251cfc08b1c73cf9712c60579f2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
