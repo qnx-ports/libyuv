@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac506f9_326d128c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-24T15:43:46Z",
+      "side": 1,
+      "message": "Could you add a test for these two bug fixes? Thanks.",
+      "revId": "be0b67547efbae40e47a57db360f7a51198ba0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
