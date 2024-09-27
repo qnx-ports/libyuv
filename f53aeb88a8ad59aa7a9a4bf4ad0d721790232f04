@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d0236f_d1eadef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-27T22:23:12Z",
+      "side": 1,
+      "message": "Mirko: Let\u0027s use my CL https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5896492 instead.",
+      "revId": "f53aeb88a8ad59aa7a9a4bf4ad0d721790232f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
