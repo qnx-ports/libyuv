@@ -16,6 +16,24 @@
       "message": "Mirko: Let\u0027s use my CL https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5896492 instead.",
       "revId": "f53aeb88a8ad59aa7a9a4bf4ad0d721790232f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1350523_8294bf4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1178490
+      },
+      "writtenOn": "2024-09-27T22:40:26Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "e5d0236f_d1eadef5",
+      "revId": "f53aeb88a8ad59aa7a9a4bf4ad0d721790232f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
