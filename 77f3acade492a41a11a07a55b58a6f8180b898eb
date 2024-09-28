@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8268e754_05de6e4a",
+        "filename": "unit_test/scale_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-09-28T00:06:34Z",
+      "side": 0,
+      "message": "Frank: I added this test case in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5896492, but I think I did it incorrectly.",
+      "revId": "77f3acade492a41a11a07a55b58a6f8180b898eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
