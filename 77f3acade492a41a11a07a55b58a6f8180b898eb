@@ -16,6 +16,24 @@
       "message": "Its okay to use the more conservative % 48 all the time.  aarch32 should really ues the same code as aarch64",
       "revId": "77f3acade492a41a11a07a55b58a6f8180b898eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e28c33a_f5f2b9c2",
+        "filename": "source/scale.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-02T22:26:52Z",
+      "side": 1,
+      "message": "Just wanted to make sure I understand your comment: the code here needs to match the `MASK` value (the last argument to `SDANY`) in the following code:\n\n```\n#ifdef HAS_SCALEROWDOWN34_NEON\n#ifdef __aarch64__\n...\nSDANY(ScaleRowDown34_0_Box_Any_NEON,\n      ScaleRowDown34_0_Box_NEON,\n      ScaleRowDown34_0_Box_C,\n      4 / 3,\n      1,\n      47)\n...\n#else\n...\nSDANY(ScaleRowDown34_0_Box_Any_NEON,\n      ScaleRowDown34_0_Box_NEON,\n      ScaleRowDown34_0_Box_C,\n      4 / 3,\n      1,\n      23)\n...\n#endif\n#endif\n```\n\nSince we are passing 47 and 23 for aarch64 and aarch32 respectively, we need to use % 48 and % 24 here.\n\nAre you saying that aarch64 and aarch32 should use the same code for `ScaleRowDown34_0_Box_NEON` so that the above code can be simplified to the following?\n\n```\n#ifdef HAS_SCALEROWDOWN34_NEON\n...\nSDANY(ScaleRowDown34_0_Box_Any_NEON,\n      ScaleRowDown34_0_Box_NEON,\n      ScaleRowDown34_0_Box_C,\n      4 / 3,\n      1,\n      47)\n...\n#endif\n```",
+      "parentUuid": "fd282e85_0f7986c0",
+      "revId": "77f3acade492a41a11a07a55b58a6f8180b898eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
