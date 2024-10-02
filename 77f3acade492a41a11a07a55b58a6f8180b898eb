@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd282e85_0f7986c0",
+        "filename": "source/scale.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-02T19:22:42Z",
+      "side": 1,
+      "message": "Its okay to use the more conservative % 48 all the time.  aarch32 should really ues the same code as aarch64",
+      "revId": "77f3acade492a41a11a07a55b58a6f8180b898eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
