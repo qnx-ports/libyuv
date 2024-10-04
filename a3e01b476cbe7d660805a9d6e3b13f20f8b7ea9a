@@ -16,6 +16,24 @@
       "message": "Note it would be good to enable on macOS and iOS that will have SME on M4",
       "revId": "a3e01b476cbe7d660805a9d6e3b13f20f8b7ea9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf4cae4_9977cfff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-04T17:48:09Z",
+      "side": 1,
+      "message": "As far as I\u0027m aware the compiler-rt library on non-Linux/Android is still missing the SME support routines to save/restore the ZA register so we cannot enable it there yet.\n\nI\u0027ll aim to put up further patches to enable it on more platforms as support becomes available elsewhere!",
+      "parentUuid": "a7e787cf_155194a4",
+      "revId": "a3e01b476cbe7d660805a9d6e3b13f20f8b7ea9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
