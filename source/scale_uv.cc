@@ -129,10 +129,10 @@ static void ScaleUVDown2(int src_width,
   }
 #endif
 #if defined(HAS_SCALEUVROWDOWN2_SME)
-  if (TestCpuFlag(kCpuHasSME) &&
-      (filtering == kFilterNone || filtering == kFilterLinear)) {
-    ScaleUVRowDown2 = filtering == kFilterNone ? ScaleUVRowDown2_SME
-                                               : ScaleUVRowDown2Linear_SME;
+  if (TestCpuFlag(kCpuHasSME)) {
+    ScaleUVRowDown2 = filtering == kFilterNone     ? ScaleUVRowDown2_SME
+                      : filtering == kFilterLinear ? ScaleUVRowDown2Linear_SME
+                                                   : ScaleUVRowDown2Box_SME;
   }
 #endif
 #if defined(HAS_SCALEUVROWDOWN2_RVV)
@@ -247,6 +247,11 @@ static int ScaleUVDown4Box(int src_width,
     if (IS_ALIGNED(dst_width, 8)) {
       ScaleUVRowDown2 = ScaleUVRowDown2Box_NEON;
     }
+  }
+#endif
+#if defined(HAS_SCALEUVROWDOWN2BOX_SME)
+  if (TestCpuFlag(kCpuHasSME)) {
+    ScaleUVRowDown2 = ScaleUVRowDown2Box_SME;
   }
 #endif
 #if defined(HAS_SCALEUVROWDOWN2BOX_RVV)
