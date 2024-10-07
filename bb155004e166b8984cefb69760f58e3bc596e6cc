@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb765cb9_a197c3d0",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:49:13Z",
+      "side": 1,
+      "message": "Nit/optional: This check and the check at line 46 are no necessary and could be omitted. The conditions `src_argb_size \u003c\u003d SIZE_MAX` and `dst_argb_size \u003c\u003d SIZE_MAX` are implied by the check at line 50.",
+      "revId": "bb155004e166b8984cefb69760f58e3bc596e6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133b8aa2_21e7244a",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:49:13Z",
+      "side": 1,
+      "message": "Nit: I suggest we reverse the tests, so that we first check if `argb_size` has overflowed, and then check if it is safe to cast `argb_size` to `size_t`:\n\n```\n  if (argb_size \u003c src_argb_size || argb_size \u003c dst_argb_size || argb_size \u003e SIZE_MAX) {\n```",
+      "revId": "bb155004e166b8984cefb69760f58e3bc596e6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7aa438_e7210a16",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:49:13Z",
+      "side": 1,
+      "message": "Optional: Although unsigned integer overflow is not undefined behavior, it is often unintended, so UBSan has an option to warn about unsigned integer overflow. We can avoid unsigned integer overflow by changing lines 49-50 to the following:\n\n```\n  if (src_argb_size \u003e UINT64_MAX - dst_argb_size) {\n    return -1;  // Invalid size.\n  }\n  const uint64_t argb_size \u003d src_argb_size + dst_argb_size;\n  if (argb_size \u003e SIZE_MAX) {\n```",
+      "revId": "bb155004e166b8984cefb69760f58e3bc596e6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
