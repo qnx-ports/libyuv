@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a01cb7b_03202254",
+        "filename": "include/libyuv/version.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:00:35Z",
+      "side": 1,
+      "message": "Just wanted to confirm that version 1897 has been used.",
+      "revId": "732c8a7fcee64c7d888d9d493fc4ce0c614d5313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d02a783_6c9f5d75",
+        "filename": "source/convert_to_argb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:00:35Z",
+      "side": 1,
+      "message": "I verified that `(uint64_t)crop_width * 4 * abs_crop_height` cannot possibly overflow `uint64_t` if both `crop_width` and `abs_crop_height` are \u003e\u003d 0.",
+      "revId": "732c8a7fcee64c7d888d9d493fc4ce0c614d5313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986f81df_a3fa4392",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:00:35Z",
+      "side": 1,
+      "message": "If the four `int` variables on the right-hand side all have the maximum value `INT_MAX`, then the sum will overflow `uint64_t`.",
+      "revId": "732c8a7fcee64c7d888d9d493fc4ce0c614d5313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd34a75_24af8a6b",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-07T20:00:35Z",
+      "side": 1,
+      "message": "Add a `size_t` cast to `src_width`.",
+      "revId": "732c8a7fcee64c7d888d9d493fc4ce0c614d5313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
