@@ -237,6 +237,7 @@ if (libyuv_use_neon) {
     public_configs = [ ":libyuv_config" ]
 
     if (current_cpu == "arm64") {
+      configs -= [ "//build/config/compiler:compiler_arm64_lse" ]
       cflags = [ "-march=armv8-a+dotprod+i8mm" ]
     } else {
       configs -= [ "//build/config/compiler:compiler_arm_fpu" ]
@@ -254,6 +255,7 @@ if (libyuv_use_sve) {
     public_configs = [ ":libyuv_config" ]
 
     # SVE2 is an Armv9-A feature.
+    configs -= [ "//build/config/compiler:compiler_arm64_lse" ]
     cflags = [ "-march=armv9-a+sve2" ]
   }
 }
@@ -267,6 +269,7 @@ if (libyuv_use_sme) {
     public_configs = [ ":libyuv_config" ]
 
     # SME is an Armv9-A feature.
+    configs -= [ "//build/config/compiler:compiler_arm64_lse" ]
     cflags = [ "-march=armv9-a+sme" ]
   }
 }
