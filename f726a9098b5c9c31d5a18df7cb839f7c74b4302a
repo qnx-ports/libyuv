@@ -1,0 +1,202 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3dd9cf7_2cdf640c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-08T20:09:46Z",
+      "side": 1,
+      "message": "note that I\u0027m still unable to build SME internally on one of our linux aarch64 configs.\n\nld: error: undefined reference: __arm_tpidr2_save\n\u003e\u003e\u003e referenced by blaze-out/redacted-opt/bin/_solib_redacted/libthird_Uparty_Slibyuv_Sliblibyuv_Usme_Uimpl.ifso (disallowed by --no-allow-shlib-undefined)\nclang: error: linker command failed with exit code 1\n\nfrom what I can tell, its an aarch64 linux build for a cortex a53 system.\n\nCan __arm_tpidr2_save be avoided?",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5397dfbd_8efbb808",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-08T20:09:46Z",
+      "side": 1,
+      "message": "Should this be named SVE2 since it used bytes?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8f3ea6ad_045cd352",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 99,
+                "startChar": 0,
+                "endLine": 100,
+                "endChar": 0
+              },
+              "replacement": "#define SCALEROWDOWN2BOX_SVE2                                \\\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 130,
+                "startChar": 0,
+                "endLine": 131,
+                "endChar": 0
+              },
+              "replacement": "      SCALEROWDOWN2BOX_SVE2\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "      SCALEROWDOWN2BOX_SVE2\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 151,
+                "endChar": 0
+              },
+              "replacement": "#undef SCALEROWDOWN2BOX_SVE2\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3e7478_16294ecf",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-08T20:09:46Z",
+      "side": 1,
+      "message": "In the future I expect there will be cpus with SVE and wider vector length, but not necessarily steaming.  What does __arm_locally_streaming do?\nShould the function be called an SVE row fuction but have the calling code only use it if SME is available?\nOr will we need 2 versions of each function with the same SVE code, but one with __arm_locally_streaming?",
+      "fixSuggestions": [
+        {
+          "fixId": "9a1a5c34_bf337063",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 26,
+                "endChar": 0
+              },
+              "replacement": "  // Streaming-SVE only, no use of ZA tile. This function is used in\n  // ScalePlaneDown2_16To8_Odd_C, which is used in\n  // ScalePlaneDown2_16To8_Odd_SSE2, ScalePlaneDown2_16To8_Odd_AVX2,\n  // ScalePlaneDown2_16To8_Odd_NEON, ScalePlaneDown2_16To8_Odd_MSA,\n  // ScalePlaneDown2_16To8_Odd_RVV, ScalePlaneDown2_16To8_Odd_SVE.\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 63,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": "  // Streaming-SVE only, no use of ZA tile. This function is used in\n  // ScalePlaneDown2Linear_16To8_Odd_C, which is used in\n  // ScalePlaneDown2Linear_16To8_Odd_SSE2, ScalePlaneDown2Linear_16To8_Odd_AVX2,\n  // ScalePlaneDown2Linear_16To8_Odd_NEON, ScalePlaneDown2Linear_16To8_Odd_MSA,\n  // ScalePlaneDown2Linear_16To8_Odd_RVV, ScalePlaneDown2Linear_16To8_Odd_SVE.\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 121,
+                "endChar": 0
+              },
+              "replacement": "  // Streaming-SVE only, no use of ZA tile. This function is used in\n  // ScalePlaneDown2Box_16To8_Odd_C, which is used in\n  // ScalePlaneDown2Box_16To8_Odd_SSE2, ScalePlaneDown2Box_16To8_Odd_AVX2,\n  // ScalePlaneDown2Box_16To8_Odd_NEON, ScalePlaneDown2Box_16To8_Odd_MSA,\n  // ScalePlaneDown2Box_16To8_Odd_RVV, ScalePlaneDown2Box_16To8_Odd_SVE.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248d0c78_5edce14c",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-08T20:09:46Z",
+      "side": 1,
+      "message": "when using streaming, should it be \u0027svl\u0027 or is it still vl?",
+      "fixSuggestions": [
+        {
+          "fixId": "7260674f_cc9a3e53",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 125,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                                    \\n\"\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 131,
+                "startChar": 0,
+                "endLine": 141,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
