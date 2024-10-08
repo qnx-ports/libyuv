@@ -16,6 +16,24 @@
       "message": "This line should be simply\n\n```\n  if (rgb_size \u003e SIZE_MAX) {\n```",
       "revId": "ffd791f749365096354ecb0d37a60b64b4b3518f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "063d7a8c_59d6583b",
+        "filename": "source/scale_rgb.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-08T01:12:29Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5914872.",
+      "parentUuid": "ad2983ed_22897fd6",
+      "revId": "ffd791f749365096354ecb0d37a60b64b4b3518f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
