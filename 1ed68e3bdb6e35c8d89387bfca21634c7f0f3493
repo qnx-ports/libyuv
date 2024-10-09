@@ -51,6 +51,24 @@
       "parentUuid": "f37b99f0_95b7b7b2",
       "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5e084f_3c009d2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-09T13:45:39Z",
+      "side": 1,
+      "message": "Thanks for the URL. Yes, I agree that is the fix. This means somehow that fix has not been imported into Chrome\u0027s build machines for Android. I will need to ask around.",
+      "parentUuid": "c046fe52_5cd42017",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
