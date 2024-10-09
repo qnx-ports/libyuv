@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f44a374_b11e736c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-09T01:51:15Z",
+      "side": 1,
+      "message": "I kept the changes to include/libyuv/cpu_support.h in https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5908389. I only reverted the changes to libyuv.gnu.",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37b99f0_95b7b7b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-09T01:51:15Z",
+      "side": 1,
+      "message": "George: I assume you enabled `libuyuv_use_sme` for `is_android` because this linker error has been fixed in LLVM. But the LLVM fix apparently has not been imported into the Chromium source tree.",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
