@@ -33,6 +33,24 @@
       "message": "George: I assume you enabled `libuyuv_use_sme` for `is_android` because this linker error has been fixed in LLVM. But the LLVM fix apparently has not been imported into the Chromium source tree.",
       "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c046fe52_5cd42017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T08:59:10Z",
+      "side": 1,
+      "message": "I had expected the fix would be https://github.com/llvm/llvm-project/pull/102979 but that was merged a long time ago now.",
+      "parentUuid": "f37b99f0_95b7b7b2",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
