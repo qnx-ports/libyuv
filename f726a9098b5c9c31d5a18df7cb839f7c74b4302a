@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4b63c86_dc6d4fe0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T12:25:36Z",
+      "side": 1,
+      "message": "__arm_tpidr2_save should be part of libgcc from gcc14 and compiler-rt from llvm 18. Do you know what compiler and version you are using to build/link?\n\nIf compiling with LLVM you\u0027ll want to also make sure you\u0027re actually linking with compiler-rt with something like: clang ... -fuse-ld\u003dlld -rtlib\u003dcompiler-rt\n\nThe function is something emitted by the compiler to handle the calling convention around the ZA register, it\u0027s not something we can influence unfortunately.",
+      "parentUuid": "a3dd9cf7_2cdf640c",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f217d840_000a9298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T12:25:36Z",
+      "side": 1,
+      "message": "@Frank please note this is the 5th patch in this series not the first since Gerrit shows commits in reverse order in the relation chain. https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5913881/ is the first commit in this series.",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5397dfbd_8efbb808",
         "filename": "source/scale_sme.cc",
         "patchSetId": 1
@@ -89,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b876ac_c60f6ff6",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T12:25:36Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "5397dfbd_8efbb808",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a3e7478_16294ecf",
@@ -146,6 +205,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3b88d07_521ea08d",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T12:25:36Z",
+      "side": 1,
+      "message": "__arm_locally_streaming causes the compiler to emit smstart/smstop at the beginning/end of the function such that the body of the kernel executes in streaming mode. We want the compiler to handle this rather than doing it in the kernel ourselves so that things like debug unwinding correctly capture the changed vector length.\n\nWhen smstart is executed the vector length is widened so this should ordinarily be unconditionally faster than an equivalent Neon or SVE implementation.\n\nThe actual cost of the smstart/smstop switch itself should be zero but all vector registers are clobbered by the switch so the compiler needs to save d8-d15 to the stack. In future we could consider marking the interface to these functions as __arm_streaming, but this would only move the ABI burden to the caller instead.\n\nSee: https://godbolt.org/z/1G5fhffG9\n\nHaving a common SVE/SME implementation isn\u0027t useful here for this particular case since there is no value in having an SVE implementation at all for this one.\n\nFor the general case I\u0027m imagining that the best way to share code is probably to share the existing macros for things like YUVTORGB etc. If there are any kernels where the body is actually identical we could also make use of a static __arm_streaming_compatible function to write a single common implementation in a header and then call that from both the SVE and SME implementations, e.g. https://godbolt.org/z/5ebYY3v1c",
+      "parentUuid": "4a3e7478_16294ecf",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "248d0c78_5edce14c",
         "filename": "source/scale_sme.cc",
         "patchSetId": 1
@@ -195,6 +272,24 @@
           ]
         }
       ],
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd32b21e_acaa3bba",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-09T12:25:36Z",
+      "side": 1,
+      "message": "When in streaming mode all of the normal SVE vector length inspection instructions like CNTB operate on the widened streaming vector length so this is fine. For reading the vector length outside of streaming mode one can use RDSVL instead.",
+      "parentUuid": "248d0c78_5edce14c",
       "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
