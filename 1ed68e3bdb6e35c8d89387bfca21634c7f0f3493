@@ -69,6 +69,24 @@
       "parentUuid": "c046fe52_5cd42017",
       "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "290105e1_4bbcca6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-10T13:09:55Z",
+      "side": 1,
+      "message": "Someone has kindly pointed me at https://source.chromium.org/chromium/chromium/src/+/main:tools/clang/scripts/update.py;l\u003d39;drc\u003daa89dcf8ac1e11af405411f4908745698cff8cb6 which shows the llvm revision is still based on https://chromium.googlesource.com/a/external/github.com/llvm/llvm-project/+/69c43468 which was committed on the 28th of August, but the fix was committed on the 30th of August?\n\nIt is possible that we could update the version of LLVM being used in Chromium so that the Android fix is included?",
+      "parentUuid": "5d5e084f_3c009d2f",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
