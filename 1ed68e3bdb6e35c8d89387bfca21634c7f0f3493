@@ -87,6 +87,24 @@
       "parentUuid": "5d5e084f_3c009d2f",
       "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec346aa_902626ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-10T16:45:45Z",
+      "side": 1,
+      "message": "Thanks for the info. I will ask Hans Wennborg, who updated the version of LLVM used in Chromium on the 28th of August.",
+      "parentUuid": "290105e1_4bbcca6a",
+      "revId": "1ed68e3bdb6e35c8d89387bfca21634c7f0f3493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
