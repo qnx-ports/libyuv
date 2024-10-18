@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shiplist>
+    <id>com.qnx.${baselineId}.osr.libyuv</id>
+    <name>libyuv</name>
+    <version>1787</version>
+    <description>libyuv - YUV scaling and conversion functionality</description>
+    <property key="f.support" value="Custom"/>
+    <property key="f.swtype" value="III"/>
+    <property key="f.engage" value="B"/>
+    <property key="useInfo" value="false"/>
+    <category>OSR</category>
+    <asset dest="${targetfolder}/usr/include/libyuv" runtime="false" />
+    <asset dest="${targetfolder}/usr/include/libyuv.h" runtime="false" />
+    <asset dest="${targetfolder}/[ARCH:aarch64le]/usr/lib/libyuv.so" runtime="false" />
+</shiplist>
