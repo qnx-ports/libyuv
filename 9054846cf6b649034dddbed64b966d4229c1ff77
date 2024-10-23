@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca242cb_de27615c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-23T23:56:44Z",
+      "side": 1,
+      "message": "Looks good but needs a rebase",
+      "revId": "9054846cf6b649034dddbed64b966d4229c1ff77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b97f9e2_5fadd8f4",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-23T23:56:44Z",
+      "side": 1,
+      "message": "normally I would say this constant should be hoisted, but it looks like sri doesnt accept 2 sources?  It inserts into the destination destructively.",
+      "revId": "9054846cf6b649034dddbed64b966d4229c1ff77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
