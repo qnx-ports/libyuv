@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67b5abf_14f71a0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T21:33:02Z",
+      "side": 1,
+      "message": "assuming regular sve will have longer vectors in the future, we\u0027ll probably want sve and if necessary, check vector length or uarch.",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5397dfbd_8efbb808",
