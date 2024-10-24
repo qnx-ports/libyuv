@@ -33,6 +33,24 @@
       "message": "normally I would say this constant should be hoisted, but it looks like sri doesnt accept 2 sources?  It inserts into the destination destructively.",
       "revId": "9054846cf6b649034dddbed64b966d4229c1ff77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02cc4f40_762c3130",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-24T09:39:10Z",
+      "side": 1,
+      "message": "Unfortunately you are correct, we need to regenerate the constant each time here. We could use a MOV or MOVPRFX instead but this performs poorly on little cores so this seems like the best we can do here for now.",
+      "parentUuid": "1b97f9e2_5fadd8f4",
+      "revId": "9054846cf6b649034dddbed64b966d4229c1ff77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
