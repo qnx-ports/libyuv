@@ -16,6 +16,23 @@
       "message": "ping?",
       "revId": "45f23685bdb1b0aa9392251cda8d27536ea81f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d0bc41_bd5a3d64",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T02:17:02Z",
+      "side": 1,
+      "message": "will simple sve code that uses \u0027vl\u0027 work in streaming mode?",
+      "revId": "45f23685bdb1b0aa9392251cda8d27536ea81f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
