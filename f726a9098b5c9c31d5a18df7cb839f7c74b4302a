@@ -223,6 +223,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b1e547a_27a7ea88",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T21:28:56Z",
+      "side": 1,
+      "message": "thanks for the godbolt ... interesting it forces v4 to v7 to be push/pop.\nmaybe the approach should be put streaming sve functions in the sve source file and dont try to share, except for sve macros that implement inner loops.\nOn x86, row_gcc includes sse, avx and avx512 and really the only sharing is constants.\n\nif reducing code size were important, the streaming version could do smstart/smstop and call the sve row functions?\n\nThe efficient solution is make the planar functions do smstart/smstop so the push/pop of v4-v7 is done once.  We used to do vzeroupper like this on intel, and it was problematic if you accidently missed one.  I guess if we had a consistent start/stop, it could apply to x86 as well as arm.  So its doable and has some benefits.",
+      "parentUuid": "f3b88d07_521ea08d",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "248d0c78_5edce14c",
         "filename": "source/scale_sme.cc",
         "patchSetId": 1
