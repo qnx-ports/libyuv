@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ada0fe9_664dedac",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T21:25:07Z",
+      "side": 1,
+      "message": "note that ld1r has the same effect of cleansing and is sometimes more convenient.",
+      "revId": "84f5b5b66de1c7716c9304b9e0333ad6403374f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
