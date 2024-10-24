@@ -33,6 +33,24 @@
       "message": "will simple sve code that uses \u0027vl\u0027 work in streaming mode?",
       "revId": "45f23685bdb1b0aa9392251cda8d27536ea81f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58ffb3a_b91ed47c",
+        "filename": "source/row_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-24T09:33:56Z",
+      "side": 1,
+      "message": "Yep, all the code we\u0027ve contributed will work regardless of the vector length, there just might be a more performant way to write it when we know we are targeting SSVE. At some point I will aim to move a lot of the common macros or implementations into some common header where possible.",
+      "parentUuid": "d6d0bc41_bd5a3d64",
+      "revId": "45f23685bdb1b0aa9392251cda8d27536ea81f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
