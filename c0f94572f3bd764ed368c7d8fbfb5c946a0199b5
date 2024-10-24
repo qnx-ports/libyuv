@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c3eb20_ff25ac45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T20:51:33Z",
+      "side": 1,
+      "message": "okay... I call this technique \u0027last16\u0027 but I rarely use it because\n1. it breaks write combining rules... you should normally write absolutely contiguous, not out of order.  I\u0027m not sure if arm even has write combining like intel\n2. it does not allow for writing less than 16.\nexcept you wrote 12.  So you\u0027re good.  But what you could do, is handle the remainder the same as the main loop... write a full 16.\nThe main loop read/write 16 but write 12/loop 12/adjust pointers by 12.\nThe remainder backs up by 4, and re-reads/write 16, overlapping the main loop by 4.\nUsually this is due to an odd remainder, such as 11 pixels, where its pretty inefficient to handle without masking.\n\nThis could be done, and would likely be a little more efficient, but then it couldnt handle the simple case of simple 12 pixels.  Which would be okay, if you check for that in the calling code and ensure the any function can handle it.",
+      "revId": "c0f94572f3bd764ed368c7d8fbfb5c946a0199b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
