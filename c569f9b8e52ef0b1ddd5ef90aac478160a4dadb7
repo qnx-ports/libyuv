@@ -34,6 +34,23 @@
       "parentUuid": "bdd8c38d_09b0453b",
       "revId": "c569f9b8e52ef0b1ddd5ef90aac478160a4dadb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2cf1682_16d01e11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T21:43:50Z",
+      "side": 1,
+      "message": "byte buddy?  mirko usually handles the deps rolls",
+      "revId": "c569f9b8e52ef0b1ddd5ef90aac478160a4dadb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
