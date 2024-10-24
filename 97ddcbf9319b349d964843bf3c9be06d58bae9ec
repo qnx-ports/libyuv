@@ -16,6 +16,24 @@
       "message": "much simplier.   the 1555, 565 and 4444 formats are really not used anymore.\n2:10:10:10 is, though, so if you can do the same magic on those, that would be good.\nthe reason for AR30/AB30 is to pass off 10 bit to GPUs.  If ARM based devices have other formats, it might be nice to support.  There is a 64 bit fp16 argb format, and libyuv has AR64 support, since its trivial, but I dont think its commonly supported.\n\nneeds a rebase",
       "revId": "97ddcbf9319b349d964843bf3c9be06d58bae9ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1eecf03_d80f1d43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-24T09:37:50Z",
+      "side": 1,
+      "message": "I have downstream implementations of {I210,I410}ToAR30Row and most of the *ToARGB and *ToRGB24 kernels which show good speedups. I just didn\u0027t want to put up too many patches at once because then they all would need even more rebases!",
+      "parentUuid": "2a533c23_cab79de6",
+      "revId": "97ddcbf9319b349d964843bf3c9be06d58bae9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
