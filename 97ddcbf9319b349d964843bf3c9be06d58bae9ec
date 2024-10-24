@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a533c23_cab79de6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-24T00:00:46Z",
+      "side": 1,
+      "message": "much simplier.   the 1555, 565 and 4444 formats are really not used anymore.\n2:10:10:10 is, though, so if you can do the same magic on those, that would be good.\nthe reason for AR30/AB30 is to pass off 10 bit to GPUs.  If ARM based devices have other formats, it might be nice to support.  There is a 64 bit fp16 argb format, and libyuv has AR64 support, since its trivial, but I dont think its commonly supported.\n\nneeds a rebase",
+      "revId": "97ddcbf9319b349d964843bf3c9be06d58bae9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
