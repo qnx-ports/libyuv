@@ -16,6 +16,23 @@
       "message": "hi Frank, are there additional changes you\u0027d like here?",
       "revId": "563fbf86a991acf96799ff0997ea833ace1e3c9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6129201c_a770edef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-25T20:09:00Z",
+      "side": 1,
+      "message": "looks good but has merge conflict",
+      "revId": "563fbf86a991acf96799ff0997ea833ace1e3c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
