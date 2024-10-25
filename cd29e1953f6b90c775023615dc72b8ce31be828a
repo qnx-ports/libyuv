@@ -1,0 +1,66 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db50f563_c1042695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-25T10:03:17Z",
+      "side": 1,
+      "message": "before we go too far on yuv to rgb, there is a bug that should probably be fixed.\nthe yuvconvstants have a baked in +32 with the assumption that the 16 intermediate will be converted down to 8 bit with a shift that doesnt round.  so to mimic rounding, the bias is adjusted.  the problem is, this is wrong for 10 bit.\nthe constants should not have the +32\nto get the same result, a rounding shift could be done.\nbut I think the correct solution is the upsampling should bit replicate..e.g. 10 bit yuv bit replicate up to 16 bit.. do 16 bit math, then shift right without rounding.  then there will be addition optimizations possible, such as shift left by 2 to saturate, and unzip to return the upper 8 bits.\nbut the results will be subtley different... possibly improved for 8 bit.  For sure the 10 bit results will be better, because the +32 is not rounding... its encroaching on the low bits of the 10 bit result.\nshort term, we could do with riscv row functions do, which is subtract the 32 from the constants.  But the better thing is remove the rounding bias from the constants",
+      "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1463cc51_02b85419",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-25T10:03:17Z",
+      "side": 1,
+      "message": "is this // to defeat clang-format?",
+      "fixSuggestions": [
+        {
+          "fixId": "19afb50a_fdd50a82",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 143,
+                "startChar": 0,
+                "endLine": 144,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                               \\n\"\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 191,
+                "startChar": 0,
+                "endLine": 192,
+                "endChar": 0
+              },
+              "replacement": "      \"1:                                               \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
