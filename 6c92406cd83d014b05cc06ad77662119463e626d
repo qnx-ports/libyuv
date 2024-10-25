@@ -1,0 +1,94 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c8c17f_1be04b58",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-25T10:21:53Z",
+      "side": 1,
+      "message": "isnt it just the src_width needs be a multiple of 2?\nif i recall, the functionality is still supposed to do exactly 2x down sample for all but the last pixel, and the last pixel is clamped/unfiltered.\neg 5 pixels scales down to 3.   \nabcde\nab cd ee\na destination that is a multiple of 2 does not guarantee the source is a multiple of 2.\nBut I dont think this specialization of scaling is called if the source / dest is not exactly 2, so you can probably just use SME all the time?\nScale Plane does this:\nif (2 * dst_width \u003d\u003d src_width \u0026\u0026 2 * dst_height \u003d\u003d src_height) {\n  // optimized, 1/2\n  ScalePlaneDown2(src_width, src_height, dst_width, dst_height, src_stride,\n                  dst_stride, src, dst, filtering);\n  return 0;\n}\nsource will be a multiple of 2.\n\nScalePlaneDown2 is static (private) but if it were called directly, the expected behavior for odd source width, would bo clamp the last valid source pixel.\nthis is usually achieved in the any function by replicating the last source pixel",
+      "fixSuggestions": [
+        {
+          "fixId": "f3900b4f_1ee73672",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale.cc",
+              "range": {
+                "startLine": 80,
+                "startChar": 0,
+                "endLine": 84,
+                "endChar": 0
+              },
+              "replacement": "     ScaleRowDown2 \u003d ScaleRowDown2_Any_SME;\n     if (IS_ALIGNED(src_width, 2)) {\n       ScaleRowDown2 \u003d ScaleRowDown2_SME;\n     }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35914ab_7b260b21",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-25T10:21:53Z",
+      "side": 1,
+      "message": "is ld2b slow?  if so, consider treating it as ld1h and then unzip to combine upper bytes of 2 vectors?",
+      "fixSuggestions": [
+        {
+          "fixId": "c99381f5_ff441659",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 36,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b     {z0.b}, p0/z, [%[src_ptr]]                   \\n\"\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 39,
+                "endChar": 0
+              },
+              "replacement": "      \"st1b     {z0.b}, p0, [%[dst_ptr]]                     \\n\"\n"
+            },
+            {
+              "path": "source/scale_sme.cc",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "      \"ld1b     {z0.b}, p0/z, [%[src_ptr]]                   \\n\"\n      \"st1b     {z0.b}, p0, [%[dst_ptr]]                     \\n\"\n"
+            }
+          ]
+        }
+      ],
+      "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
