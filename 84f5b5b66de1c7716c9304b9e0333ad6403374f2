@@ -16,6 +16,24 @@
       "message": "note that ld1r has the same effect of cleansing and is sometimes more convenient.",
       "revId": "84f5b5b66de1c7716c9304b9e0333ad6403374f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968e73b3_a48135e0",
+        "filename": "source/scale_neon64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-25T13:43:37Z",
+      "side": 1,
+      "message": "Agree, but worth noting that LD1R has worse performance on some cores (e.g. On Cortex-X1: LD1R has 8-cycle latency vs LDR has 6-cycle latency)",
+      "parentUuid": "7ada0fe9_664dedac",
+      "revId": "84f5b5b66de1c7716c9304b9e0333ad6403374f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
