@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "775d15d3_268fd0fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-25T10:59:05Z",
+      "side": 1,
+      "message": "Interesting. If the existing bias works fine for 8 bit then is it just a matter of needing a different set of constants for 10-bit (or adjusting the constants in the pre-loop to work correctly)?",
+      "parentUuid": "db50f563_c1042695",
+      "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1463cc51_02b85419",
@@ -59,6 +77,24 @@
           ]
         }
       ],
+      "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d88efd_9b73114b",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-25T10:59:05Z",
+      "side": 1,
+      "message": "Yep, I thought this seemed nicer than having the macro on the previous line.\n\nOpen to reverting back to not having it if you prefer, also open to putting up a separate review changing all the existing code to match if you want as well.",
+      "parentUuid": "1463cc51_02b85419",
       "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
