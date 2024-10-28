@@ -97,6 +97,24 @@
       "parentUuid": "1463cc51_02b85419",
       "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb58600_d589a5d1",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-28T20:26:15Z",
+      "side": 1,
+      "message": "Acknowledged.  Its fine... just obscure... thought it was a bug/missing comment",
+      "parentUuid": "13d88efd_9b73114b",
+      "revId": "cd29e1953f6b90c775023615dc72b8ce31be828a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

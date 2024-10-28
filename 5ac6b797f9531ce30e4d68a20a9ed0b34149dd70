@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f470ac_ea669ca3",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-28T20:26:15Z",
+      "side": 1,
+      "message": "nit I\u0027m not thrilled about the quirkiness of even/odd values for sve, while neon does a conventional layout... makes the macros harder to use/understand outside this context.",
+      "fixSuggestions": [
+        {
+          "fixId": "a15d4c15_200417da",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": "// Read twice as much data from YUV, putting the even elements from the Y data in\n// z0.h and odd elements in z1.h. U/V data is not duplicated, stored in z2.h/z3.h.\n"
+            },
+            {
+              "path": "source/row_sme.cc",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 49,
+                "endChar": 0
+              },
+              "replacement": "// Read twice as much data from YUV, putting the even elements from the Y data in\n// z0.h and odd elements in z1.h.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5ac6b797f9531ce30e4d68a20a9ed0b34149dd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
