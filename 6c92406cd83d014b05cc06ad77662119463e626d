@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd0ed75_fad0503d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-28T13:43:06Z",
+      "side": 1,
+      "message": "This commit follows https://chromium-review.googlesource.com/c/libyuv/libyuv/+/5913881 in the relation chain, so the conflict should rebase away once that is merged.",
+      "parentUuid": "a95de3bd_22742703",
+      "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9c8c17f_1be04b58",
@@ -49,6 +67,24 @@
           ]
         }
       ],
+      "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62fa532_f1db0f66",
+        "filename": "source/scale.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-28T13:43:06Z",
+      "side": 1,
+      "message": "Indeed we don\u0027t actually need these Any kernels at all, removed from all of the ScaleRowDown2/Linear/Box SME kernels.",
+      "parentUuid": "c9c8c17f_1be04b58",
       "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +140,24 @@
           ]
         }
       ],
+      "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a91a06_927d941e",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-28T13:43:06Z",
+      "side": 1,
+      "message": "LD2 is beneficial here since it allows us to use the same predicate layout for both the load and the store, else we would either need to maintain multiple predicates or process less data per iteration. I think LD2 is good here so the current approach should be kept.",
+      "parentUuid": "c35914ab_7b260b21",
       "revId": "6c92406cd83d014b05cc06ad77662119463e626d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
