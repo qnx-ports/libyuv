@@ -240,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67d9a9a_91951c95",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-28T13:48:59Z",
+      "side": 1,
+      "message": "I expect LD2 to perform fine, and using these has the advantage that the predicates line between the load and store instructions so avoids additional predicate manipulation.",
+      "parentUuid": "77694edd_d6851ee6",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a3e7478_16294ecf",
@@ -327,6 +345,24 @@
       "side": 1,
       "message": "thanks for the godbolt ... interesting it forces v4 to v7 to be push/pop.\nmaybe the approach should be put streaming sve functions in the sve source file and dont try to share, except for sve macros that implement inner loops.\nOn x86, row_gcc includes sse, avx and avx512 and really the only sharing is constants.\n\nif reducing code size were important, the streaming version could do smstart/smstop and call the sve row functions?\n\nThe efficient solution is make the planar functions do smstart/smstop so the push/pop of v4-v7 is done once.  We used to do vzeroupper like this on intel, and it was problematic if you accidently missed one.  I guess if we had a consistent start/stop, it could apply to x86 as well as arm.  So its doable and has some benefits.",
       "parentUuid": "f3b88d07_521ea08d",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a18df4c_c0768b96",
+        "filename": "source/scale_sme.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-10-28T13:48:59Z",
+      "side": 1,
+      "message": "Indeed we could consider moving the smstart/smstop (and associated callee-saves) into the planar functions. This is difficult since the ABI difference means they are different function pointer types and cannot be stored in the same pointer variable.\n\nI do not expect that the smstart/smstop themselves are problematic from a performance pov so it would probably be better to delay such a change until we have real hardware to benchmark such an intrusive change on.",
+      "parentUuid": "9b1e547a_27a7ea88",
       "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
