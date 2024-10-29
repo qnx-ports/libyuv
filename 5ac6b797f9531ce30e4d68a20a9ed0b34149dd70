@@ -62,6 +62,24 @@
       "parentUuid": "01f470ac_ea669ca3",
       "revId": "5ac6b797f9531ce30e4d68a20a9ed0b34149dd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb297c23_e6cee47d",
+        "filename": "source/row_sme.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115898
+      },
+      "writtenOn": "2024-10-29T18:10:16Z",
+      "side": 1,
+      "message": "fwiw Intel have a new convert ne api that does the same when converting fp16/bf16 to float",
+      "parentUuid": "27f40b70_040b71fe",
+      "revId": "5ac6b797f9531ce30e4d68a20a9ed0b34149dd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
