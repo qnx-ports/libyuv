@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e2fb10_03d68bba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002219
+      },
+      "writtenOn": "2024-10-31T20:12:43Z",
+      "side": 1,
+      "message": "\u003e We need a Clang expert to check this statement. It\u0027s not clear to me whether \"-march\" and \"-Xclang -target-feature\" do not interfere with each other.\n\nI used this option to solve an Android build issue for libaom and libvpx where the `-march` flag was being overridden by the platform:\n\nhttps://android-review.googlesource.com/c/platform/external/libaom/+/3263691",
+      "parentUuid": "a7afc81a_e3baaae0",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "611101b9_908097ba",
