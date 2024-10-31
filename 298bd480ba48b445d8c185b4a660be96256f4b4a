@@ -16,6 +16,23 @@
       "message": "Hi Wan-Teh, could you PTAL at this Chromium-specific BUILD.gn change for libyuv?\n\nThanks\nRichard",
       "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc67df5_ce6768c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001562
+      },
+      "writtenOn": "2024-10-31T17:34:11Z",
+      "side": 1,
+      "message": "Sorry about the delay in review. I was sick last week and somehow missed this CL.\n\nI am not really qualified to review this change, because I don\u0027t fully understand the problem we need to solve. Here are two initial thoughts.\n\n1) I am not sure if libyuv\u0027s BUILD.gn file can assume the compiler is Clang.\n\n2) I am wondering if it is the [proposed change to build/config/compiler/BUILD.gn](https://chromium-review.googlesource.com/c/chromium/src/+/5904093/1/build/config/compiler/BUILD.gn) that should be changed to use the Clang cc1 flag \"-target-feature\":\n\n\n```\nconfig(\"compiler_arm64_lse\") {\n  if (current_cpu \u003d\u003d \"arm64\" \u0026\u0026 aarch64_use_lse) {\n    cflags \u003d [ \"-march\u003darmv8-a+lse\" ]\n    ldflags \u003d [ \"-march\u003darmv8-a+lse\" ]\n  }\n}\n```",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
