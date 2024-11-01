@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4daafa_da799ad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1571352
+      },
+      "writtenOn": "2024-11-01T17:42:47Z",
+      "side": 1,
+      "message": "Marking this as resolved. Let me know if it\u0027s still an issue and we can try and work out a solution offline if needed.",
+      "parentUuid": "a4b63c86_dc6d4fe0",
+      "revId": "f726a9098b5c9c31d5a18df7cb839f7c74b4302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5397dfbd_8efbb808",
