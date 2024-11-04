@@ -121,6 +121,23 @@
       "parentUuid": "5a7b8249_2245e48a",
       "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f4896c_95c9dac7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1177474
+      },
+      "writtenOn": "2024-11-04T12:35:51Z",
+      "side": 1,
+      "message": "Worth mentioning: \na) Clang is the only supported compiler for doing Chromium stuff (I\u0027m not aware of any other projects using GN and GCC). GCC is best-effort supported.\nb) If GCC doesn\u0027t support this flag, I think we (Arm) should add it, but GCC moves a lot more slowly than LLVM and old GCC versions stick around for a long time. I wonder if is_clang could work for us in this situation.",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
