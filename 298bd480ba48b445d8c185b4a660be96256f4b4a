@@ -85,6 +85,42 @@
       "message": "Does this still work for gcc and other compilers that support -march?",
       "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d60ddd6_69381c4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3668288
+      },
+      "writtenOn": "2024-11-04T11:40:23Z",
+      "side": 1,
+      "message": "No worries, I hope you feel better!\n\nTo explain the problem at hand: \nHaving a global config that uses the \"-march\" flag overwrites the flag args set by other build files resulting in an issue.\n\nRegarding:\n1) There is a variable \"is_clang\" that is being utilized in chromium build files which we can use (since \"target-feature\" seems to be not available in other compilers).\n\n2) Initially we tried that, but it seems that using \"-march\" flag to enable LSE enforces more implicit changes to the binaries which we are hoping would bring more uplift to performance (the end-goal of this patch). Since the features in libyuv such as i8mm or dotprod are being used explicitly however using \"-march\" or \"-target-feature\" doesn\u0027t make a difference.",
+      "parentUuid": "7bc67df5_ce6768c2",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6740c0b_8dc0f681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3668288
+      },
+      "writtenOn": "2024-11-04T11:40:23Z",
+      "side": 1,
+      "message": "Particularly in patchset 2 I believe it will be an issue for other compilers, but moving forward we can utilize this flag \"-target-feature\" only for clang and \"-march\" for the rest.",
+      "parentUuid": "5a7b8249_2245e48a",
+      "revId": "298bd480ba48b445d8c185b4a660be96256f4b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
