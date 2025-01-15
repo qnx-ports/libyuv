@@ -1,11 +1,11 @@
-# This is a  makefile for QNX.
+# This is a makefile for QNX.
 # make -f qnx.mk install
 
 CC=qcc
-CFLAGS=-O2 -fomit-frame-pointer -fPIC -Vgcc_ntoaarch64le -Iinclude/
+CFLAGS=-O2 -fomit-frame-pointer -fPIC -Iinclude/
 
 CXX=qcc
-CXXFLAGS=-O2 -fomit-frame-pointer -fPIC -Vgcc_ntoaarch64le -Iinclude/
+CXXFLAGS=-O2 -fomit-frame-pointer -fPIC -Iinclude/
 
 LOCAL_OBJ_FILES := \
 	source/compare.o           \
@@ -73,38 +73,63 @@ ifndef NO_TARGET_OVERRIDE
 .c.o:
 	$(CC) -c $(CFLAGS) $*.c -o $*.o
 
-all: libyuv.so i444tonv12_eg yuvconvert yuvconstants cpuid psnr install
+all: libyuv_x86_64.so libyuv_aarch64le.so i444tonv12_eg_x86_64 i444tonv12_eg_aarch64le yuvconvert_x86_64 yuvconvert_aarch64le yuvconstants_x86_64 yuvconstants_aarch64le cpuid_x86_64 cpuid_aarch64le psnr_x86_64 psnr_aarch64le install
 
-libyuv.so: $(LOCAL_OBJ_FILES)
-	$(CXX) -shared -Vgcc_ntoaarch64le -o $@ $(LOCAL_OBJ_FILES)
+libyuv_x86_64.so: $(LOCAL_OBJ_FILES:.o=_x86_64.o)
+	$(CXX) -shared -Vgcc_ntox86_64 -o $@ $(LOCAL_OBJ_FILES:.o=_x86_64.o)
+
+libyuv_aarch64le.so: $(LOCAL_OBJ_FILES:.o=_aarch64le.o)
+	$(CXX) -shared -Vgcc_ntoaarch64le -o $@ $(LOCAL_OBJ_FILES:.o=_aarch64le.o)
+
+source/%_x86_64.o: source/%.cc
+	$(CXX) -c $(CXXFLAGS) -Vgcc_ntox86_64 -o $@ $<
+
+source/%_aarch64le.o: source/%.cc
+	$(CXX) -c $(CXXFLAGS) -Vgcc_ntoaarch64le -o $@ $<
 
 # A C++ test utility that uses libyuv conversion.
-yuvconvert: util/yuvconvert.cc libyuv.so
-	$(CXX) $(CXXFLAGS) -Iutil/ -o $@ util/yuvconvert.cc libyuv.so
+yuvconvert_x86_64: util/yuvconvert.cc libyuv_x86_64.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntox86_64 -Iutil/ -o $@ util/yuvconvert.cc libyuv_x86_64.so
+
+yuvconvert_aarch64le: util/yuvconvert.cc libyuv_aarch64le.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntoaarch64le -Iutil/ -o $@ util/yuvconvert.cc libyuv_aarch64le.so
 
 # A C test utility that generates yuvconstants for yuv to rgb.
-yuvconstants: util/yuvconstants.c libyuv.so
-	$(CXX) $(CXXFLAGS) -Iutil/ -lm -o $@ util/yuvconstants.c libyuv.so
+yuvconstants_x86_64: util/yuvconstants.c libyuv_x86_64.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntox86_64 -Iutil/ -lm -o $@ util/yuvconstants.c libyuv_x86_64.so
+
+yuvconstants_aarch64le: util/yuvconstants.c libyuv_aarch64le.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntoaarch64le -Iutil/ -lm -o $@ util/yuvconstants.c libyuv_aarch64le.so
 
 # A standalone test utility
-psnr: util/psnr.cc
-	$(CXX) $(CXXFLAGS) -Iutil/ -o $@ util/psnr.cc util/psnr_main.cc util/ssim.cc
+psnr_x86_64: util/psnr.cc
+	$(CXX) $(CXXFLAGS) -Vgcc_ntox86_64 -Iutil/ -o $@ util/psnr.cc util/psnr_main.cc util/ssim.cc
+
+psnr_aarch64le: util/psnr.cc
+	$(CXX) $(CXXFLAGS) -Vgcc_ntoaarch64le -Iutil/ -o $@ util/psnr.cc util/psnr_main.cc util/ssim.cc
 
 # A simple conversion example.
-i444tonv12_eg: util/i444tonv12_eg.cc libyuv.so
-	$(CXX) $(CXXFLAGS) -o $@ util/i444tonv12_eg.cc libyuv.so
+i444tonv12_eg_x86_64: util/i444tonv12_eg.cc libyuv_x86_64.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntox86_64 -o $@ util/i444tonv12_eg.cc libyuv_x86_64.so
 
-install: libyuv.so
+i444tonv12_eg_aarch64le: util/i444tonv12_eg.cc libyuv_aarch64le.so
+	$(CXX) $(CXXFLAGS) -Vgcc_ntoaarch64le -o $@ util/i444tonv12_eg.cc libyuv_aarch64le.so
+
+install: libyuv_x86_64.so libyuv_aarch64le.so
 	mkdir -p $(INSTALL_ROOT_$(OS))/aarch64le/usr/lib/ $(INSTALL_ROOT_HDR)
-	cp libyuv.so $(INSTALL_ROOT_$(OS))/aarch64le/usr/lib/
+	cp libyuv_x86_64.so $(INSTALL_ROOT_$(OS))/x86_64/usr/lib/libyuv.so
+	cp libyuv_aarch64le.so $(INSTALL_ROOT_$(OS))/aarch64le/usr/lib/libyuv.so
 	cp -r include/* $(INSTALL_ROOT_HDR)
 
 # A C test utility that uses libyuv conversion from C.
 # gcc 4.4 and older require -fno-exceptions to avoid link error on __gxx_personality_v0
 # CC=gcc-4.4 CXXFLAGS=-fno-exceptions CXX=g++-4.4 make -f linux.mk
-cpuid: util/cpuid.c libyuv.so
-	$(CC) $(CFLAGS) -o $@ util/cpuid.c libyuv.so -lm
+cpuid_x86_64: util/cpuid.c libyuv_x86_64.so
+	$(CC) $(CFLAGS) -Vgcc_ntox86_64 -o $@ util/cpuid.c libyuv_x86_64.so -lm
+
+cpuid_aarch64le: util/cpuid.c libyuv_aarch64le.so
+	$(CC) $(CFLAGS) -Vgcc_ntoaarch64le -o $@ util/cpuid.c libyuv_aarch64le.so -lm
 
 clean:
-	/bin/rm -f source/*.o *.ii *.s libyuv.so i444tonv12_eg yuvconvert yuvconstants cpuid psnr
+	/bin/rm -f source/*_x86_64.o source/*_aarch64le.o *.ii *.s libyuv_x86_64.so libyuv_aarch64le.so i444tonv12_eg_x86_64 i444tonv12_eg_aarch64le yuvconvert_x86_64 yuvconvert_aarch64le yuvconstants_x86_64 yuvconstants_aarch64le cpuid_x86_64 cpuid_aarch64le psnr_x86_64 psnr_aarch64le
 endif
